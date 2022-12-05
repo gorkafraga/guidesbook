@@ -1,5 +1,5 @@
-# Quick Guide for Python 
-Additional documentation: https://google.github.io/styleguide/pyguide.html  
+# Python 
+This is a quick guide for setting up the python environment. 
 We are likely to have multiple instances of python in our PC. We need to ensure we know which one we are using.
 
 There are many ways. This is just one I found simple enough. It requires:
@@ -7,7 +7,7 @@ There are many ways. This is just one I found simple enough. It requires:
  - Spyder (IDE)
 
 We can download Anaconda 3, from there create environments with a python version and different modules (packages). Then we launch a light IDE like Spyder (similar to Rstudio) from a given environment. 
-
+See extensive documentation: https://google.github.io/styleguide/pyguide.html  
 
 ## Basic setup
 Main documentation: https://docs.spyder-ide.org/current/installation.html  
