@@ -1,0 +1,12 @@
+# Table of contents 
+
+format: jb-book
+root: intro
+chapters:
+- file: GUIDE_MNE
+- file: GUIDE_openvibe
+- file: GUIDE_Github
+- file: GUIDE_MachineLearning
+- file: GUIDE_prolific_gorilla
+- file: GUIDE_python
+
