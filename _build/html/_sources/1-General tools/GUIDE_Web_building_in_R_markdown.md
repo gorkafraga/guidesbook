@@ -1,6 +1,6 @@
 # Website in R markdown
 
-# Github Pages 
+## Github Pages 
 GitHub Pages hosts a static site (i.e., delivered to your browser as it is stored, does not require web applications in the server ) hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.  https://pages.github.com/ 
 
 ### Make a website on github pages 
