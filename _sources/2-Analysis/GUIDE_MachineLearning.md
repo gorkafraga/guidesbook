@@ -1,5 +1,15 @@
 # Machine learning and multivariate pattern analysis
-## Glossary
+
+## Multivariate pattern analysis 
+The MNE toolbox is a great option to apply MVPA and machine learning classification (using Scikit-learn libs) to EEG data
+
+* Example 1. Simple to follow example of classification. https://natmeg.se/mne_multivariate/mne_multivariate.html
+
+* Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
+
+
+
+## ML Glossary
 This is a machine learning glossary in the context of multivariate pattern analysis, copied from a paper on describing a matlab toolbox for MVPA: [https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/fullMVPA ](https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/full).
 
 For an in-depth introduction to machine learning refer to standard textbooks (Bishop, 2007; Hastie et al., 2009; James et al., 2013).
