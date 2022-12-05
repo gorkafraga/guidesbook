@@ -333,20 +333,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-from-mvpa-analysis">
-   Example from MVPA analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-eeg-data-in-mne">
-     Importing EEG data in MNE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations-visualizing">
-   Quality assesment and visualizations Visualizing
+  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations">
+   Quality assesment and visualizations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -374,20 +362,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-from-mvpa-analysis">
-   Example from MVPA analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-eeg-data-in-mne">
-     Importing EEG data in MNE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations-visualizing">
-   Quality assesment and visualizations Visualizing
+  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations">
+   Quality assesment and visualizations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -408,44 +384,19 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="mne-toolbox">
 <h1>MNE toolbox<a class="headerlink" href="#mne-toolbox" title="Permalink to this headline">#</a></h1>
 <p>MNE is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more.</p>
-<section id="example-from-mvpa-analysis">
-<h2>Example from MVPA analysis<a class="headerlink" href="#example-from-mvpa-analysis" title="Permalink to this headline">#</a></h2>
-<p>In this <strong>Example</strong> we will use MNE to apply an <strong>SVM</strong> classifier for multivariate pattern analysis (<strong>MVPA</strong>) of EEG data. The data were collected as part of the Digit-in-noise (DIN) project by T. Houweling.
-Here we use epoched .set files (EEGlab formated containing both header and data).</p>
-<p>The MVPA analysis is based on the code provided in: <a class="reference external" href="https://github.com/BayetLab/infant-EEG-MVPA-tutorial">https://github.com/BayetLab/infant-EEG-MVPA-tutorial</a></p>
-<section id="importing-eeg-data-in-mne">
-<h3>Importing EEG data in MNE<a class="headerlink" href="#importing-eeg-data-in-mne" title="Permalink to this headline">#</a></h3>
-<ul>
-<li><p>First consult this site: <a class="reference external" href="https://eeglab.org/others/EEGLAB_and_python.html">https://eeglab.org/others/EEGLAB_and_python.html</a>,  <a class="reference external" href="https://mne.tools/0.17/manual/migrating.html">https://mne.tools/0.17/manual/migrating.html</a></p></li>
-<li><p>Read epoched data:
-<code class="docutils literal notranslate"><span class="pre">epochs</span> <span class="pre">=</span> <span class="pre">mne.io.read_epochs_eeglab('s9_DiN_epoched_ICrem.set')</span></code></p></li>
-<li><p><strong>EXAMPLE from DiN study</strong>. In our case , the info of interest, i.e., accuracy of each trial was encoded in EEG.epochs.accuracy in the eeglab data set. We were not able to directly access this in the output of mne.io.read_epochs_eeglab. However this info was preserved if we read the .set file  using loadmat so we did:
-`# Retrieve trial accuracy
-mdat = sio.loadmat(fileinput,squeeze_me = True,simplify_cells = True,mat_dtype=True)[‘EEG’]
-epochAccu = [epoch[‘accuracy’] for epoch in mdat[‘epoch’]]</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   # recode events 
-   for epIdx in range(len(epochs.events)):
-   epochs.events[epIdx][2]=epochAccu[epIdx]
-   
-   # add event information 
-   event_dict = {&#39;correct&#39;: 1, &#39;incorrect&#39;:0}
-   epochs.event_id = event_dict
-</pre></div>
-</div>
-</li>
-</ul>
-<p>`</p>
-</section>
-</section>
-<section id="quality-assesment-and-visualizations-visualizing">
-<h2>Quality assesment and visualizations Visualizing<a class="headerlink" href="#quality-assesment-and-visualizations-visualizing" title="Permalink to this headline">#</a></h2>
+<section id="quality-assesment-and-visualizations">
+<h2>Quality assesment and visualizations<a class="headerlink" href="#quality-assesment-and-visualizations" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Check this code to use PSD plots for spotting bad channels  -   <a class="reference external" href="https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py">https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py</a></p></li>
+<li><p>Check out this code to use PSD plots for spotting bad channels<br />
+<a class="reference external" href="https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py">https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py</a></p></li>
 </ul>
 </section>
 <section id="multivariate-pattern-analysis">
 <h2>Multivariate pattern analysis<a class="headerlink" href="#multivariate-pattern-analysis" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://natmeg.se/mne_multivariate/mne_multivariate.html">https://natmeg.se/mne_multivariate/mne_multivariate.html</a></p>
+<ul class="simple">
+<li><p>Example 1. Simple to follow example of classification. <a class="reference external" href="https://natmeg.se/mne_multivariate/mne_multivariate.html">https://natmeg.se/mne_multivariate/mne_multivariate.html</a></p></li>
+<li><p>Example 2. MVPA in infant data. <a class="reference external" href="https://github.com/BayetLab/infant-EEG-MVPA-tutorial">https://github.com/BayetLab/infant-EEG-MVPA-tutorial</a></p></li>
+</ul>
 </section>
 </section>
 
