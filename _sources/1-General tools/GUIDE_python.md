@@ -42,21 +42,14 @@ Once we have our environment setup the usual workflow will involve:
 - Activate the environment you want to work on 
 - Type 'spyder' and keep on working on Spyder IDE 
  
-## Exporting environment across platforms (e.g., from windows to Linux)
-Imagine you created an environment in one computer and you want now to run those analysis in a remote desktop in another computer (which may have a different operating system). You can export the environment and import it in the other computer. But if the OS are different the dependencies might change (but you still want to have the same version of python and packages if possible). 
+## Exporting environment across platforms 
+For example iff you created an environment in one computer and want to run those analysis in a remote desktop with a different operating system. You can export the environment and import it in the other computer. But if the OS are different the dependencies might change (but you still want to have the same version of python and packages if possible). 
 https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment 
 * Create an environment: specify python version 
 * Export your environment:  e.g., conda env export > spyder-env.yml --from-history
 * Import (...)  
 
-
-
-## Tips
-
-* Install MAMBA: a more efficient solver than Conda.. 
-* STATSMODELS package with similar stuff as R , more complete than scipy 
-* https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment  ---- Check exporting an environment file across platform. We need to –from-history flag when exporting environment (conda env export  –from-history) so that in when installing the environment in a new system Conda will solve the required dependencies (e.g., if we have an environment in windows and we want to use the same packages in Linux,  dependencies might differ between the two OS)  
-
+## Mixed tips
 
 ## keywords:  
 pip = package manager works from any environment  
@@ -65,17 +58,14 @@ Spyder = IDE for python (like Rstudio)
 Anaconda =  Python distributor with multiple programs 
 https://medium.datadriveninvestor.com/what-is-pip-conda-anaconda-spyder-jupyter-notebook-pycharm-pandas-tensorflow-and-django-36d54778d85c 
 
- 
-
 ## Troubleshooting  
 > Issues during installation included problems with spyder recognizing the right python version or not recognizing the 'conda' command (e.g., because Anaconda folders were not added in the OS path). PIP is another package manager. Recommended to stick to conda for installing packages whenever possible.  
-
 
 > Spyder is not showing plotly plots? Set up the default renderer:  
    import plotly.io as io 
    io.renderers.default='browser' 
 
-
+> Instead of Conda, there is also Mamba which seems to be more efficient solver than Conda..  
  
 
  

@@ -1,6 +1,6 @@
-# Website building with R markdown and Github pages
+# Website in R markdown
 
-## Github Pages 
+# Github Pages 
 GitHub Pages hosts a static site (i.e., delivered to your browser as it is stored, does not require web applications in the server ) hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.  https://pages.github.com/ 
 
 ### Make a website on github pages 
@@ -9,7 +9,7 @@ GitHub Pages hosts a static site (i.e., delivered to your browser as it is store
 - In the repository you can copy some basic html template or other files with the actual website. For example this one: https://github.com/imgios/minimalist. It contains the very basics: A index.html which you need to edit the content and the ‘assets’ folder  with a subfolder ‘CSS’ containing details about they style, and the subfolder ‘images’ where you can put the main picture and icon. Alternatively , there are applications that allow you to modify websites in simpler language using markdown, like Jekyll.  Alternatively there are options in Rmarkdown  
 - Now you have your personal website that anyone can see: gorkafraga.github.io  
 
-## Website building with Rmarkdown
+## Build a web in R markdown
 
 There is a way of making a website with Rmarkdown so that you can simply edit markdown files in R studio, commit changes and push it to your github pages.  
 It will require some Rmarkdown files and a yml file with header specifications. The option 'publish ' site in R studio will generate html files from your rmarkdown files. 

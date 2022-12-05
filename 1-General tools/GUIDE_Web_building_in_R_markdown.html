@@ -6,52 +6,53 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Website building with R markdown and Github pages &#8212; Guides-Neurolinguistics</title>
+    <title>Website in R markdown &#8212; Neuroling guides</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Machine learning and multivariate pattern analysis" href="../2-Analysis/GUIDE_MachineLearning.html" />
     <link rel="prev" title="Python" href="GUIDE_python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -87,19 +88,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Guides-Neurolinguistics</h1>
+      <h1 class="site-logo" id="site-title">Neuroling guides</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -107,35 +108,25 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Welcome to Neurolinguistics guides
+                <a class="reference internal" href="../intro.html">
+                    Welcome
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_MNE.html">
-   MNE toolbox
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_openvibe.html">
-   Openvibe
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc tools
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="GUIDE_Github.html">
    Github
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_MachineLearning.html">
-   Machine learning and multivariate pattern analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_prolific_gorilla.html">
-   Gorilla
+  <a class="reference internal" href="GUIDE_Jupyter%20book.html">
+   Jupyter book
   </a>
  </li>
  <li class="toctree-l1">
@@ -145,7 +136,24 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Website building with R markdown and Github pages
+   Website in R markdown
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MachineLearning.html">
+   Machine learning and multivariate pattern analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MNE.html">
+   MNE toolbox
   </a>
  </li>
 </ul>
@@ -213,6 +221,51 @@ title="Fullscreen mode"
 
 </button>
 
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gorkafraga"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gorkafraga/issues/new?title=Issue%20on%20page%20%2F1-General tools/GUIDE_Web_building_in_R_markdown.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -221,7 +274,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/GUIDE_Web_building_in_R_markdown.md"
+        <a href="../_sources/1-General tools/GUIDE_Web_building_in_R_markdown.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -280,44 +333,49 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Website in R markdown
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#github-pages">
    Github Pages
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#make-a-website-on-github-pages">
      Make a website on github pages
     </a>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-web-in-r-markdown">
+     Build a web in R markdown
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setting-up-the-github-page">
+       Setting up the github page
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#working-on-the-r-project">
+       Working on the R project
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#commit-and-push">
+       Commit and Push
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
+     Linking your github page to your own domain (Cloudflare)
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#website-building-with-rmarkdown">
-   Website building with Rmarkdown
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-up-the-github-page">
-     Setting up the github page
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-on-the-r-project">
-     Working on the R project
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#commit-and-push">
-     Commit and Push
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
-   Linking your github page to your own domain (Cloudflare)
-  </a>
  </li>
 </ul>
 
@@ -328,7 +386,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Website building with R markdown and Github pages</h1>
+                <h1>Website in R markdown</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -338,44 +396,49 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Website in R markdown
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#github-pages">
    Github Pages
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#make-a-website-on-github-pages">
      Make a website on github pages
     </a>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-web-in-r-markdown">
+     Build a web in R markdown
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setting-up-the-github-page">
+       Setting up the github page
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#working-on-the-r-project">
+       Working on the R project
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#commit-and-push">
+       Commit and Push
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
+     Linking your github page to your own domain (Cloudflare)
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#website-building-with-rmarkdown">
-   Website building with Rmarkdown
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-up-the-github-page">
-     Setting up the github page
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-on-the-r-project">
-     Working on the R project
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#commit-and-push">
-     Commit and Push
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
-   Linking your github page to your own domain (Cloudflare)
-  </a>
  </li>
 </ul>
 
@@ -387,13 +450,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="website-building-with-r-markdown-and-github-pages">
-<h1>Website building with R markdown and Github pages<a class="headerlink" href="#website-building-with-r-markdown-and-github-pages" title="Permalink to this headline">#</a></h1>
-<section id="github-pages">
-<h2>Github Pages<a class="headerlink" href="#github-pages" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="website-in-r-markdown">
+<h1>Website in R markdown<a class="headerlink" href="#website-in-r-markdown" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="github-pages">
+<h1>Github Pages<a class="headerlink" href="#github-pages" title="Permalink to this headline">#</a></h1>
 <p>GitHub Pages hosts a static site (i.e., delivered to your browser as it is stored, does not require web applications in the server ) hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.  <a class="reference external" href="https://pages.github.com/">https://pages.github.com/</a></p>
 <section id="make-a-website-on-github-pages">
-<h3>Make a website on github pages<a class="headerlink" href="#make-a-website-on-github-pages" title="Permalink to this headline">#</a></h3>
+<h2>Make a website on github pages<a class="headerlink" href="#make-a-website-on-github-pages" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Create a Github account: e.g. username gorkafraga</p></li>
 <li><p>Create a new repository named: <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a> – This repository will contain your website</p></li>
@@ -401,9 +465,8 @@ title="Print to PDF"
 <li><p>Now you have your personal website that anyone can see: <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a></p></li>
 </ul>
 </section>
-</section>
-<section id="website-building-with-rmarkdown">
-<h2>Website building with Rmarkdown<a class="headerlink" href="#website-building-with-rmarkdown" title="Permalink to this headline">#</a></h2>
+<section id="build-a-web-in-r-markdown">
+<h2>Build a web in R markdown<a class="headerlink" href="#build-a-web-in-r-markdown" title="Permalink to this headline">#</a></h2>
 <p>There is a way of making a website with Rmarkdown so that you can simply edit markdown files in R studio, commit changes and push it to your github pages.<br />
 It will require some Rmarkdown files and a yml file with header specifications. The option ‘publish ‘ site in R studio will generate html files from your rmarkdown files.
 An example with instructions was retrieved from: <a class="reference external" href="https://crumplab.com/LabJournalWebsite/index.html">https://crumplab.com/LabJournalWebsite/index.html</a></p>
@@ -463,7 +526,7 @@ That’s it, now if you type in your browser gorka.science it will show the cont
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./."
+            path: "./1-General tools"
         },
         predefinedOutput: true
     }
@@ -484,6 +547,13 @@ That’s it, now if you type in your browser gorka.science it will show the cont
             <p class="prev-next-title">Python</p>
         </div>
     </a>
+    <a class='right-next' id="next-link" href="../2-Analysis/GUIDE_MachineLearning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Machine learning and multivariate pattern analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -491,7 +561,7 @@ That’s it, now if you type in your browser gorka.science it will show the cont
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By gfraga<br/>
+    By G Fraga Gonzalez<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
@@ -505,7 +575,7 @@ That’s it, now if you type in your browser gorka.science it will show the cont
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
