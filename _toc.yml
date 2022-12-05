@@ -1,13 +1,18 @@
-# Table of contents 
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
 root: intro
-chapters:
-- file: GUIDE_MNE
-- file: GUIDE_openvibe
-- file: GUIDE_Github
-- file: GUIDE_MachineLearning
-- file: GUIDE_prolific_gorilla
-- file: GUIDE_python
-- file: GUIDE_Web_building_in_R_markdown.md
-
+parts:
+- caption: Misc tools
+  chapters:
+  - file: 1-General tools/GUIDE_Github
+  - file: 1-General tools/GUIDE_Jupyter book
+  - file: 1-General tools/Guide_prolific_gorilla
+  - file: 1-General tools/GUIDE_python
+  - file: 1-General tools/GUIDE_Web_building_in_R_markdown
+- caption: Analysis
+  chapters:
+  - file: 2-Analysis/GUIDE_MachineLearning
+  - file: 2-Analysis/GUIDE_MNE
+  - file: 2-Analysis/Guide_openvibe
