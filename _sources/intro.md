@@ -1,7 +1,5 @@
-# Welcome to Neurolinguistics guides 
-
-Here we include our lab's quick guides for the different tools we use. 
-Each page contains some quick notes andto more detailed references 
+# Neurolinguistics guides 
+Here we include quick notes on different tools we use in Neurolinguistics. Most of the guides are written for internal use and contain quick notes and links to more detailed documentation
 
 ```{tableofcontents}
 ```
