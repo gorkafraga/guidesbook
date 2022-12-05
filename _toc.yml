@@ -9,4 +9,5 @@ chapters:
 - file: GUIDE_MachineLearning
 - file: GUIDE_prolific_gorilla
 - file: GUIDE_python
+- file: GUIDE_Web_building_in_R_markdown.md
 
