@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Github Pages &#8212; Guides-Neurolinguistics</title>
+    <title>Jupyter book &#8212; Guides-Neurolinguistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -129,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="GUIDE_MachineLearning.html">
-   Machine learning glossary (in the context of MVPA)
+   Machine learning glossary
   </a>
  </li>
  <li class="toctree-l1">
@@ -140,6 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="GUIDE_python.html">
    Quick Guide for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_Web_building_in_R_markdown.html">
+   Github Pages
   </a>
  </li>
 </ul>
@@ -215,7 +220,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/GUIDE_R_webmaking.md"
+        <a href="_sources/GUIDE_Jupyter book.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -274,43 +279,14 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Github Pages
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-workflow">
+   Basic workflow
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-a-website-on-github-pages">
-     Make a website on github pages
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-a-website-with-rmarkdown-in-github-pages">
-   Building a website with Rmarkdown (in Github pages)
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-up-the-github-page">
-     Setting up the github page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-on-the-r-project">
-     Working on the R project
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#commit-and-push">
-     Commit and Push
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
-   Linking your github page to your own domain (Cloudflare)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publishing-it-in-our-github-pages">
+   Publishing it in our github pages
   </a>
  </li>
 </ul>
@@ -322,7 +298,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Github Pages</h1>
+                <h1>Jupyter book</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -332,43 +308,14 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Github Pages
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-workflow">
+   Basic workflow
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-a-website-on-github-pages">
-     Make a website on github pages
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-a-website-with-rmarkdown-in-github-pages">
-   Building a website with Rmarkdown (in Github pages)
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-up-the-github-page">
-     Setting up the github page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-on-the-r-project">
-     Working on the R project
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#commit-and-push">
-     Commit and Push
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linking-your-github-page-to-your-own-domain-cloudflare">
-   Linking your github page to your own domain (Cloudflare)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publishing-it-in-our-github-pages">
+   Publishing it in our github pages
   </a>
  </li>
 </ul>
@@ -381,64 +328,37 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="github-pages">
-<h1>Github Pages<a class="headerlink" href="#github-pages" title="Permalink to this headline">#</a></h1>
-<p>GitHub Pages is a static site (i.e., delivered to your browser as it is stored, does not require web applications in the server ) hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.  <a class="reference external" href="https://pages.github.com/">https://pages.github.com/</a></p>
-<section id="make-a-website-on-github-pages">
-<h2>Make a website on github pages<a class="headerlink" href="#make-a-website-on-github-pages" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-book">
+<h1>Jupyter book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">#</a></h1>
+<p>Create a publication-quality book and documentation
+Documentation: <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">https://jupyterbook.org/en/stable/intro.html</a></p>
+<section id="basic-workflow">
+<h2>Basic workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">#</a></h2>
+<p>We can create a book from a collection of markdown files with guidelines.
+See link: <a class="reference external" href="https://jupyterbook.org/en/stable/start/your-first-book.html">https://jupyterbook.org/en/stable/start/your-first-book.html</a></p>
+<p>Basically we need to:</p>
 <ul class="simple">
-<li><p>Create a Github account: e.g. username gorkafraga</p></li>
-<li><p>Create a new repository named: <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a> – This repository will contain your website</p></li>
-<li><p>In the repository you can copy some basic html template or other files with the actual website. For example this one: <a class="reference external" href="https://github.com/imgios/minimalist">https://github.com/imgios/minimalist</a>. It contains the very basics: A index.html which you need to edit the content and the ‘assets’ folder  with a subfolder ‘CSS’ containing details about they style, and the subfolder ‘images’ where you can put the main picture and icon. Alternatively , there are applications that allow you to modify websites in simpler language using markdown, like Jekyll.  Alternatively there are options in Rmarkdown</p></li>
-<li><p>Now you have your personal website that anyone can see: <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a></p></li>
+<li><p>Install Jupyter-book in our Conda environment</p></li>
+<li><p>Create a folder with</p>
+<ul>
+<li><p>A configuration file (_config.yml)</p></li>
+<li><p>A table of contents file (_toc.yml)</p></li>
+<li><p>Your book’s content (e.g., .md files)</p></li>
+</ul>
+</li>
+<li><p>From our conda environment type: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">book</span> <span class="pre">build</span> <span class="pre">mybookname/</span></code></p></li>
 </ul>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="building-a-website-with-rmarkdown-in-github-pages">
-<h1>Building a website with Rmarkdown (in Github pages)<a class="headerlink" href="#building-a-website-with-rmarkdown-in-github-pages" title="Permalink to this headline">#</a></h1>
-<p>There is a way of making a website with Rmarkdown so that you can simply edit markdown files in R studio, commit changes and push it to your github pages.<br />
-It will require some Rmarkdown files and a yml file with header specifications. The option ‘publish ‘ site in R studio will generate html files from your rmarkdown files.
-An example with instructions was retrieved from: <a class="reference external" href="https://crumplab.com/LabJournalWebsite/index.html">https://crumplab.com/LabJournalWebsite/index.html</a></p>
-<p>Install R and Rstudio with the package “Rmarkdown” installed ( make sure it is installed with dependencies:  install.packages(“Rmarkdown”,dependencies = TRUE)</p>
-<section id="setting-up-the-github-page">
-<h2>Setting up the github page<a class="headerlink" href="#setting-up-the-github-page" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p><strong>Fork</strong> the example from the link and copy the files and folder into the labs’ repository “<a class="reference external" href="http://neuroling.github.io">neuroling.github.io</a>” <a class="reference external" href="https://neuroling.github.io/">https://neuroling.github.io/</a> .</p></li>
-<li><p>In the repository settings there should be an option to make it serve from the ‘Docs’ folder within that repository (that folder will contain the html files generated by markdown. This is what you need to access to when clicking in the <a class="reference external" href="http://neuroling.github.io">neuroling.github.io</a> link)</p></li>
-<li><p>Clone it into a <strong>local folder</strong> (not in a server or it will all be very slow). You will work locally with Rstudio and then use Github desktop to manage this and push changes later on.</p></li>
-</ol>
-</section>
-<section id="working-on-the-r-project">
-<h2>Working on the R project<a class="headerlink" href="#working-on-the-r-project" title="Permalink to this headline">#</a></h2>
+<section id="publishing-it-in-our-github-pages">
+<h2>Publishing it in our github pages<a class="headerlink" href="#publishing-it-in-our-github-pages" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>In your local repository, go to the <strong>.Rproj</strong> file and  open it in R studio. It will set your current work environment to within that folder and everything will be autosaved in that project.  In R studio top right corner you should see you are working within this project.  This is necessary to be able to ‘Build’ the web later.</p></li>
-<li><p>Now you can modify the R markdown files representing each page in your site. For instance “Projects.Rmd” will be the “Projects” section in your website.  To modify:</p></li>
-<li><p>Edit text or R code chunks in Rmarkdown. You can use “Knit” to preview changes</p></li>
-<li><p>Click on <strong>Build</strong> (tab near connections in the environment panel; only appears if you work within the Rproject). This will build the website</p></li>
-</ul>
-<p>If you want to add a new page:</p>
-<ul class="simple">
-<li><p>Create a new Rmd page within the project folder</p></li>
-<li><p>Modify the _site.yml  file (with notepad e.g) to point to the new file</p></li>
+<li><p>Clone our github repository (must be publi and we need to select the gh-pages branch in the repository settings/branch)</p></li>
+<li><p>Install ghp-import in our conda environment: <code class="docutils literal notranslate"> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ghp-import</span></code></p></li>
+<li><p>Then in our local cloned repository we make changes in the book files, build the book (<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">book</span> <span class="pre">build</span> <span class="pre">mybookname</span></code>)</p></li>
+<li><p>In conda prompt we go to the folder containing the book and type:<code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code></p></li>
+<li><p>Then we push the changes to the origin and it should become accessible in our github pages: *<em><a class="reference external" href="http://mygithubpagename.github.io/myBookRepo">mygithubpagename.github.io/myBookRepo</a></em></p></li>
 </ul>
 </section>
-<section id="commit-and-push">
-<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this headline">#</a></h2>
-<p>Use Github desktop (or the command line) to  Commit and push changes into your Github. The page should now be visible.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="linking-your-github-page-to-your-own-domain-cloudflare">
-<h1>Linking your github page to your own domain (Cloudflare)<a class="headerlink" href="#linking-your-github-page-to-your-own-domain-cloudflare" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>Buy a domain (in Cloudflare for this example ). E.g., gorka.science</p></li>
-<li><p>Go to your github repository <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a> and create a new file (in the same space as index.html) named CNAME (use caps). In the first and second line, write the domain: e.g., gorka.science and www.gorka.science</p></li>
-<li><p>Go to Cloudflare website and log in :</p></li>
-</ul>
-<ul class="simple">
-<li><p>Go to DNS and DNS management</p></li>
-<li><p>Add a new record and choose type = CNAME, Name = gorka.science, Content = <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a><br />
-That’s it, now if you type in your browser gorka.science it will show the contain of <a class="reference external" href="http://gorkafraga.github.io">gorkafraga.github.io</a></p></li>
-</ul>
 </section>
 
     <script type="text/x-thebe-config">
