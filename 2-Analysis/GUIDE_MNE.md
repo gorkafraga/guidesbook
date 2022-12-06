@@ -18,10 +18,21 @@ We want to make a report html file for each subject containing:
   - Time frequency power
   
 #### Read data  
-
+   ` epochs = mne.read_epochs(glob(dirinput + 's04_DiN_epoched_ICrem.fif')[0])  # glob searches file name pattern in dirinput`
+    
 #### Initialize the report 
 
+     report = mne.Report(title='My example report')
+      # Add epochs will automatically add an ERP image but this will average across all conditions 
+      report.add_epochs(epochs=epochs, title='Epochs', psd=False)  #  PSD plot can be turned on 
+
+#### Create evoked 
+      #To get the ERPs per condition we need to compute the averages 
+
+
 #### Add elements to the report 
+
+
 
 #### Write to .html file
 
