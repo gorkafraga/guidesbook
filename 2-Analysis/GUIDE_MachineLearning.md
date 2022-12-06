@@ -34,7 +34,7 @@ flowchart TB
     G .-> V
     TA --> G
     G --> CV[Cross validation]
-
+    CV --> stats
     end
 ```
 ### Folder structure
