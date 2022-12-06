@@ -7,7 +7,58 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 
 * Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
+## Current analysis
 
+### Workflow 
+```mermaid
+flowchart TB
+    subgraph Data preparation  
+    
+    A[preprocessed EEGlab .set] -->| mne.read, correct time vals, recode events| B(MNE epochs .fif)
+    B --> |average|C(Evoked .fif)
+    C -->|gathered subjects & conditions| D(Evokeds .fif)
+    end
+    subgraph O_o
+    C .-> V[visualizations]
+    D .-> V[visualizations]
+    end
+
+    subgraph ML decoding
+    B --> E((MVPA))
+    E --> CO(label epochs)
+    CO --> |epochs coded by accuracy or difficulty| FEA{features}
+    FEA --> TA[Amplitudes]
+    FEA --> TF[Time-freq]
+    TF --> |freqBand power|G[Classifier]
+    TF .-> V
+    G .-> V
+    TA --> G
+    G --> CV[Cross validation]
+    CV --> stats
+    end
+```
+### Folder structure
+```mermaid
+graph LR
+%%{init: {'theme': 'neutral' } }%%
+    root[DiN] --> 1[README.md]
+    root --> 2[data_preproc_ep_ICrem]
+    root --> 3[mvpa]
+    subgraph 3g[Analysis]
+      3 --> 31[25subj_TFR]
+      31 --> 32[epochs_labeled_*]
+      32 --> 33[band*]
+      33 --> 34[results]
+    end
+    subgraph 2g[Preprocessed data]
+      2 --> 21[epochs]
+      2 --> 22[evoked]
+      2 --> 23[evokeds]
+    end
+    subgraph 1g[ ]
+      1
+    end
+```
 
 ## ML Glossary
 This is a machine learning glossary in the context of multivariate pattern analysis, copied from a paper on describing a matlab toolbox for MVPA: [https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/fullMVPA ](https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/full).
