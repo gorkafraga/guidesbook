@@ -38,6 +38,7 @@ flowchart TB
     end
 ```
 ### Folder structure
+
 ```mermaid
 graph LR
 %%{init: {'theme': 'neutral' } }%%
