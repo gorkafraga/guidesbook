@@ -345,6 +345,11 @@ title="Print to PDF"
    Publish to github pages
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rendering-mermaid-diagrams-in-your-book">
+   Rendering mermaid diagrams in your book
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -372,6 +377,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#publish-to-github-pages">
    Publish to github pages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rendering-mermaid-diagrams-in-your-book">
+   Rendering mermaid diagrams in your book
   </a>
  </li>
 </ul>
@@ -414,6 +424,32 @@ See link: <a class="reference external" href="https://jupyterbook.org/en/stable/
 <li><p>In conda prompt we go to the folder containing the book and type:<code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code></p></li>
 <li><p>Then we push the changes to the origin and it should become accessible in our github pages: <em><a class="reference external" href="http://mygithubpagename.github.io/myBookRepo">mygithubpagename.github.io/myBookRepo</a></em></p></li>
 </ul>
+</section>
+<section id="rendering-mermaid-diagrams-in-your-book">
+<h2>Rendering mermaid diagrams in your book<a class="headerlink" href="#rendering-mermaid-diagrams-in-your-book" title="Permalink to this headline">#</a></h2>
+<p>‘mermaid’ allows pretty flowcharts in md files that you can view in github. However the charts won’t be displayed in the book unless you do:
+See: <a class="reference external" href="https://blog.ouseful.info/2021/11/02/previewing-sphinx-and-jupyter-book-rendered-mermaid-and-wavedrom-diagrams-in-vs-code/">https://blog.ouseful.info/2021/11/02/previewing-sphinx-and-jupyter-book-rendered-mermaid-and-wavedrom-diagrams-in-vs-code/</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinxcontrib-mermaid</span></code></p></li>
+<li><p>In your .md file with the flow chart use curly brackets to specify mermaid. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> ````{mermaid}
+ stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]````
+</pre></div>
+</div>
+</li>
+<li><p>In your book’s _config.yml file include these lines:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="p">:</span>
+  <span class="n">extra_extensions</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">sphinxcontrib</span><span class="o">.</span><span class="n">mermaid</span>
+</pre></div>
+</div>
 </section>
 </section>
 

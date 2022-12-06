@@ -346,11 +346,6 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#workflow">
-     Workflow
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#folder-structure">
      Folder structure
     </a>
@@ -392,11 +387,6 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#workflow">
-     Workflow
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#folder-structure">
      Folder structure
     </a>
@@ -430,9 +420,8 @@ title="Print to PDF"
 </section>
 <section id="current-analysis">
 <h2>Current analysis<a class="headerlink" href="#current-analysis" title="Permalink to this headline">#</a></h2>
-<section id="workflow">
-<h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">#</a></h3>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TB
+<div class="mermaid">
+             flowchart TB
     subgraph Data preparation  
     
     A[preprocessed EEGlab .set] --&gt;| mne.read, correct time vals, recode events| B(MNE epochs .fif)
@@ -457,13 +446,12 @@ title="Print to PDF"
     G --&gt; CV[Cross validation]
     CV --&gt; stats
     end
-</pre></div>
-</div>
-</section>
-<section id="folder-structure">
+
+        </div><section id="folder-structure">
 <h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h3>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
-%%{init: {&#39;theme&#39;: &#39;neutral&#39; } }%%
+<div class="mermaid">
+            graph LR
+%%{init: {'theme': 'neutral' } }%%
     root[DiN] --&gt; 1[README.md]
     root --&gt; 2[data_preproc_ep_ICrem]
     root --&gt; 3[mvpa]
@@ -481,9 +469,7 @@ title="Print to PDF"
     subgraph 1g[ ]
       1
     end
-</pre></div>
-</div>
-</section>
+        </div></section>
 </section>
 <section id="ml-glossary">
 <h2>ML Glossary<a class="headerlink" href="#ml-glossary" title="Permalink to this headline">#</a></h2>

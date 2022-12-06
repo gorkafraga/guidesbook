@@ -8,10 +8,9 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 * Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
 ## Current analysis
+``` {mermaid} 
 
-### Workflow 
-```mermaid
-flowchart TB
+ flowchart TB
     subgraph Data preparation  
     
     A[preprocessed EEGlab .set] -->| mne.read, correct time vals, recode events| B(MNE epochs .fif)
@@ -36,10 +35,12 @@ flowchart TB
     G --> CV[Cross validation]
     CV --> stats
     end
+
 ```
+
 ### Folder structure
 
-```mermaid
+```{mermaid}
 graph LR
 %%{init: {'theme': 'neutral' } }%%
     root[DiN] --> 1[README.md]
@@ -62,6 +63,7 @@ graph LR
 ```
 
 ## ML Glossary
+
 This is a machine learning glossary in the context of multivariate pattern analysis, copied from a paper on describing a matlab toolbox for MVPA: [https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/fullMVPA ](https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/full).
 
 For an in-depth introduction to machine learning refer to standard textbooks (Bishop, 2007; Hastie et al., 2009; James et al., 2013).

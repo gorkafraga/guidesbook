@@ -21,3 +21,24 @@ Basically we need to:
 - In conda prompt we go to the folder containing the book and type:````ghp-import -n -p -f _build/html````
 - Then we push the changes to the origin and it should become accessible in our github pages: *mygithubpagename.github.io/myBookRepo*
 
+## Rendering mermaid diagrams in your book
+'mermaid' allows pretty flowcharts in md files that you can view in github. However the charts won't be displayed in the book unless you do:
+See: https://blog.ouseful.info/2021/11/02/previewing-sphinx-and-jupyter-book-rendered-mermaid-and-wavedrom-diagrams-in-vs-code/
+* ```pip install sphinxcontrib-mermaid```
+* In your .md file with the flow chart use curly brackets to specify mermaid. For example:  
+   ```` 
+	````{mermaid}
+	stateDiagram-v2
+       [*] --> Still
+       Still --> [*]
+       Still --> Moving
+       Moving --> Still
+       Moving --> Crash
+       Crash --> [*]````
+   ````
+* In your book's _config.yml file include these lines:
+```` 
+sphinx:
+  extra_extensions:
+  - sphinxcontrib.mermaid
+````
