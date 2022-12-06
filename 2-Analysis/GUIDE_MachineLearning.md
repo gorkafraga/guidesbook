@@ -10,7 +10,8 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 ## Current analysis
 
 ### Workflow 
-```mermaid
+``` {mermaid}
+
 flowchart TB
     subgraph Data preparation  
     
@@ -38,7 +39,9 @@ flowchart TB
     end
 ```
 ### Folder structure
-```mermaid
+
+``` {mermaid}
+
 graph LR
 %%{init: {'theme': 'neutral' } }%%
     root[DiN] --> 1[README.md]
