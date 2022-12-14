@@ -7,6 +7,23 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 
 * Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
+## Design
+Tutorial: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
+
+Read this for more theoretical input  on MVPA approach in MNE 
+``Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .``
+ URL: https://hal.archives-ouvertes.fr/hal-01848442
+
+Here is a short summary of most important points:
+### Scaling
+To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
+
+### Vectorizer 
+While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
+
+
+
+
 ## Current analysis
 ``` {mermaid} 
 
