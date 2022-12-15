@@ -107,6 +107,7 @@ Temporal decoding applied to an auditory violation paradigm, the local/global pa
 Following temporal generalization. Here the goal is to see how different processing stages may change between experimental conditions (e.g., slowed, speeded, deleted, inserted 'stages'). A classifier is trained in a condition and tested on its ability to generalize to another. The resulting temporal generalization matrix may then indicate how information processing changed. A series of classifiers can be trained to discriminate conditions in certain type of trials and are then applied to different type of trials. 
 
 ![image](https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png)
+
 <sub>Example figure from King et al., 2014, https://doi.org/10.1016/j.tics.2014.01.002</sub>
 
 
