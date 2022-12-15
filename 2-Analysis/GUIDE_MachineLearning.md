@@ -29,8 +29,8 @@ Measuring prediction accuracy is central to decoding. To assess a decoder, selec
 
 The following article reviews caveats and contains guidelines on the choice of cross validation methods:
 
-`'Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. 
-*NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038`
+Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. *NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
+
 
 
 Important concepts for CV (from Varoquax et al., 2017): 
@@ -79,20 +79,19 @@ The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes spa
 Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other stuate that they use the 'default' value (e.g., C = 1 for SVMs. Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
 
-## Transformations 
-See MNE doc [https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html]
-and Scikit-learn [https://scikit-learn.org/stable/data_transforms.html]
+## Implementation
+### Transformations 
 
-#### Scaling
+See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
+and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
+
+##### Scaling
 To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
 
-#### Vectorizer 
+##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
 
-
-
-
-## Analysis workflows
+### Analysis workflows
 ``` {mermaid} 
 
  flowchart TB
