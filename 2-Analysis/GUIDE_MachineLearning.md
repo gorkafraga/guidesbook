@@ -78,6 +78,12 @@ The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes spa
 ##### Parameter tunning 
 Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
+## Classification scores
+To evaluate classifier performance *criterion-free* estimates are proposed over *mean accuracy*, since the latter may lead to systematic biases during generalization (i.e., all trials could be clasified over the same category). When dealing with a *two-class problem*, we can use 
+
+* **Receiver operating characteristic (ROC)** can be used to estimate classification accuracy *accross trials* for each subject. The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the *true-positive* rate (i.e., hits; correctly classified trials) as a function of the *false-positive* rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A **area under the curve (AUC)** of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization. 
+
+
 ## Applications
 Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html#) 
 for the following paper on temporal generalization method: King & Dehaene, 2014 doi:10.1016/j.tics.2014.01.002. For another example in EEG/MEG see for instance Marti et al., 2015 https://doi.org/10.1016/j.neuron.2015.10.040. These example show several analyses: 
