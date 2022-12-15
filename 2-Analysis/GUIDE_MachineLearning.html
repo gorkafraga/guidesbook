@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MNE toolbox" href="GUIDE_MNE.html" />
@@ -668,10 +670,57 @@ and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/s
 </section>
 <section id="analysis-workflows">
 <h2>Analysis workflows<a class="headerlink" href="#analysis-workflows" title="Permalink to this headline">#</a></h2>
-</section>
+<div class="mermaid">
+             flowchart TB
+    subgraph Data preparation  
+    
+    A[preprocessed EEGlab .set] --&gt;| mne.read, correct time vals, recode events| B(MNE epochs .fif)
+    B --&gt; |average|C(Evoked .fif)
+    C --&gt;|gathered subjects &amp; conditions| D(Evokeds .fif)
+    end
+    subgraph O_o
+    C .-&gt; V[visualizations]
+    D .-&gt; V[visualizations]
+    end
+
+    subgraph ML decoding
+    B --&gt; E((MVPA))
+    E --&gt; CO(label epochs)
+    CO --&gt; |epochs coded by accuracy or difficulty| FEA{features}
+    FEA --&gt; TA[Amplitudes]
+    FEA --&gt; TF[Time-freq]
+    TF --&gt; |freqBand power|G[Classifier]
+    TF .-&gt; V
+    G .-&gt; V
+    TA --&gt; G
+    G --&gt; CV[Cross validation]
+    CV --&gt; stats
+    end
+
+        </div></section>
 <section id="folder-structure">
 <h2>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h2>
-</section>
+<div class="mermaid">
+            graph LR
+%%{init: {'theme': 'neutral' } }%%
+    root[DiN] --&gt; 1[README.md]
+    root --&gt; 2[data_preproc_ep_ICrem]
+    root --&gt; 3[mvpa]
+    subgraph 3g[Analysis]
+      3 --&gt; 31[25subj_TFR]
+      31 --&gt; 32[epochs_labeled_*]
+      32 --&gt; 33[band*]
+      33 --&gt; 34[results]
+    end
+    subgraph 2g[Preprocessed data]
+      2 --&gt; 21[epochs]
+      2 --&gt; 22[evoked]
+      2 --&gt; 23[evokeds]
+    end
+    subgraph 1g[ ]
+      1
+    end
+        </div></section>
 <section id="ml-glossary">
 <h2>ML Glossary<a class="headerlink" href="#ml-glossary" title="Permalink to this headline">#</a></h2>
 <p>This is a machine learning glossary in the context of multivariate pattern analysis, copied from a paper on describing a matlab toolbox for MVPA: <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/full">https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/fullMVPA </a>.</p>
