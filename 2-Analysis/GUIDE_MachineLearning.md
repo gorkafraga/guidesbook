@@ -45,11 +45,7 @@ How much regularization? A common approach is to use CV to measure predictive po
 
 A *nested cross-validation* repeteadly splits the data into *validation* and *decoding* sets to perform the decoding. The decoding is, in turn, done by spliting a given validation set in *training* and *test* sets. This forms n inner "nested" CV loop used to set up *regularization hyper-parameter*, while the external loop cvarying the validation set is used to measure prediction performance. 
 
-[-----full data----]
-
-[decoding-] | [validation]
-
-[train][test] | 
+![image](https://user-images.githubusercontent.com/13642762/207826874-76aa9fa1-3ca9-4e77-9ecb-40f5a61d1b03.png)
 .
 
 
