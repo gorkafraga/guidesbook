@@ -1,14 +1,14 @@
 # Machine learning and multivariate pattern analysis
-> Decoding and classification in neuroimaging studies
+Decoding and classification in neuroimaging studies. 
 
 ## Intro  
 The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
-
-
  
 *Additional documentation*
 
-Tutorial: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
+Tutorial: 
+
+https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
 Read this for more theoretical input  on MVPA approach in MNE:
 
@@ -76,10 +76,27 @@ The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong 
 The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)
 
 ##### Parameter tunning 
-Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs. Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
+Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
+
+## Applications
+For an EEG/MEG case see for instance Marti et al., 2015 https://doi.org/10.1016/j.neuron.2015.10.040. 
+This example shows different analyses: 
+
+### Time-resolved MVPA
+The classifier is trained at each time sample within each subject to isolate topographical patterns (i.e., information from all sensors) that can best differentiate between two conditions (if more than two classes usually referred to as *multiclass*). 
+
+In Marti et al., 2015: 
+* Cross-validation: 5-fold stratified CV procedure was used for within-subject analysis. At *each time point* the MEG data was randomly split into 5 folds of trials and normalized (Z score of each channel-time feature within the cross-validation). *Stratified* means that the same proportion of each classwas kept within each fold. 
+* Classification: SVM trained with a fixed penalty parameter *C* = 1 on 4 folds and the left out trials were used as test set. The SVM found the hyperplane (in this case a topography) that best separated the two classess without overfitting. A *weighting procedure* equalized the contribution of each class to the definition of the hyperplane. This procedure was iteratively applied for each time sample of each fold. 
+
+### Generalization accross time 
 
 
-## Implementation
+### Generalization accross conditions
+
+
+
+## Implementations
 ### Transformations 
 
 See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
