@@ -7,6 +7,8 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 
 * Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
+
+
 ### Documentation 
 Tutorial: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
@@ -17,10 +19,45 @@ Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Ba
 Here is a short summary of most important points:
 
 ### Cross-validation 
-Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alterntives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
+Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
 
-* The following article reviews caveats and contains guidelines on the choice of cross validation methods:
-<div class="csl-entry">Varoquaux, G., Raamana, P. R., Engemann, D. A., Hoyos-Idrobo, A., Schwartz, Y., &#38; Thirion, B. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <i>NeuroImage</i>, <i>145</i>, 166–179. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038</div>
+The following article reviews caveats and contains guidelines on the choice of cross validation methods:
+Varoquaux, G., Raamana, P. R., Engemann, D. A., Hoyos-Idrobo, A., Schwartz, Y., &#38; Thirion, B. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <i>NeuroImage</i>, <i>145</i>, 166–179. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
+
+Important concepts for CV (from Varoquax et al., 2017): 
+#### Estimating predictive power
+We need to measure the ability of our decoder (mapping brain images to e.g., epoch labels) to *generalize* to new data. We measure the error between the predicted label and the actual label. In CV the data is split in *training* and *test* (unseen by the model, used to compute a prediction error).
+*  Training and test sets must be *independent*. E.g., in fMRI time-series we need a time separation enough to warrant independent observations
+
+* *Sufficient test data*. To get enough power for the prediction error for each split of cross-validation. 
+Because we have limited amount of data we need a *balance* between keeping enough training data for a good fit while having enough data for the test. 
+Neuroimaging studies tend to use **leave-one-out** cross validation (LOOCV), i.e., leaving a single sample out at each training-test split. This gives ample data for training, maximizes test-set variance and does not yield stable estimates of predictive accuracy.It might be preferable then to instead leave out 10-20% of the data, like in 10-fold CV.  It might also be beneficial to increase the number of spllits while keeping a ration between train and test size. Thus **k-fold** can be replaced by **repeated random splits** of the data (aka repeated learning-testing or shuffleSplit). Such splits should be consistent with the dependence structure across observations, or the training set could be stratified to  avoid class imbalance. In neuroimaging good strategies often involve leaving out sessions or subjects. 
+
+#### Selection of hyper-parameters
+In standard statistics, fitting a model on abundant data can be done without choosing a meta-parameter: all model parameters can be estimated from data, e.g., with a maximum-likelihood criterion. But in high-dimensional settings the model of parameters are much larger than the sample size, we need **regularization**. 
+
+Regularization restricts the model complexity to avoid **overfitting** the data (e.g., fitting noise, not being able to generalize).  For instance, we can use low-dimensional PCA in discriminant analysis, or select a small number of voxels with a sparse penalty. If we do *too much* regularization, the models **underfit** the data, i.e., they are too constrained by the prior and do not exploit the data enough. 
+
+In general the best tradeoff is a data-specific choice governed by the statistical power of the prediction task: the amount of data and our signal-to-noise ratio. 
+
+##### *Nested-cross validation* 
+How much regularization? A common approach is to use CV to measure predictive power for various choices of regularization and keep the values that maximize predictive power. With this approach the *amount of regularization* becomes a parameter to adjust on the data, thus predictive performance measured in the CV loop cannot reliably assess predictive performance. The standard procedure is then to refit the model on available data, and test predictive performance on new data: a *validation set*. 
+
+A *nested cross-validation* repeteadly splits the data into *validation* and *decoding* sets to perform the decoding. The decoding is, in turn, done by spliting a given validation set in *training* and *test* sets. This forms n inner "nested" CV loop used to set up *regularization hyper-parameter*, while the external loop cvarying the validation set is used to measure prediction performance. 
+
+[-----full data----]
+
+[decoding-] | [validation]
+
+[train][test] | 
+.
+
+
+
+
+
+
+
 
 
 ### Data Transformations
