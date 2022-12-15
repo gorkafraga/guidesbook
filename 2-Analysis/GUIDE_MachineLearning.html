@@ -439,17 +439,17 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-workflows">
+     Analysis workflows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#folder-structure">
+     Folder structure
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis-workflows">
-   Analysis workflows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#folder-structure">
-   Folder structure
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ml-glossary">
@@ -574,17 +574,17 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-workflows">
+     Analysis workflows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#folder-structure">
+     Folder structure
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis-workflows">
-   Analysis workflows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#folder-structure">
-   Folder structure
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ml-glossary">
@@ -687,6 +687,7 @@ for the following paper on temporal generalization method: King &amp; Dehaene, 2
 </section>
 <section id="generalization-accross-time">
 <h3>Generalization accross time<a class="headerlink" href="#generalization-accross-time" title="Permalink to this headline">#</a></h3>
+<p>Here the goal is to provide information in detail about the sequence of (neural) processing stages engaged in a particular task.</p>
 <p>The classifiers trained at each time are tested on their ability to discriminate conditions at all other time samples. This <em>temporal generalization</em> (King &amp; Dehaene, 2014; see also Dehaene et al.,2016 chapter <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1">https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1</a>) results in a matrix of training time x testing time. Each row corresponds to the time at which the classifier is trained and each column to the time at which it was tested.  Its diagonal corresponds to classifiers trained and tested on the same time sample. Training one classifier at time t and generalizing it over time t’ is done within the cross-validation, so that t and t’ come from independent sets of trials.</p>
 <p>The basic interpretation is that how a decoder trained at time t generalizes to data from another time point t’ would reveal whether the neural code changes over time. This analyses can show, for example, a diagonal pattern of temporal generalization, indicating that each classifier only generalizes for a limited period of time. If each time sample is associated with a slightly different pattern of EEG/MEG activity this can be interpreted as suggesting serial recruitment of different brain areas, each for a short time.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207869802-0a5f9d4e-7bc2-4e21-9068-55a544f466c4.png" /></p>
@@ -695,6 +696,9 @@ Temporal decoding applied to an auditory violation paradigm, the local/global pa
 </section>
 <section id="generalization-accross-conditions">
 <h3>Generalization accross conditions<a class="headerlink" href="#generalization-accross-conditions" title="Permalink to this headline">#</a></h3>
+<p>Following temporal generalization. Here the goal is to see how different processing stages may change between experimental conditions (e.g., slowed, speeded, deleted, inserted ‘stages’). A classifier is trained in a condition and tested on its ability to generalize to another. The resulting temporal generalization matrix may then indicate how information processing changed. A series of classifiers can be trained to discriminate conditions in certain type of trials and are then applied to different type of trials.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png" />
+<sub>Example figure from King et al., 2014, <a class="reference external" href="https://doi.org/10.1016/j.tics.2014.01.002">https://doi.org/10.1016/j.tics.2014.01.002</a></sub></p>
 </section>
 </section>
 <section id="implementations">
@@ -712,9 +716,8 @@ and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/s
 <p>While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps</p>
 </section>
 </section>
-</section>
 <section id="analysis-workflows">
-<h2>Analysis workflows<a class="headerlink" href="#analysis-workflows" title="Permalink to this headline">#</a></h2>
+<h3>Analysis workflows<a class="headerlink" href="#analysis-workflows" title="Permalink to this headline">#</a></h3>
 <div class="mermaid">
              flowchart TB
     subgraph Data preparation  
@@ -744,7 +747,7 @@ and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/s
 
         </div></section>
 <section id="folder-structure">
-<h2>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h2>
+<h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h3>
 <div class="mermaid">
             graph LR
 %%{init: {'theme': 'neutral' } }%%
@@ -766,6 +769,7 @@ and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/s
       1
     end
         </div></section>
+</section>
 <section id="ml-glossary">
 <h2>ML Glossary<a class="headerlink" href="#ml-glossary" title="Permalink to this headline">#</a></h2>
 <p>This is a machine learning glossary in the context of multivariate pattern analysis, copied from a paper on describing a matlab toolbox for MVPA: <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/full">https://www.frontiersin.org/articles/10.3389/fnins.2020.00289/fullMVPA </a>.</p>

@@ -91,6 +91,8 @@ Methods from Marti et al., 2015:
 * Classification: SVM trained with a fixed penalty parameter *C* = 1 on 4 folds and the left out trials were used as test set. The SVM found the hyperplane (in this case a topography) that best separated the two classess without overfitting. A *weighting procedure* equalized the contribution of each class to the definition of the hyperplane. This procedure was iteratively applied for each time sample of each fold. 
 
 ### Generalization accross time 
+Here the goal is to provide information in detail about the sequence of (neural) processing stages engaged in a particular task. 
+
 The classifiers trained at each time are tested on their ability to discriminate conditions at all other time samples. This *temporal generalization* (King & Dehaene, 2014; see also Dehaene et al.,2016 chapter https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1) results in a matrix of training time x testing time. Each row corresponds to the time at which the classifier is trained and each column to the time at which it was tested.  Its diagonal corresponds to classifiers trained and tested on the same time sample. Training one classifier at time t and generalizing it over time t' is done within the cross-validation, so that t and t' come from independent sets of trials. 
 
 The basic interpretation is that how a decoder trained at time t generalizes to data from another time point t' would reveal whether the neural code changes over time. This analyses can show, for example, a diagonal pattern of temporal generalization, indicating that each classifier only generalizes for a limited period of time. If each time sample is associated with a slightly different pattern of EEG/MEG activity this can be interpreted as suggesting serial recruitment of different brain areas, each for a short time. 
@@ -102,7 +104,10 @@ Temporal decoding applied to an auditory violation paradigm, the local/global pa
 
 
 ### Generalization accross conditions
+Following temporal generalization. Here the goal is to see how different processing stages may change between experimental conditions (e.g., slowed, speeded, deleted, inserted 'stages'). A classifier is trained in a condition and tested on its ability to generalize to another. The resulting temporal generalization matrix may then indicate how information processing changed. A series of classifiers can be trained to discriminate conditions in certain type of trials and are then applied to different type of trials. 
 
+![image](https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png)
+<sub>Example figure from King et al., 2014, https://doi.org/10.1016/j.tics.2014.01.002</sub>
 
 
 
@@ -119,7 +124,7 @@ To scale each *channel* with mean and sd computed accross of all its time points
 ##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
 
-## Analysis workflows
+### Analysis workflows
 
 ``` {mermaid} 
 
@@ -151,7 +156,7 @@ While scikit-learn transformers and estimators usually expect 2D data MNE transf
 
 ```
 
-## Folder structure
+### Folder structure
 
 ```{mermaid}
 graph LR
