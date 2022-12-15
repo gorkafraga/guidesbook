@@ -7,18 +7,27 @@ The MNE toolbox is a great option to apply MVPA and machine learning classificat
 
 * Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
-## Design
+### Documentation 
 Tutorial: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
-Read this for more theoretical input  on MVPA approach in MNE 
-``Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .``
- URL: https://hal.archives-ouvertes.fr/hal-01848442
+Read this for more theoretical input  on MVPA approach in MNE:
+
+Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .
 
 Here is a short summary of most important points:
-### Scaling
+
+### Cross-validation 
+Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alterntives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
+
+* The following article reviews caveats and contains guidelines on the choice of cross validation methods:
+<div class="csl-entry">Varoquaux, G., Raamana, P. R., Engemann, D. A., Hoyos-Idrobo, A., Schwartz, Y., &#38; Thirion, B. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <i>NeuroImage</i>, <i>145</i>, 166–179. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038</div>
+
+
+### Data Transformations
+#### Scaling
 To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
 
-### Vectorizer 
+#### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
 
 
