@@ -15,4 +15,4 @@ parts:
   chapters:
   - file: 2-Analysis/GUIDE_MachineLearning
   - file: 2-Analysis/GUIDE_MNE
-  - file: 2-Analysis/Guide_openvibe
+  - file: 2-Analysis/GUIDE_openvibe

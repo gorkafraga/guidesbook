@@ -119,7 +119,8 @@ To scale each *channel* with mean and sd computed accross of all its time points
 ##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
 
-### Analysis workflows
+## Analysis workflows
+
 ``` {mermaid} 
 
  flowchart TB
@@ -150,7 +151,7 @@ While scikit-learn transformers and estimators usually expect 2D data MNE transf
 
 ```
 
-### Folder structure
+## Folder structure
 
 ```{mermaid}
 graph LR
