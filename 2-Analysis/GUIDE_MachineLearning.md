@@ -79,20 +79,24 @@ The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes spa
 Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
 ## Applications
-For an EEG/MEG case see for instance Marti et al., 2015 https://doi.org/10.1016/j.neuron.2015.10.040. 
-This example shows different analyses: 
+Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html#) 
+for the following paper on temporal generalization method: King & Dehaene, 2014 doi:10.1016/j.tics.2014.01.002. For another example in EEG/MEG see for instance Marti et al., 2015 https://doi.org/10.1016/j.neuron.2015.10.040. These example show several analyses: 
 
 ### Time-resolved MVPA
 The classifier is trained at each time sample within each subject to isolate topographical patterns (i.e., information from all sensors) that can best differentiate between two conditions (if more than two classes usually referred to as *multiclass*). 
 
-In Marti et al., 2015: 
+Methods from Marti et al., 2015: 
 * Cross-validation: 5-fold stratified CV procedure was used for within-subject analysis. At *each time point* the MEG data was randomly split into 5 folds of trials and normalized (Z score of each channel-time feature within the cross-validation). *Stratified* means that the same proportion of each classwas kept within each fold. 
+
 * Classification: SVM trained with a fixed penalty parameter *C* = 1 on 4 folds and the left out trials were used as test set. The SVM found the hyperplane (in this case a topography) that best separated the two classess without overfitting. A *weighting procedure* equalized the contribution of each class to the definition of the hyperplane. This procedure was iteratively applied for each time sample of each fold. 
 
 ### Generalization accross time 
+The classifiers trained at each time are tested on their ability to discriminate conditions at all other time samples. This *temporal generalization* (King & Dehaene, 2014) results in a matrix of training time x testing time. Each row corresponds to the time at which the classifier is trained and each column to the time at which it was tested.  Its diagonal corresponds to classifiers trained and tested on the same time sample. Traine one classifier at time t and generalizing it over time t' is done within the cross-validation, so that t and t' come from independent sets of trials. This analyses can show, for example, a diagonal pattern of temporal generalization, indicating that each classifier only generalized for a limited period of time. If each time sample is associated with a slightly different pattern of EEG/MEG activity this can be interpreted as suggesting serial recruitment of different brain areas, each for a short time. 
 
 
 ### Generalization accross conditions
+
+
 
 
 
