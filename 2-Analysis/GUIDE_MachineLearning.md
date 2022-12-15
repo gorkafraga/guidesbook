@@ -76,7 +76,7 @@ The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong 
 The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)
 
 ##### Parameter tunning 
-Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other stuate that they use the 'default' value (e.g., C = 1 for SVMs. Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
+Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs. Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
 
 ## Implementation
