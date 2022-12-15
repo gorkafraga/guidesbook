@@ -1,28 +1,37 @@
 # Machine learning and multivariate pattern analysis
+> Decoding and classification in neuroimaging studies
 
-## Multivariate pattern analysis 
-The MNE toolbox is a great option to apply MVPA and machine learning classification (using Scikit-learn libs) to EEG data
-
-* Example 1. Simple to follow example of classification. https://natmeg.se/mne_multivariate/mne_multivariate.html
-
-* Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
+## Intro  
+The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
 
 
+ 
+*Additional documentation*
 
-### Documentation 
 Tutorial: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
 Read this for more theoretical input  on MVPA approach in MNE:
 
 Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .
 
-Here is a short summary of most important points:
+*Examples* 
 
-### Cross-validation 
+- Example 1. Simple to follow example of classification. https://natmeg.se/mne_multivariate/mne_multivariate.html
+
+- Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
+
+- Example 3. Time-resolved MVPA decodign two tasks (Marti et al., 2015; https://doi.org/10.1016/j.neuron.2015.10.040)
+
+
+
+## Cross-validation 
 Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
 
 The following article reviews caveats and contains guidelines on the choice of cross validation methods:
-Varoquaux, G., Raamana, P. R., Engemann, D. A., Hoyos-Idrobo, A., Schwartz, Y., &#38; Thirion, B. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <i>NeuroImage</i>, <i>145</i>, 166–179. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
+
+`'Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. 
+*NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038`
+
 
 Important concepts for CV (from Varoquax et al., 2017): 
 #### Estimating predictive power
@@ -39,6 +48,7 @@ In standard statistics, fitting a model on abundant data can be done without cho
 Regularization restricts the model complexity to avoid **overfitting** the data (e.g., fitting noise, not being able to generalize).  For instance, we can use low-dimensional PCA in discriminant analysis, or select a small number of voxels with a sparse penalty. If we do *too much* regularization, the models **underfit** the data, i.e., they are too constrained by the prior and do not exploit the data enough. 
 
 In general the best tradeoff is a data-specific choice governed by the statistical power of the prediction task: the amount of data and our signal-to-noise ratio. 
+The typical **bias-variance** problem: more variance leads to overfit , but too much bias leads to underfit. 
 
 ##### *Nested-cross validation* 
 How much regularization? A common approach is to use CV to measure predictive power for various choices of regularization and keep the values that maximize predictive power. With this approach the *amount of regularization* becomes a parameter to adjust on the data, thus predictive performance measured in the CV loop cannot reliably assess predictive performance. The standard procedure is then to refit the model on available data, and test predictive performance on new data: a *validation set*. 
@@ -46,17 +56,33 @@ How much regularization? A common approach is to use CV to measure predictive po
 A *nested cross-validation* repeteadly splits the data into *validation* and *decoding* sets to perform the decoding. The decoding is, in turn, done by spliting a given validation set in *training* and *test* sets. This forms n inner "nested" CV loop used to set up *regularization hyper-parameter*, while the external loop cvarying the validation set is used to measure prediction performance. 
 
 ![image](https://user-images.githubusercontent.com/13642762/207826874-76aa9fa1-3ca9-4e77-9ecb-40f5a61d1b03.png)
-.
+
+##### *Model averaging*
+
+How to choose the best model in a family of good models? One option is to average the predictions of a set of models.
+ A simple version of this is *bagging* using *bootstrap*: random reamplings of the data to generate many train sets and corresponding models that are then (their predictions)averaged. If the errors between the models are independent enough they will average out and the model will have less variance and better performance. This is an appealing option for neuroimaging, where linear models are often used a decoders. 
+
+>We can use a variant of CV and model averaging: instead of selecting the hyper-parameter values that minimize the mean test error across splits, we can select *for each split* the model that minimizes the corresponding test error and *tenb* average these models across splits.
+
+#### Model selection for neuroimaging decoders
+The main challenge in neuroimaging for model-selection is the scarcity of data relative to their dimensionality.  Another aspect is that beyond predictive power, interpreting the model weights is relevant. 
+
+##### Common decoders and their regularization
+
+Neuroimaging studies frequently use **support vector machine** (SVM) and  **logistic regressions** (Log-Reg). Both classifiers learn a linear model by minimizing the sum of a *loss -L*(data-fit term) and a *penalty -p* ( a  'regularization energy' term that favors simpler models). The regularization parameter (*C*) controls the bias-variance tradeoff, with smaller values meaning strong regularization. 
+In SVM the loss used is a *hinge* loss: flat and zero for well-classified samples and the misclassification cost increases linearly with the distance to the decision boundary. For logistic regression, it is a *logistic loss*, a soft, exponentially-decreasing version of the hinge loss. 
+
+The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong SVM-L<sub>2</sub> combined with hing loss means that SVM build their decision functions by combining a small number of training images. Similarly, in logistic regression the loss has no flat region, thus every sample is used, but some very weakly. 
+The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)
+
+##### Parameter tunning 
+Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other stuate that they use the 'default' value (e.g., C = 1 for SVMs. Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
 
+## Transformations 
+See MNE doc [https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html]
+and Scikit-learn [https://scikit-learn.org/stable/data_transforms.html]
 
-
-
-
-
-
-
-### Data Transformations
 #### Scaling
 To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
 
@@ -66,7 +92,7 @@ While scikit-learn transformers and estimators usually expect 2D data MNE transf
 
 
 
-## Current analysis
+## Analysis workflows
 ``` {mermaid} 
 
  flowchart TB
