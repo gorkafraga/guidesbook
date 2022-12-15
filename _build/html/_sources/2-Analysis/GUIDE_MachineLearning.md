@@ -1,13 +1,125 @@
 # Machine learning and multivariate pattern analysis
+Decoding and classification in neuroimaging studies. 
 
-## Multivariate pattern analysis 
-The MNE toolbox is a great option to apply MVPA and machine learning classification (using Scikit-learn libs) to EEG data
+## Intro  
+The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
+ 
+*Additional documentation*
 
-* Example 1. Simple to follow example of classification. https://natmeg.se/mne_multivariate/mne_multivariate.html
+Tutorial: 
 
-* Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
+https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
-## Current analysis
+Read this for more theoretical input  on MVPA approach in MNE:
+
+Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .
+
+*Examples* 
+
+- Example 1. Simple to follow example of classification. https://natmeg.se/mne_multivariate/mne_multivariate.html
+
+- Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
+
+- Example 3. Time-resolved MVPA decodign two tasks (Marti et al., 2015; https://doi.org/10.1016/j.neuron.2015.10.040)
+
+
+
+## Cross-validation 
+Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
+
+The following article reviews caveats and contains guidelines on the choice of cross validation methods:
+
+Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. *NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
+
+
+
+Important concepts for CV (from Varoquax et al., 2017): 
+#### Estimating predictive power
+We need to measure the ability of our decoder (mapping brain images to e.g., epoch labels) to *generalize* to new data. We measure the error between the predicted label and the actual label. In CV the data is split in *training* and *test* (unseen by the model, used to compute a prediction error).
+*  Training and test sets must be *independent*. E.g., in fMRI time-series we need a time separation enough to warrant independent observations
+
+* *Sufficient test data*. To get enough power for the prediction error for each split of cross-validation. 
+Because we have limited amount of data we need a *balance* between keeping enough training data for a good fit while having enough data for the test. 
+Neuroimaging studies tend to use **leave-one-out** cross validation (LOOCV), i.e., leaving a single sample out at each training-test split. This gives ample data for training, maximizes test-set variance and does not yield stable estimates of predictive accuracy.It might be preferable then to instead leave out 10-20% of the data, like in 10-fold CV.  It might also be beneficial to increase the number of spllits while keeping a ration between train and test size. Thus **k-fold** can be replaced by **repeated random splits** of the data (aka repeated learning-testing or shuffleSplit). Such splits should be consistent with the dependence structure across observations, or the training set could be stratified to  avoid class imbalance. In neuroimaging good strategies often involve leaving out sessions or subjects. 
+
+#### Selection of hyper-parameters
+In standard statistics, fitting a model on abundant data can be done without choosing a meta-parameter: all model parameters can be estimated from data, e.g., with a maximum-likelihood criterion. But in high-dimensional settings the model of parameters are much larger than the sample size, we need **regularization**. 
+
+Regularization restricts the model complexity to avoid **overfitting** the data (e.g., fitting noise, not being able to generalize).  For instance, we can use low-dimensional PCA in discriminant analysis, or select a small number of voxels with a sparse penalty. If we do *too much* regularization, the models **underfit** the data, i.e., they are too constrained by the prior and do not exploit the data enough. 
+
+In general the best tradeoff is a data-specific choice governed by the statistical power of the prediction task: the amount of data and our signal-to-noise ratio. 
+The typical **bias-variance** problem: more variance leads to overfit , but too much bias leads to underfit. 
+
+##### *Nested-cross validation* 
+How much regularization? A common approach is to use CV to measure predictive power for various choices of regularization and keep the values that maximize predictive power. With this approach the *amount of regularization* becomes a parameter to adjust on the data, thus predictive performance measured in the CV loop cannot reliably assess predictive performance. The standard procedure is then to refit the model on available data, and test predictive performance on new data: a *validation set*. 
+
+A *nested cross-validation* repeteadly splits the data into *validation* and *decoding* sets to perform the decoding. The decoding is, in turn, done by spliting a given validation set in *training* and *test* sets. This forms n inner "nested" CV loop used to set up *regularization hyper-parameter*, while the external loop cvarying the validation set is used to measure prediction performance. 
+
+![image](https://user-images.githubusercontent.com/13642762/207826874-76aa9fa1-3ca9-4e77-9ecb-40f5a61d1b03.png)
+
+##### *Model averaging*
+
+How to choose the best model in a family of good models? One option is to average the predictions of a set of models.
+ A simple version of this is *bagging* using *bootstrap*: random reamplings of the data to generate many train sets and corresponding models that are then (their predictions)averaged. If the errors between the models are independent enough they will average out and the model will have less variance and better performance. This is an appealing option for neuroimaging, where linear models are often used a decoders. 
+
+>We can use a variant of CV and model averaging: instead of selecting the hyper-parameter values that minimize the mean test error across splits, we can select *for each split* the model that minimizes the corresponding test error and *tenb* average these models across splits.
+
+#### Model selection for neuroimaging decoders
+The main challenge in neuroimaging for model-selection is the scarcity of data relative to their dimensionality.  Another aspect is that beyond predictive power, interpreting the model weights is relevant. 
+
+##### Common decoders and their regularization
+
+Neuroimaging studies frequently use **support vector machine** (SVM) and  **logistic regressions** (Log-Reg). Both classifiers learn a linear model by minimizing the sum of a *loss -L*(data-fit term) and a *penalty -p* ( a  'regularization energy' term that favors simpler models). The regularization parameter (*C*) controls the bias-variance tradeoff, with smaller values meaning strong regularization. 
+In SVM the loss used is a *hinge* loss: flat and zero for well-classified samples and the misclassification cost increases linearly with the distance to the decision boundary. For logistic regression, it is a *logistic loss*, a soft, exponentially-decreasing version of the hinge loss. 
+
+The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong SVM-L<sub>2</sub> combined with hing loss means that SVM build their decision functions by combining a small number of training images. Similarly, in logistic regression the loss has no flat region, thus every sample is used, but some very weakly. 
+The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)
+
+##### Parameter tunning 
+Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
+
+## Applications
+Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html#) 
+for the following paper on temporal generalization method: King & Dehaene, 2014 doi:10.1016/j.tics.2014.01.002. For another example in EEG/MEG see for instance Marti et al., 2015 https://doi.org/10.1016/j.neuron.2015.10.040. These example show several analyses: 
+
+### Time-resolved MVPA
+The classifier is trained at each time sample within each subject to isolate topographical patterns (i.e., information from all sensors) that can best differentiate between two conditions (if more than two classes usually referred to as *multiclass*). 
+
+Methods from Marti et al., 2015: 
+* Cross-validation: 5-fold stratified CV procedure was used for within-subject analysis. At *each time point* the MEG data was randomly split into 5 folds of trials and normalized (Z score of each channel-time feature within the cross-validation). *Stratified* means that the same proportion of each classwas kept within each fold. 
+
+* Classification: SVM trained with a fixed penalty parameter *C* = 1 on 4 folds and the left out trials were used as test set. The SVM found the hyperplane (in this case a topography) that best separated the two classess without overfitting. A *weighting procedure* equalized the contribution of each class to the definition of the hyperplane. This procedure was iteratively applied for each time sample of each fold. 
+
+### Generalization accross time 
+The classifiers trained at each time are tested on their ability to discriminate conditions at all other time samples. This *temporal generalization* (King & Dehaene, 2014; see also Dehaene et al.,2016 chapter https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1) results in a matrix of training time x testing time. Each row corresponds to the time at which the classifier is trained and each column to the time at which it was tested.  Its diagonal corresponds to classifiers trained and tested on the same time sample. Training one classifier at time t and generalizing it over time t' is done within the cross-validation, so that t and t' come from independent sets of trials. 
+
+The basic interpretation is that how a decoder trained at time t generalizes to data from another time point t' would reveal whether the neural code changes over time. This analyses can show, for example, a diagonal pattern of temporal generalization, indicating that each classifier only generalizes for a limited period of time. If each time sample is associated with a slightly different pattern of EEG/MEG activity this can be interpreted as suggesting serial recruitment of different brain areas, each for a short time. 
+
+![image](https://user-images.githubusercontent.com/13642762/207869802-0a5f9d4e-7bc2-4e21-9068-55a544f466c4.png)
+
+<sub> Image from Dehaene et al., 2016. (https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1)
+Temporal decoding applied to an auditory violation paradigm, the local/global paradigm (from King et al. 2013a). (a) Experimental design: sequences of five sounds sometimes end with a different sound, generating a local mismatch response. Furthermore, the entire sequence is repeated and occasionally violated, generating a global novelty response (associated with a P3b component of the event-related potential). (b, c) Results using temporal decoding. A decoder for the local effect (b) is trained to discriminate whether the fifth sound is repeated or different. This is reflected in a diagonal pattern, suggesting the propagation of error signals through a hierarchy of distinct brain areas. Below-chance generalization (in blue) indicates that the spatial pattern observed at time t tends to reverse at time t′. A decoder for the global effect (c) is trained to discriminate whether the global sequence is frequent or rare. This is reflected primarily in a square pattern, indicating a stable neural pattern that extends to the next trial. In all graphs, t = 0 marks the onset of the fifth sound</sub>
+
+
+### Generalization accross conditions
+
+
+
+
+
+## Implementations
+### Transformations 
+
+See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
+and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
+
+##### Scaling
+To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
+
+##### Vectorizer 
+While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
+
+### Analysis workflows
 ``` {mermaid} 
 
  flowchart TB

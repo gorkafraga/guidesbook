@@ -288,8 +288,47 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations">
-   Quality assesment and visualizations
+  <a class="reference internal nav-link" href="#report">
+   Report
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-of-a-single-subject-report">
+     Example of a single-subject report
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#read-data">
+       Read data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialize-the-report">
+       Initialize the report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#create-evoked-objects">
+       Create evoked objects
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-elements-to-the-report">
+       Add elements to the report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-to-html-file">
+       Write to .html file
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-assesment">
+   Quality assesment
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -317,8 +356,47 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-assesment-and-visualizations">
-   Quality assesment and visualizations
+  <a class="reference internal nav-link" href="#report">
+   Report
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-of-a-single-subject-report">
+     Example of a single-subject report
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#read-data">
+       Read data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialize-the-report">
+       Initialize the report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#create-evoked-objects">
+       Create evoked objects
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-elements-to-the-report">
+       Add elements to the report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-to-html-file">
+       Write to .html file
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-assesment">
+   Quality assesment
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -339,8 +417,54 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="mne-toolbox">
 <h1>MNE toolbox<a class="headerlink" href="#mne-toolbox" title="Permalink to this headline">#</a></h1>
 <p>MNE is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more.</p>
-<section id="quality-assesment-and-visualizations">
-<h2>Quality assesment and visualizations<a class="headerlink" href="#quality-assesment-and-visualizations" title="Permalink to this headline">#</a></h2>
+<section id="report">
+<h2>Report<a class="headerlink" href="#report" title="Permalink to this headline">#</a></h2>
+<p>The mne.Report functions are great to generate HTML with a summary of your data, plots and even code chunks. The document is interactive, you can choose to hide or expand some images, and some of the figures (e.g., topographies with slider) are interactive.<br />
+Documentation: <a class="reference external" href="https://mne.tools/dev/auto_tutorials/intro/70_report.html#sphx-glr-auto-tutorials-intro-70-report-py">https://mne.tools/dev/auto_tutorials/intro/70_report.html#sphx-glr-auto-tutorials-intro-70-report-py</a></p>
+<section id="example-of-a-single-subject-report">
+<h3>Example of a single-subject report<a class="headerlink" href="#example-of-a-single-subject-report" title="Permalink to this headline">#</a></h3>
+<p>In this example we have epoched data (mne epoched object saved in .fif files). One file per subject, containing the epochs for the different conditions.
+We want to make a report html file for each subject containing:</p>
+<ul class="simple">
+<li><p>A figure with Event description (event labels in time)</p></li>
+<li><p>Number of epochs for each condition</p></li>
+<li><p>Visualizations of the <em>evoked</em> data (average of conditions):</p>
+<ul>
+<li><p>ERP waveforms and global field power</p></li>
+<li><p>ERP images (x-time , y-epoch, colormap-amplitude)</p></li>
+<li><p>Topographies with interactive slider</p></li>
+<li><p>Time frequency power</p></li>
+</ul>
+</li>
+</ul>
+<section id="read-data">
+<h4>Read data<a class="headerlink" href="#read-data" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"> <span class="pre">epochs</span> <span class="pre">=</span> <span class="pre">mne.read_epochs(glob(dirinput</span> <span class="pre">+</span> <span class="pre">'s04_DiN_epoched_ICrem.fif')[0])</span>&#160; <span class="pre">#</span> <span class="pre">glob</span> <span class="pre">searches</span> <span class="pre">file</span> <span class="pre">name</span> <span class="pre">pattern</span> <span class="pre">in</span> <span class="pre">dirinput</span></code></p>
+</section>
+<section id="initialize-the-report">
+<h4>Initialize the report<a class="headerlink" href="#initialize-the-report" title="Permalink to this headline">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> report = mne.Report(title=&#39;My example report&#39;)
+  # Add epochs will automatically add an ERP image but this will average across all conditions 
+  report.add_epochs(epochs=epochs, title=&#39;Epochs&#39;, psd=False)  #  PSD plot can be turned on 
+</pre></div>
+</div>
+</section>
+<section id="create-evoked-objects">
+<h4>Create evoked objects<a class="headerlink" href="#create-evoked-objects" title="Permalink to this headline">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  #To get the ERPs per condition we need to compute the averages 
+</pre></div>
+</div>
+</section>
+<section id="add-elements-to-the-report">
+<h4>Add elements to the report<a class="headerlink" href="#add-elements-to-the-report" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="write-to-html-file">
+<h4>Write to .html file<a class="headerlink" href="#write-to-html-file" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+<section id="quality-assesment">
+<h2>Quality assesment<a class="headerlink" href="#quality-assesment" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Check out this code to use PSD plots for spotting bad channels<br />
 <a class="reference external" href="https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py">https://github.com/mne-tools/mne-biomag-group-demo/blob/master/scripts/results/demos/plot_psd.py</a></p></li>

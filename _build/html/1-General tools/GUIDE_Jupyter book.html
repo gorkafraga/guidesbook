@@ -294,6 +294,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubles-running-jupyter-book">
+   Troubles running Jupyter-book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#publish-to-github-pages">
    Publish to github pages
   </a>
@@ -325,6 +330,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-workflow">
    Basic workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubles-running-jupyter-book">
+   Troubles running Jupyter-book
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -367,6 +377,11 @@ See link: <a class="reference external" href="https://jupyterbook.org/en/stable/
 </li>
 <li><p>From our conda environment type: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">book</span> <span class="pre">build</span> <span class="pre">mybookname/</span></code></p></li>
 </ul>
+</section>
+<section id="troubles-running-jupyter-book">
+<h2>Troubles running Jupyter-book<a class="headerlink" href="#troubles-running-jupyter-book" title="Permalink to this headline">#</a></h2>
+<p>Check if you type jupyter-book in your environment and you receive some errors instead of the jupyter book options.
+It seems there are some compatibility problems with latest Python versions. Then you can create an environment with python=3.7  for which Jupyter book seems to have been tested. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">mybook-env</span> <span class="pre">python=3.7</span></code></p>
 </section>
 <section id="publish-to-github-pages">
 <h2>Publish to github pages<a class="headerlink" href="#publish-to-github-pages" title="Permalink to this headline">#</a></h2>
