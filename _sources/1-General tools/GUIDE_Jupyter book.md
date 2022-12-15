@@ -14,6 +14,10 @@ Basically we need to:
 	* Your book’s content (e.g., .md files) 
 - From our conda environment type: ````jupyter book build mybookname/````
 
+## Troubles running Jupyter-book
+Check if you type jupyter-book in your environment and you receive some errors instead of the jupyter book options. 
+It seems there are some compatibility problems with latest Python versions. Then you can create an environment with python=3.7  for which Jupyter book seems to have been tested. `conda create mybook-env python=3.7` 
+
 ## Publish to github pages
 - Clone our github repository (must be publi and we need to select the gh-pages branch in the repository settings/branch)
 - Install ghp-import in our conda environment: ```` pip install ghp-import```` 

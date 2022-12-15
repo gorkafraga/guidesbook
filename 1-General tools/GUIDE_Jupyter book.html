@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python" href="GUIDE_python.html" />
@@ -223,51 +221,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/gorkafraga/guidesbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F1-General tools/GUIDE_Jupyter book.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -341,6 +294,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubles-running-jupyter-book">
+   Troubles running Jupyter-book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#publish-to-github-pages">
    Publish to github pages
   </a>
@@ -372,6 +330,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-workflow">
    Basic workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubles-running-jupyter-book">
+   Troubles running Jupyter-book
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -414,6 +377,11 @@ See link: <a class="reference external" href="https://jupyterbook.org/en/stable/
 </li>
 <li><p>From our conda environment type: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">book</span> <span class="pre">build</span> <span class="pre">mybookname/</span></code></p></li>
 </ul>
+</section>
+<section id="troubles-running-jupyter-book">
+<h2>Troubles running Jupyter-book<a class="headerlink" href="#troubles-running-jupyter-book" title="Permalink to this headline">#</a></h2>
+<p>Check if you type jupyter-book in your environment and you receive some errors instead of the jupyter book options.
+It seems there are some compatibility problems with latest Python versions. Then you can create an environment with python=3.7  for which Jupyter book seems to have been tested. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">mybook-env</span> <span class="pre">python=3.7</span></code></p>
 </section>
 <section id="publish-to-github-pages">
 <h2>Publish to github pages<a class="headerlink" href="#publish-to-github-pages" title="Permalink to this headline">#</a></h2>
@@ -504,6 +472,10 @@ See: <a class="reference external" href="https://blog.ouseful.info/2021/11/02/pr
     By G Fraga Gonzalez<br/>
   
       &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.
+
+    </div>
 </p>
         </footer>
     </div>

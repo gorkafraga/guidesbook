@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MNE toolbox" href="GUIDE_MNE.html" />
@@ -223,51 +221,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/gorkafraga/guidesbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F2-Analysis/GUIDE_MachineLearning.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -336,15 +289,109 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multivariate-pattern-analysis">
-   Multivariate pattern analysis
+  <a class="reference internal nav-link" href="#intro">
+   Intro
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#current-analysis">
-   Current analysis
+  <a class="reference internal nav-link" href="#cross-validation">
+   Cross-validation
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-predictive-power">
+     Estimating predictive power
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selection-of-hyper-parameters">
+     Selection of hyper-parameters
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nested-cross-validation">
+       <em>
+        Nested-cross validation
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-averaging">
+       <em>
+        Model averaging
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-selection-for-neuroimaging-decoders">
+     Model selection for neuroimaging decoders
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#common-decoders-and-their-regularization">
+       Common decoders and their regularization
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#parameter-tunning">
+       Parameter tunning
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-resolved-mvpa">
+     Time-resolved MVPA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalization-accross-time">
+     Generalization accross time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalization-accross-conditions">
+     Generalization accross conditions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementations">
+   Implementations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformations">
+     Transformations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scaling">
+       Scaling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectorizer">
+       Vectorizer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-workflows">
+     Analysis workflows
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#folder-structure">
      Folder structure
@@ -377,15 +424,109 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multivariate-pattern-analysis">
-   Multivariate pattern analysis
+  <a class="reference internal nav-link" href="#intro">
+   Intro
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#current-analysis">
-   Current analysis
+  <a class="reference internal nav-link" href="#cross-validation">
+   Cross-validation
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-predictive-power">
+     Estimating predictive power
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selection-of-hyper-parameters">
+     Selection of hyper-parameters
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nested-cross-validation">
+       <em>
+        Nested-cross validation
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-averaging">
+       <em>
+        Model averaging
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-selection-for-neuroimaging-decoders">
+     Model selection for neuroimaging decoders
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#common-decoders-and-their-regularization">
+       Common decoders and their regularization
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#parameter-tunning">
+       Parameter tunning
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-resolved-mvpa">
+     Time-resolved MVPA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalization-accross-time">
+     Generalization accross time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalization-accross-conditions">
+     Generalization accross conditions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementations">
+   Implementations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformations">
+     Transformations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scaling">
+       Scaling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectorizer">
+       Vectorizer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-workflows">
+     Analysis workflows
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#folder-structure">
      Folder structure
@@ -410,66 +551,121 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-and-multivariate-pattern-analysis">
 <h1>Machine learning and multivariate pattern analysis<a class="headerlink" href="#machine-learning-and-multivariate-pattern-analysis" title="Permalink to this headline">#</a></h1>
-<section id="multivariate-pattern-analysis">
-<h2>Multivariate pattern analysis<a class="headerlink" href="#multivariate-pattern-analysis" title="Permalink to this headline">#</a></h2>
-<p>The MNE toolbox is a great option to apply MVPA and machine learning classification (using Scikit-learn libs) to EEG data</p>
+<p>Decoding and classification in neuroimaging studies.</p>
+<section id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">#</a></h2>
+<p>The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)</p>
+<p><em>Additional documentation</em></p>
+<p>Tutorial:</p>
+<p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py">https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py</a></p>
+<p>Read this for more theoretical input  on MVPA approach in MNE:</p>
+<p>Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: <a class="reference external" href="https://hal.archives-ouvertes.fr/hal-01848442">https://hal.archives-ouvertes.fr/hal-01848442</a> .</p>
+<p><em>Examples</em></p>
 <ul class="simple">
 <li><p>Example 1. Simple to follow example of classification. <a class="reference external" href="https://natmeg.se/mne_multivariate/mne_multivariate.html">https://natmeg.se/mne_multivariate/mne_multivariate.html</a></p></li>
 <li><p>Example 2. MVPA in infant data. <a class="reference external" href="https://github.com/BayetLab/infant-EEG-MVPA-tutorial">https://github.com/BayetLab/infant-EEG-MVPA-tutorial</a></p></li>
+<li><p>Example 3. Time-resolved MVPA decodign two tasks (Marti et al., 2015; <a class="reference external" href="https://doi.org/10.1016/j.neuron.2015.10.040">https://doi.org/10.1016/j.neuron.2015.10.040</a>)</p></li>
 </ul>
 </section>
-<section id="current-analysis">
-<h2>Current analysis<a class="headerlink" href="#current-analysis" title="Permalink to this headline">#</a></h2>
-<div class="mermaid">
-             flowchart TB
-    subgraph Data preparation  
-    
-    A[preprocessed EEGlab .set] --&gt;| mne.read, correct time vals, recode events| B(MNE epochs .fif)
-    B --&gt; |average|C(Evoked .fif)
-    C --&gt;|gathered subjects &amp; conditions| D(Evokeds .fif)
-    end
-    subgraph O_o
-    C .-&gt; V[visualizations]
-    D .-&gt; V[visualizations]
-    end
-
-    subgraph ML decoding
-    B --&gt; E((MVPA))
-    E --&gt; CO(label epochs)
-    CO --&gt; |epochs coded by accuracy or difficulty| FEA{features}
-    FEA --&gt; TA[Amplitudes]
-    FEA --&gt; TF[Time-freq]
-    TF --&gt; |freqBand power|G[Classifier]
-    TF .-&gt; V
-    G .-&gt; V
-    TA --&gt; G
-    G --&gt; CV[Cross validation]
-    CV --&gt; stats
-    end
-
-        </div><section id="folder-structure">
+<section id="cross-validation">
+<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
+<p>Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding.</p>
+<p>The following article reviews caveats and contains guidelines on the choice of cross validation methods:</p>
+<p>Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <em>NeuroImage</em>. <a class="reference external" href="https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038">https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038</a></p>
+<p>Important concepts for CV (from Varoquax et al., 2017):</p>
+<section id="estimating-predictive-power">
+<h3>Estimating predictive power<a class="headerlink" href="#estimating-predictive-power" title="Permalink to this headline">#</a></h3>
+<p>We need to measure the ability of our decoder (mapping brain images to e.g., epoch labels) to <em>generalize</em> to new data. We measure the error between the predicted label and the actual label. In CV the data is split in <em>training</em> and <em>test</em> (unseen by the model, used to compute a prediction error).</p>
+<ul class="simple">
+<li><p>Training and test sets must be <em>independent</em>. E.g., in fMRI time-series we need a time separation enough to warrant independent observations</p></li>
+<li><p><em>Sufficient test data</em>. To get enough power for the prediction error for each split of cross-validation.
+Because we have limited amount of data we need a <em>balance</em> between keeping enough training data for a good fit while having enough data for the test.
+Neuroimaging studies tend to use <strong>leave-one-out</strong> cross validation (LOOCV), i.e., leaving a single sample out at each training-test split. This gives ample data for training, maximizes test-set variance and does not yield stable estimates of predictive <a class="reference external" href="http://accuracy.It">accuracy.It</a> might be preferable then to instead leave out 10-20% of the data, like in 10-fold CV.  It might also be beneficial to increase the number of spllits while keeping a ration between train and test size. Thus <strong>k-fold</strong> can be replaced by <strong>repeated random splits</strong> of the data (aka repeated learning-testing or shuffleSplit). Such splits should be consistent with the dependence structure across observations, or the training set could be stratified to  avoid class imbalance. In neuroimaging good strategies often involve leaving out sessions or subjects.</p></li>
+</ul>
+</section>
+<section id="selection-of-hyper-parameters">
+<h3>Selection of hyper-parameters<a class="headerlink" href="#selection-of-hyper-parameters" title="Permalink to this headline">#</a></h3>
+<p>In standard statistics, fitting a model on abundant data can be done without choosing a meta-parameter: all model parameters can be estimated from data, e.g., with a maximum-likelihood criterion. But in high-dimensional settings the model of parameters are much larger than the sample size, we need <strong>regularization</strong>.</p>
+<p>Regularization restricts the model complexity to avoid <strong>overfitting</strong> the data (e.g., fitting noise, not being able to generalize).  For instance, we can use low-dimensional PCA in discriminant analysis, or select a small number of voxels with a sparse penalty. If we do <em>too much</em> regularization, the models <strong>underfit</strong> the data, i.e., they are too constrained by the prior and do not exploit the data enough.</p>
+<p>In general the best tradeoff is a data-specific choice governed by the statistical power of the prediction task: the amount of data and our signal-to-noise ratio.
+The typical <strong>bias-variance</strong> problem: more variance leads to overfit , but too much bias leads to underfit.</p>
+<section id="nested-cross-validation">
+<h4><em>Nested-cross validation</em><a class="headerlink" href="#nested-cross-validation" title="Permalink to this headline">#</a></h4>
+<p>How much regularization? A common approach is to use CV to measure predictive power for various choices of regularization and keep the values that maximize predictive power. With this approach the <em>amount of regularization</em> becomes a parameter to adjust on the data, thus predictive performance measured in the CV loop cannot reliably assess predictive performance. The standard procedure is then to refit the model on available data, and test predictive performance on new data: a <em>validation set</em>.</p>
+<p>A <em>nested cross-validation</em> repeteadly splits the data into <em>validation</em> and <em>decoding</em> sets to perform the decoding. The decoding is, in turn, done by spliting a given validation set in <em>training</em> and <em>test</em> sets. This forms n inner “nested” CV loop used to set up <em>regularization hyper-parameter</em>, while the external loop cvarying the validation set is used to measure prediction performance.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207826874-76aa9fa1-3ca9-4e77-9ecb-40f5a61d1b03.png" /></p>
+</section>
+<section id="model-averaging">
+<h4><em>Model averaging</em><a class="headerlink" href="#model-averaging" title="Permalink to this headline">#</a></h4>
+<p>How to choose the best model in a family of good models? One option is to average the predictions of a set of models.
+A simple version of this is <em>bagging</em> using <em>bootstrap</em>: random reamplings of the data to generate many train sets and corresponding models that are then (their predictions)averaged. If the errors between the models are independent enough they will average out and the model will have less variance and better performance. This is an appealing option for neuroimaging, where linear models are often used a decoders.</p>
+<blockquote>
+<div><p>We can use a variant of CV and model averaging: instead of selecting the hyper-parameter values that minimize the mean test error across splits, we can select <em>for each split</em> the model that minimizes the corresponding test error and <em>tenb</em> average these models across splits.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="model-selection-for-neuroimaging-decoders">
+<h3>Model selection for neuroimaging decoders<a class="headerlink" href="#model-selection-for-neuroimaging-decoders" title="Permalink to this headline">#</a></h3>
+<p>The main challenge in neuroimaging for model-selection is the scarcity of data relative to their dimensionality.  Another aspect is that beyond predictive power, interpreting the model weights is relevant.</p>
+<section id="common-decoders-and-their-regularization">
+<h4>Common decoders and their regularization<a class="headerlink" href="#common-decoders-and-their-regularization" title="Permalink to this headline">#</a></h4>
+<p>Neuroimaging studies frequently use <strong>support vector machine</strong> (SVM) and  <strong>logistic regressions</strong> (Log-Reg). Both classifiers learn a linear model by minimizing the sum of a <em>loss -L</em>(data-fit term) and a <em>penalty -p</em> ( a  ‘regularization energy’ term that favors simpler models). The regularization parameter (<em>C</em>) controls the bias-variance tradeoff, with smaller values meaning strong regularization.
+In SVM the loss used is a <em>hinge</em> loss: flat and zero for well-classified samples and the misclassification cost increases linearly with the distance to the decision boundary. For logistic regression, it is a <em>logistic loss</em>, a soft, exponentially-decreasing version of the hinge loss.</p>
+<p>The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong SVM-L<sub>2</sub> combined with hing loss means that SVM build their decision functions by combining a small number of training images. Similarly, in logistic regression the loss has no flat region, thus every sample is used, but some very weakly.
+The L<sub>1</sub> ( <em>Lasso regression</em>) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)</p>
+</section>
+<section id="parameter-tunning">
+<h4>Parameter tunning<a class="headerlink" href="#parameter-tunning" title="Permalink to this headline">#</a></h4>
+<p>Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the ‘default’ value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For <em>non-sparse</em> L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder</p>
+</section>
+</section>
+</section>
+<section id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h2>
+<p>Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (<a class="reference external" href="https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html">https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html</a>)
+for the following paper on temporal generalization method: King &amp; Dehaene, 2014 doi:10.1016/j.tics.2014.01.002. For another example in EEG/MEG see for instance Marti et al., 2015 <a class="reference external" href="https://doi.org/10.1016/j.neuron.2015.10.040">https://doi.org/10.1016/j.neuron.2015.10.040</a>. These example show several analyses:</p>
+<section id="time-resolved-mvpa">
+<h3>Time-resolved MVPA<a class="headerlink" href="#time-resolved-mvpa" title="Permalink to this headline">#</a></h3>
+<p>The classifier is trained at each time sample within each subject to isolate topographical patterns (i.e., information from all sensors) that can best differentiate between two conditions (if more than two classes usually referred to as <em>multiclass</em>).</p>
+<p>Methods from Marti et al., 2015:</p>
+<ul class="simple">
+<li><p>Cross-validation: 5-fold stratified CV procedure was used for within-subject analysis. At <em>each time point</em> the MEG data was randomly split into 5 folds of trials and normalized (Z score of each channel-time feature within the cross-validation). <em>Stratified</em> means that the same proportion of each classwas kept within each fold.</p></li>
+<li><p>Classification: SVM trained with a fixed penalty parameter <em>C</em> = 1 on 4 folds and the left out trials were used as test set. The SVM found the hyperplane (in this case a topography) that best separated the two classess without overfitting. A <em>weighting procedure</em> equalized the contribution of each class to the definition of the hyperplane. This procedure was iteratively applied for each time sample of each fold.</p></li>
+</ul>
+</section>
+<section id="generalization-accross-time">
+<h3>Generalization accross time<a class="headerlink" href="#generalization-accross-time" title="Permalink to this headline">#</a></h3>
+<p>The classifiers trained at each time are tested on their ability to discriminate conditions at all other time samples. This <em>temporal generalization</em> (King &amp; Dehaene, 2014; see also Dehaene et al.,2016 chapter <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1">https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1</a>) results in a matrix of training time x testing time. Each row corresponds to the time at which the classifier is trained and each column to the time at which it was tested.  Its diagonal corresponds to classifiers trained and tested on the same time sample. Training one classifier at time t and generalizing it over time t’ is done within the cross-validation, so that t and t’ come from independent sets of trials.</p>
+<p>The basic interpretation is that how a decoder trained at time t generalizes to data from another time point t’ would reveal whether the neural code changes over time. This analyses can show, for example, a diagonal pattern of temporal generalization, indicating that each classifier only generalizes for a limited period of time. If each time sample is associated with a slightly different pattern of EEG/MEG activity this can be interpreted as suggesting serial recruitment of different brain areas, each for a short time.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207869802-0a5f9d4e-7bc2-4e21-9068-55a544f466c4.png" /></p>
+<p><sub> Image from Dehaene et al., 2016. (<a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1">https://link.springer.com/chapter/10.1007/978-3-319-28802-4_7#Sec1</a>)
+Temporal decoding applied to an auditory violation paradigm, the local/global paradigm (from King et al. 2013a). (a) Experimental design: sequences of five sounds sometimes end with a different sound, generating a local mismatch response. Furthermore, the entire sequence is repeated and occasionally violated, generating a global novelty response (associated with a P3b component of the event-related potential). (b, c) Results using temporal decoding. A decoder for the local effect (b) is trained to discriminate whether the fifth sound is repeated or different. This is reflected in a diagonal pattern, suggesting the propagation of error signals through a hierarchy of distinct brain areas. Below-chance generalization (in blue) indicates that the spatial pattern observed at time t tends to reverse at time t′. A decoder for the global effect (c) is trained to discriminate whether the global sequence is frequent or rare. This is reflected primarily in a square pattern, indicating a stable neural pattern that extends to the next trial. In all graphs, t = 0 marks the onset of the fifth sound</sub></p>
+</section>
+<section id="generalization-accross-conditions">
+<h3>Generalization accross conditions<a class="headerlink" href="#generalization-accross-conditions" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="implementations">
+<h2>Implementations<a class="headerlink" href="#implementations" title="Permalink to this headline">#</a></h2>
+<section id="transformations">
+<h3>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">#</a></h3>
+<p>See MNE documentation: <a class="reference external" href="https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html">https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html</a>
+and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/stable/data_transforms.html/">https://scikit-learn.org/stable/data_transforms.html/</a></p>
+<section id="scaling">
+<h4>Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">#</a></h4>
+<p>To scale each <em>channel</em> with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the <em>classification features</em></p>
+</section>
+<section id="vectorizer">
+<h4>Vectorizer<a class="headerlink" href="#vectorizer" title="Permalink to this headline">#</a></h4>
+<p>While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps</p>
+</section>
+</section>
+<section id="analysis-workflows">
+<h3>Analysis workflows<a class="headerlink" href="#analysis-workflows" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="folder-structure">
 <h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h3>
-<div class="mermaid">
-            graph LR
-%%{init: {'theme': 'neutral' } }%%
-    root[DiN] --&gt; 1[README.md]
-    root --&gt; 2[data_preproc_ep_ICrem]
-    root --&gt; 3[mvpa]
-    subgraph 3g[Analysis]
-      3 --&gt; 31[25subj_TFR]
-      31 --&gt; 32[epochs_labeled_*]
-      32 --&gt; 33[band*]
-      33 --&gt; 34[results]
-    end
-    subgraph 2g[Preprocessed data]
-      2 --&gt; 21[epochs]
-      2 --&gt; 22[evoked]
-      2 --&gt; 23[evokeds]
-    end
-    subgraph 1g[ ]
-      1
-    end
-        </div></section>
+</section>
 </section>
 <section id="ml-glossary">
 <h2>ML Glossary<a class="headerlink" href="#ml-glossary" title="Permalink to this headline">#</a></h2>
@@ -564,6 +760,10 @@ title="Print to PDF"
     By G Fraga Gonzalez<br/>
   
       &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.
+
+    </div>
 </p>
         </footer>
     </div>
