@@ -396,6 +396,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-scores">
+   Classification scores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
    Applications
   </a>
@@ -529,6 +534,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-scores">
+   Classification scores
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
@@ -672,6 +682,13 @@ The L<sub>1</sub> ( <em>Lasso regression</em>) penality, on the other hand, impo
 </section>
 </section>
 </section>
+<section id="classification-scores">
+<h2>Classification scores<a class="headerlink" href="#classification-scores" title="Permalink to this headline">#</a></h2>
+<p>To evaluate classifier performance <em>criterion-free</em> estimates are proposed over <em>mean accuracy</em>, since the latter may lead to systematic biases during generalization (i.e., all trials could be clasified over the same category). When dealing with a <em>two-class problem</em>, we can use</p>
+<ul class="simple">
+<li><p><strong>Receiver operating characteristic (ROC)</strong> can be used to estimate classification accuracy <em>accross trials</em> for each subject. The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the <em>true-positive</em> rate (i.e., hits; correctly classified trials) as a function of the <em>false-positive</em> rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A <strong>area under the curve (AUC)</strong> of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization.</p></li>
+</ul>
+</section>
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h2>
 <p>Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (<a class="reference external" href="https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html">https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html</a>)
@@ -697,8 +714,8 @@ Temporal decoding applied to an auditory violation paradigm, the local/global pa
 <section id="generalization-accross-conditions">
 <h3>Generalization accross conditions<a class="headerlink" href="#generalization-accross-conditions" title="Permalink to this headline">#</a></h3>
 <p>Following temporal generalization. Here the goal is to see how different processing stages may change between experimental conditions (e.g., slowed, speeded, deleted, inserted ‘stages’). A classifier is trained in a condition and tested on its ability to generalize to another. The resulting temporal generalization matrix may then indicate how information processing changed. A series of classifiers can be trained to discriminate conditions in certain type of trials and are then applied to different type of trials.</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png" />
-<sub>Example figure from King et al., 2014, <a class="reference external" href="https://doi.org/10.1016/j.tics.2014.01.002">https://doi.org/10.1016/j.tics.2014.01.002</a></sub></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png" /></p>
+<p><sub>Example figure from King et al., 2014, <a class="reference external" href="https://doi.org/10.1016/j.tics.2014.01.002">https://doi.org/10.1016/j.tics.2014.01.002</a></sub></p>
 </section>
 </section>
 <section id="implementations">
