@@ -41,7 +41,7 @@ and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/
 ##### Scaling
 Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. This is done to prevent some channels, e.g., with larger variability to dominate the model. 
 
-To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
+To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [mne.decoding.Scaler](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [sklearn.preprocessing.StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
 
 
 ##### Vectorizer 
@@ -51,7 +51,27 @@ For example:
 `clf = make_pipeline(SpatialFilter(), _XdawnTransformer(), Vectorizer(),LogisticRegression())' 
 
 
-## Scikit-learn pipelines
+## Scikit-learn 
+### Main elements
+Vist the glossary section of scikit-learn https://scikit-learn.org/stable/glossary
+#### Estimator
+An estimator is an object which manages the estimation and decoding of a model. The model is estimated as a deterministic function of:
+- Parameters (can be provided with set_params)
+- Global numpy.random random state if the estimator's random_state parameters is set to None
+- data or sample properties passed to the most recent call to fit, fit_transform or fit_predict or ina a sequence of partial_fit call.
+
+#### Feature extractors 
+A transformer takes input and produce an array-like object of features for each sumple (a 2D array-like for a set of samples). It 
+- fit
+- transform
+- get_feature_names_out 
+### Methods 
+##### fit 
+##### transform
+##### fit_transform
+##### inverse_transform(optional)
+
+### Pipelines
 [Sklearn pipelines](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) can be used to build a chain of transforms and estimators.
 The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
 
@@ -75,6 +95,7 @@ gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=Stratif
 ```
 
 (*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel means it will define the parameter 'kernel' from the svc in the pipeline*) 
+
 
 
 ## Cross-validation 
@@ -151,6 +172,8 @@ The [sklearn.metrics.confusion_matrix](https://scikit-learn.org/stable/modules/g
 <img src = "https://user-images.githubusercontent.com/13642762/208434436-e32d3db5-47fb-4416-afea-7a4348ab65d6.png" width="265" height = "225">
 
 <sub>Example of a confusion matrix from the scikit-learn documentation </sub>
+
+
 
 ## Applications
 Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html#) 
