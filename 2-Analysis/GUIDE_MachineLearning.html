@@ -487,16 +487,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
-     <strong>
-      Receiver operating characteristic (ROC)
-     </strong>
+     Receiver operating characteristic (ROC)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#precision-recall-and-f-measures-1-score">
-     <strong>
-      Precision, recall and f-measures (1-score)
-     </strong>
+     Precision, recall and f-measures (1-score)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -709,16 +705,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
-     <strong>
-      Receiver operating characteristic (ROC)
-     </strong>
+     Receiver operating characteristic (ROC)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#precision-recall-and-f-measures-1-score">
-     <strong>
-      Precision, recall and f-measures (1-score)
-     </strong>
+     Precision, recall and f-measures (1-score)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -941,13 +933,13 @@ The L<sub>1</sub> ( <em>Lasso regression</em>) penality, on the other hand, impo
 <section id="classification-scores">
 <h2>Classification scores<a class="headerlink" href="#classification-scores" title="Permalink to this headline">#</a></h2>
 <p>The function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html">skearn.metrics.classification_report</a> can build a text report showing the main classification metrics like precision, recall, f1-score and accuracy. Accuracy or other metrics can be directly obtaind using sklearn’s accuracy_score() or precision_recall_fscore_support() functions. If you use precision_recall_fscore_support() with average=’macro’ parameter, it calculates each metric by averaging all classes without weights.</p>
-<p>** accuracy** is one of the most common metrics, but not enough to conclude a model is performing than another. It may be deceptive, for example when a model classifies a majority of the instances to one class, accuracy can still be high if the classes are highly imbalanced. Another case would be when false postive and false negative have different consequences (e.g., in medical domain). Precision, recall and f1-score (which combines precision and recall) are also recommended by some authors <a class="reference external" href="https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html">https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html</a>.  Also the AUC of the ROC is proposed as unbiased metric when dealing with a <em>two-class problem</em>.</p>
+<p><strong>accuracy</strong> is one of the most common metrics, but not enough to conclude a model is performing than another. It may be deceptive, for example when a model classifies a majority of the instances to one class, accuracy can still be high if the classes are highly imbalanced. Another case would be when false postive and false negative have different consequences (e.g., in medical domain). Precision, recall and f1-score (which combines precision and recall) are also recommended by some authors <a class="reference external" href="https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html">https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html</a>.  Also the AUC of the ROC is proposed as unbiased metric when dealing with a <em>two-class problem</em>.</p>
 <section id="receiver-operating-characteristic-roc">
-<h3><strong>Receiver operating characteristic (ROC)</strong><a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">#</a></h3>
+<h3>Receiver operating characteristic (ROC)<a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">#</a></h3>
 <p>The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the <em>true-positive</em> rate (i.e., hits; correctly classified trials) as a function of the <em>false-positive</em> rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A <strong>area under the curve (AUC)</strong> of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization.</p>
 </section>
 <section id="precision-recall-and-f-measures-1-score">
-<h3><strong>Precision, recall and f-measures (1-score)</strong><a class="headerlink" href="#precision-recall-and-f-measures-1-score" title="Permalink to this headline">#</a></h3>
+<h3>Precision, recall and f-measures (1-score)<a class="headerlink" href="#precision-recall-and-f-measures-1-score" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>Precision</em> is the ability of the classifier not to label as positive a sample that is negative. See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score">average_precision_score</a></p></li>
 <li><p><em>Recall</em> is the ability of the classifier to find all the positive samples. See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve">precision_recall_curve</a></p></li>
