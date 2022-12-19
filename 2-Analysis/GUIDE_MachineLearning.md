@@ -74,7 +74,7 @@ The main challenge in neuroimaging for model-selection is the scarcity of data r
 
 ##### Common decoders and their regularization
 
-Neuroimaging studies frequently use **support vector machine** (SVM) and  **logistic regressions** (Log-Reg). Both classifiers learn a linear model by minimizing the sum of a *loss -L*(data-fit term) and a *penalty -p* ( a  'regularization energy' term that favors simpler models). The regularization parameter (*C*) controls the bias-variance tradeoff, with smaller values meaning strong regularization. 
+Neuroimaging studies frequently use **support vector machine** (SVM) and  **logistic regressions** (Log-Reg). Both classifiers learn a linear model by minimizing the sum of a *loss -L*(data-fit term) and a *penalty -p* ( a 'regularization energy' term that favors simpler models). The regularization parameter (*C*) controls the bias-variance tradeoff, with smaller values meaning strong regularization. 
 In SVM the loss used is a *hinge* loss: flat and zero for well-classified samples and the misclassification cost increases linearly with the distance to the decision boundary. For logistic regression, it is a *logistic loss*, a soft, exponentially-decreasing version of the hinge loss. 
 
 The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong SVM-L<sub>2</sub> combined with hing loss means that SVM build their decision functions by combining a small number of training images. Similarly, in logistic regression the loss has no flat region, thus every sample is used, but some very weakly. 
@@ -86,15 +86,21 @@ Neuroimaging publication often do not discuss their choice of decoder hyper-para
 
 ## Data preparation
 ### Labeling 
-We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated using dictionaries in the mne.event field of an mne Epoch object. 
-
+We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated in MNE toolbox using dictionaries in the epochs.events and epochs.event_id fields (mne Epoch object). 
+Of course, only the epochs and channels of interest should be also be passed to the classifier. 
 
 ### Transformations 
+Transformations like filters can be applied depending on your features of interest.
 See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
 and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
 
+
+
 ##### Scaling
-To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features*  
+Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. TThis is done to prevent some channels, e.g., with larger variability to dominate the model. 
+
+To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
+
 
 ##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
