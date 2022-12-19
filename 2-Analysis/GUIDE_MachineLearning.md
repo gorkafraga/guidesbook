@@ -94,17 +94,16 @@ Transformations like filters can be applied depending on your features of intere
 See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
 and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
 
-
-
 ##### Scaling
-Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. TThis is done to prevent some channels, e.g., with larger variability to dominate the model. 
+Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. This is done to prevent some channels, e.g., with larger variability to dominate the model. 
 
 To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
-
 
 ##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
 
+## Scikit-learn pipelines
+(Sklearn pipelines)[https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html] can be used to build a chain of transforms and estimators.
 
 ## Classification scores
 To evaluate classifier performance *criterion-free* estimates are proposed over *mean accuracy*, since the latter may lead to systematic biases during generalization (i.e., all trials could be clasified over the same category). When dealing with a *two-class problem*, we can use 
