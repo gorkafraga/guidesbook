@@ -149,7 +149,7 @@ The ROC curve is applied to the obtained classification probabilities and is sum
 ### Confusion matrix
 The [sklearn.metrics.confusion_matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix) computes the confusion matrix to evaluate accuracy of a classification. The confusion matrix *C* is a matrix such that *C*<sub>i,j</sub> is equal to the number of observations known to be in group *i* and predicted to be in the group *j*. In binary classification, the count of true negatives is *C*<sub>0,0</sub>, false negatives is *C*<sub>1,0</sub>, true positives is *C*<sub>1,1</sub> and false positives is *C*<sub>0,1</sub>. 
 
-![image](https://user-images.githubusercontent.com/13642762/208434436-e32d3db5-47fb-4416-afea-7a4348ab65d6.png | width=50)
+<img src = "https://user-images.githubusercontent.com/13642762/208434436-e32d3db5-47fb-4416-afea-7a4348ab65d6.png" width="265" height = "225">
 
 <sub>Example of a confusion matrix from the scikit-learn documentation </sub>
 
