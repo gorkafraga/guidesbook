@@ -26,7 +26,7 @@ Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Ba
 
 When classifying EEG data we may choose: 
 * Which algorithm do we use ? 
-* Do we apply it in time or space ? 
+* Do we apply it in space (e.g., taking the entire epoch) or in time (at each time point)? 
 * Do we use apply it at single-subject or at group level ? 
 
 
@@ -85,12 +85,16 @@ Neuroimaging publication often do not discuss their choice of decoder hyper-para
 
 
 ## Data preparation
+### Labeling 
+We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated using dictionaries in the mne.event field of an mne Epoch object. 
+
+
 ### Transformations 
 See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
 and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
 
 ##### Scaling
-To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features* 
+To scale each *channel* with mean and sd computed accross of all its time points and epochs . Note  this is different from the scikit-Learn scalers, which  the *classification features*  
 
 ##### Vectorizer 
 While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
