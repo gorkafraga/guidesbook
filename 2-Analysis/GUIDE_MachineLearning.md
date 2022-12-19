@@ -10,9 +10,7 @@ Tutorial:
 
 https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html#sphx-glr-auto-tutorials-machine-learning-50-decoding-py
 
-Read this for more theoretical input  on MVPA approach in MNE:
-
-Jean-Rémi King, Laura Gwilliams, Chris Holdgraf, Jona Sassenhagen, Alexandre Barachant, Denis Engemann, Eric Larson, and Alexandre Gramfort. Encoding and decoding neuronal dynamics: methodological framework to uncover the algorithms of cognition. hal-01848442, 2018. URL: https://hal.archives-ouvertes.fr/hal-01848442 .
+Read this for more theoretical input on MVPA approach in MNE: King et al., 2018, https://hal.archives-ouvertes.fr/hal-01848442.
 
 *Examples* 
 
@@ -30,7 +28,6 @@ When classifying EEG data we may choose:
 * Do we use apply it at single-subject or at group level ? 
 
 
-
 ## Data preparation
 ### Labeling 
 We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated in MNE toolbox using dictionaries in the epochs.events and epochs.event_id fields (mne Epoch object). 
@@ -46,11 +43,16 @@ Some studies, mainly focused on topographies (amplitudes of all electrodes) on a
 
 To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
 
+
 ##### Vectorizer 
-While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
+While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. A *vectorizer* is usually applied between MNE and scikit learn steps.[mne.decoding.Vectorizer](https://mne.tools/dev/generated/mne.decoding.Vectorizer.html) transforms n-dimensional arrays into 2D arrays of n_samples by n_features. The result is an array that can be used by the estimators and transformers of scikit-learn. The original shape of the data is saved in the result (attribute: features_shape_) 
+
+For example: 
+`clf = make_pipeline(SpatialFilter(), _XdawnTransformer(), Vectorizer(),LogisticRegression())' 
+
 
 ## Scikit-learn pipelines
-(Sklearn pipelines)[https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html] can be used to build a chain of transforms and estimators.
+[Sklearn pipelines](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) can be used to build a chain of transforms and estimators.
 The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
 
 `clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))` 
@@ -64,7 +66,7 @@ for i in range(len(scores)):
     print('Accuracy of ' + str(i+1) + 'th fold is ' + str(scores[i]) + '\n')
 ```
 
-We could use also (GridSearchCV)[https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html?highlight=gridsearchcv#sklearn.model_selection.GridSearchCV] to search for the best performing parameters. We can specify which cross validation strategy we choose. In this example a stratifiedKfold is used to select the best Kernel and C from a list: 
+We could use also [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html?highlight=gridsearchcv#sklearn.model_selection.GridSearchCV) to search for the best performing parameters. We can specify which cross validation strategy we choose. In this example a stratifiedKfold is used to select the best Kernel and C from a list: 
 ``` 
 #svm
 clf_svm_pip = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(random_state=42))
@@ -129,14 +131,19 @@ The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes spa
 Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
 ## Classification scores
-The function (skearn.metrics.classification_report)[https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html] can build a text report showing the main classification metrics like precision, recall, f1-score and accuracy. Accuracy or other metrics can be directly obtaind using sklearn's accuracy_score() or precision_recall_fscore_support() functions. If you use precision_recall_fscore_support() with average='macro' parameter, it calculates each metric by averaging all classes without weights. 
+The function [skearn.metrics.classification_report](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html) can build a text report showing the main classification metrics like precision, recall, f1-score and accuracy. Accuracy or other metrics can be directly obtaind using sklearn's accuracy_score() or precision_recall_fscore_support() functions. If you use precision_recall_fscore_support() with average='macro' parameter, it calculates each metric by averaging all classes without weights. 
 
 Accuracy is one of the most common metrics, but not enough to conclude a model is performing than another. It may be deceptive, for example when a model classifies a majority of the instances to one class, accuracy can still be high if the classes are highly imbalanced. Another case would be when false postive and false negative have different consequences (e.g., in medical domain). Precision, recall and f1-score (which combines precision and recall) are also recommended by some authors https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html.  Also the AUC of the ROC is proposed as unbiased metric when dealing with a *two-class problem*.
 
 ### **Receiver operating characteristic (ROC)** 
 The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the *true-positive* rate (i.e., hits; correctly classified trials) as a function of the *false-positive* rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A **area under the curve (AUC)** of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization. 
 
-### **Precision, recall and f1-score**
+### **Precision, recall and f-measures (1-score)**
+- *Precision* is the ability of the classifier not to label as positive a sample that is negative. See [average_precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score)
+
+- *Recall* is the ability of the classifier to find all the positive samples. See [precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve)
+
+- *F-measure ([F-1 score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html), F<sub>b</sub>)* are a weighted harmonic mean of the precision and recall. Best value is 1 and worst is 0. (Maths note: *harmonic mean* is the reciprocal of the arithmetic mean of the reciprocal. Reciprocal or multiplicative inverse is one of a pair of numbers that, when multiplied together equals 1. F1 = 2 * (precision * recall) / (precision + recall)
 
 
 ## Applications
@@ -170,8 +177,6 @@ Following temporal generalization. Here the goal is to see how different process
 ![image](https://user-images.githubusercontent.com/13642762/207885018-cfe53290-8b94-45ae-86e3-38129eea53e1.png)
 
 <sub>Example figure from King et al., 2014, https://doi.org/10.1016/j.tics.2014.01.002</sub>
-
-
 
 ### Analysis workflows
 
