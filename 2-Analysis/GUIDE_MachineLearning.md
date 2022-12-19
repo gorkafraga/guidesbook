@@ -104,6 +104,29 @@ While scikit-learn transformers and estimators usually expect 2D data MNE transf
 
 ## Scikit-learn pipelines
 (Sklearn pipelines)[https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html] can be used to build a chain of transforms and estimators.
+The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
+
+`clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))` 
+
+In that example the svm hyperparameters of kernel and 'C' are fixed ('rbf' and 1). However, these can be optimized by testing classification with multiple parameters, with cross validation (see Selection of hyperparameters section).  For example we could use a 5 fold cross validation:
+
+```
+clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))
+scores = cross_val_score(clf_svm_0, data_UN, labels_UN, cv=5)
+for i in range(len(scores)):   
+    print('Accuracy of ' + str(i+1) + 'th fold is ' + str(scores[i]) + '\n')
+```
+
+We could use also (GridSearchCV)[https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html?highlight=gridsearchcv#sklearn.model_selection.GridSearchCV] to search for the best performing parameters. We can specify which cross validation strategy we choose. In this example a stratifiedKfold is used to select the best Kernel and C from a list: 
+``` 
+#svm
+clf_svm_pip = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(random_state=42))
+parameters = {'svc__kernel':['linear', 'rbf', 'sigmoid'], 'svc__C':[0.1, 1, 10]}
+gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=StratifiedKFold(n_splits=5), return_train_score=True)
+```
+
+(*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel) 
+
 
 ## Classification scores
 To evaluate classifier performance *criterion-free* estimates are proposed over *mean accuracy*, since the latter may lead to systematic biases during generalization (i.e., all trials could be clasified over the same category). When dealing with a *two-class problem*, we can use 
