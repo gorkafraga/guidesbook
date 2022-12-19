@@ -18,7 +18,7 @@ Read this for more theoretical input on MVPA approach in MNE: King et al., 2018,
 
 - Example 2. MVPA in infant data. https://github.com/BayetLab/infant-EEG-MVPA-tutorial
 
-- Example 3. Time-resolved MVPA decodign two tasks (Marti et al., 2015; https://doi.org/10.1016/j.neuron.2015.10.040)
+- Example 3. Time-resolved MVPA decoding two tasks (Marti et al., 2015; https://doi.org/10.1016/j.neuron.2015.10.040)
 
 - Example 4. Peer et al., 2017 EEG analysis of novelty and pleasantness of stimulki (published in _plos One_) https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/DatasetConstruction.html
 
@@ -135,16 +135,23 @@ The function [skearn.metrics.classification_report](https://scikit-learn.org/sta
 
 Accuracy is one of the most common metrics, but not enough to conclude a model is performing than another. It may be deceptive, for example when a model classifies a majority of the instances to one class, accuracy can still be high if the classes are highly imbalanced. Another case would be when false postive and false negative have different consequences (e.g., in medical domain). Precision, recall and f1-score (which combines precision and recall) are also recommended by some authors https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html.  Also the AUC of the ROC is proposed as unbiased metric when dealing with a *two-class problem*.
 
-### **Receiver operating characteristic (ROC)** 
+### Some useful metrics
+#### **Receiver operating characteristic (ROC)** 
 The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the *true-positive* rate (i.e., hits; correctly classified trials) as a function of the *false-positive* rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A **area under the curve (AUC)** of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization. 
 
-### **Precision, recall and f-measures (1-score)**
+#### **Precision, recall and f-measures (1-score)**
 - *Precision* is the ability of the classifier not to label as positive a sample that is negative. See [average_precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score)
 
 - *Recall* is the ability of the classifier to find all the positive samples. See [precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve)
 
 - *F-measure ([F-1 score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html), F<sub>b</sub>)* are a weighted harmonic mean of the precision and recall. Best value is 1 and worst is 0. (Maths note: *harmonic mean* is the reciprocal of the arithmetic mean of the reciprocal. Reciprocal or multiplicative inverse is one of a pair of numbers that, when multiplied together equals 1. F1 = 2 * (precision * recall) / (precision + recall)
 
+### Confusion matrix
+The [sklearn.metrics.confusion_matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix) computes the confusion matrix to evaluate accuracy of a classification. The confusion matrix *C* is a matrix such that *C*<sub>i,j</sub> is equal to the number of observations known to be in group *i* and predicted to be in the group *j*. In binary classification, the count of true negatives is *C*<sub>0,0</sub>, false negatives is *C*<sub>1,0</sub>, true positives is *C*<sub>1,1</sub> and false positives is *C*<sub>0,1</sub>. 
+
+![image](https://user-images.githubusercontent.com/13642762/208434436-e32d3db5-47fb-4416-afea-7a4348ab65d6.png | width=50)
+
+<sub>Example of a confusion matrix from the scikit-learn documentation </sub>
 
 ## Applications
 Here there are several possibilities for using multivariate (e.g., all sensors) information to decode cognitive/experimental manipulations from brain activitiy. The MNE documentation shows an example of a code implementation (https://mne.tools/stable/auto_examples/decoding/decoding_time_generalization_conditions.html#) 
