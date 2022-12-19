@@ -125,7 +125,7 @@ parameters = {'svc__kernel':['linear', 'rbf', 'sigmoid'], 'svc__C':[0.1, 1, 10]}
 gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=StratifiedKFold(n_splits=5), return_train_score=True)
 ```
 
-(*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel) 
+(*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel means it will define the parameter 'kernel' from the svc in the pipeline*) 
 
 
 ## Classification scores
