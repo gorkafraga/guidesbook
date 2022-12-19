@@ -1,5 +1,5 @@
-# Machine learning and multivariate pattern analysis
-Decoding and classification in neuroimaging studies. 
+# Machine learning decoding
+Multivariate pattern analysis and classification
 
 ## Intro  
 The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
