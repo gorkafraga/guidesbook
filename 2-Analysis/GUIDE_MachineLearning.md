@@ -30,6 +30,51 @@ When classifying EEG data we may choose:
 * Do we use apply it at single-subject or at group level ? 
 
 
+
+## Data preparation
+### Labeling 
+We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated in MNE toolbox using dictionaries in the epochs.events and epochs.event_id fields (mne Epoch object). 
+Of course, only the epochs and channels of interest should be also be passed to the classifier. 
+
+### Transformations 
+Transformations like filters can be applied depending on your features of interest.
+See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
+and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
+
+##### Scaling
+Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. This is done to prevent some channels, e.g., with larger variability to dominate the model. 
+
+To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
+
+##### Vectorizer 
+While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
+
+## Scikit-learn pipelines
+(Sklearn pipelines)[https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html] can be used to build a chain of transforms and estimators.
+The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
+
+`clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))` 
+
+In that example the svm hyperparameters of kernel and 'C' are fixed ('rbf' and 1). However, these can be optimized by testing classification with multiple parameters, with cross validation (see Selection of hyperparameters section).  For example we could use a 5 fold cross validation:
+
+```
+clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))
+scores = cross_val_score(clf_svm_0, data_UN, labels_UN, cv=5)
+for i in range(len(scores)):   
+    print('Accuracy of ' + str(i+1) + 'th fold is ' + str(scores[i]) + '\n')
+```
+
+We could use also (GridSearchCV)[https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html?highlight=gridsearchcv#sklearn.model_selection.GridSearchCV] to search for the best performing parameters. We can specify which cross validation strategy we choose. In this example a stratifiedKfold is used to select the best Kernel and C from a list: 
+``` 
+#svm
+clf_svm_pip = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(random_state=42))
+parameters = {'svc__kernel':['linear', 'rbf', 'sigmoid'], 'svc__C':[0.1, 1, 10]}
+gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=StratifiedKFold(n_splits=5), return_train_score=True)
+```
+
+(*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel means it will define the parameter 'kernel' from the svc in the pipeline*) 
+
+
 ## Cross-validation 
 Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
 
@@ -83,55 +128,15 @@ The L<sub>1</sub> ( *Lasso regression*) penality, on the other hand, imposes spa
 ##### Parameter tunning 
 Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the 'default' value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For *non-sparse* L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder 
 
-
-## Data preparation
-### Labeling 
-We first need to make sure the epochs are correctly label according to our research question (e.g., We may have trials with different noise conditions and but be interested in labeling them only on whether they were correct/incorrect). Event labels can be manipulated in MNE toolbox using dictionaries in the epochs.events and epochs.event_id fields (mne Epoch object). 
-Of course, only the epochs and channels of interest should be also be passed to the classifier. 
-
-### Transformations 
-Transformations like filters can be applied depending on your features of interest.
-See MNE documentation: https://mne.tools/stable/auto_tutorials/machine-learning/50_decoding.html
-and Scikit-learn: https://scikit-learn.org/stable/data_transforms.html/ 
-
-##### Scaling
-Some studies, mainly focused on topographies (amplitudes of all electrodes) on a post stimuli period suggest removing mean and scaling the features (channels) to unit variance. That is , z= (x-u)/s where u is mean and s standard deviation. This is done to prevent some channels, e.g., with larger variability to dominate the model. 
-
-To *scale* each *channel* with mean and sd computed accross of all its time points and epochs can be done with the [**mne.decoding.Scaler**](https://mne.tools/dev/generated/mne.decoding.Scaler.html). This is different from scikit-learn scalers like [**sklearn.preprocessing.StandardScaler**](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), which scales the *classification features* (i.e., each time point for each channel by estimating using mean and sd using data from all epochs).  
-
-##### Vectorizer 
-While scikit-learn transformers and estimators usually expect 2D data MNE transformers usually output data with more dimensions. Vectorizer is applied between MNE and scikit learn steps
-
-## Scikit-learn pipelines
-(Sklearn pipelines)[https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html] can be used to build a chain of transforms and estimators.
-The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
-
-`clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))` 
-
-In that example the svm hyperparameters of kernel and 'C' are fixed ('rbf' and 1). However, these can be optimized by testing classification with multiple parameters, with cross validation (see Selection of hyperparameters section).  For example we could use a 5 fold cross validation:
-
-```
-clf_svm_0 = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(kernel='rbf', C=1))
-scores = cross_val_score(clf_svm_0, data_UN, labels_UN, cv=5)
-for i in range(len(scores)):   
-    print('Accuracy of ' + str(i+1) + 'th fold is ' + str(scores[i]) + '\n')
-```
-
-We could use also (GridSearchCV)[https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html?highlight=gridsearchcv#sklearn.model_selection.GridSearchCV] to search for the best performing parameters. We can specify which cross validation strategy we choose. In this example a stratifiedKfold is used to select the best Kernel and C from a list: 
-``` 
-#svm
-clf_svm_pip = make_pipeline(Vectorizer(), StandardScaler(), svm.SVC(random_state=42))
-parameters = {'svc__kernel':['linear', 'rbf', 'sigmoid'], 'svc__C':[0.1, 1, 10]}
-gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=StratifiedKFold(n_splits=5), return_train_score=True)
-```
-
-(*Note: in the pipeline function the double underscore is used to specify parameters of an element of the function: e.g., svc__kernel means it will define the parameter 'kernel' from the svc in the pipeline*) 
-
-
 ## Classification scores
-To evaluate classifier performance *criterion-free* estimates are proposed over *mean accuracy*, since the latter may lead to systematic biases during generalization (i.e., all trials could be clasified over the same category). When dealing with a *two-class problem*, we can use 
+The function (skearn.metrics.classification_report)[https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html] can build a text report showing the main classification metrics like precision, recall, f1-score and accuracy. Accuracy or other metrics can be directly obtaind using sklearn's accuracy_score() or precision_recall_fscore_support() functions. If you use precision_recall_fscore_support() with average='macro' parameter, it calculates each metric by averaging all classes without weights. 
 
-* **Receiver operating characteristic (ROC)** can be used to estimate classification accuracy *accross trials* for each subject. The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the *true-positive* rate (i.e., hits; correctly classified trials) as a function of the *false-positive* rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A **area under the curve (AUC)** of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization. 
+Accuracy is one of the most common metrics, but not enough to conclude a model is performing than another. It may be deceptive, for example when a model classifies a majority of the instances to one class, accuracy can still be high if the classes are highly imbalanced. Another case would be when false postive and false negative have different consequences (e.g., in medical domain). Precision, recall and f1-score (which combines precision and recall) are also recommended by some authors https://neuro.inf.unibe.ch/AlgorithmsNeuroscience/Tutorial_files/ApplyingMachineLearningMethods_1.html.  Also the AUC of the ROC is proposed as unbiased metric when dealing with a *two-class problem*.
+
+### **Receiver operating characteristic (ROC)** 
+The ROC curve is applied to the obtained classification probabilities and is summarized with the AUC. The ROC curve represents the *true-positive* rate (i.e., hits; correctly classified trials) as a function of the *false-positive* rate (i.e., false alarms, missclassified). A diagonal ROC of 50% shows chance level classification score (n hits = n false alarms). A **area under the curve (AUC)** of 100 % (upper left bound of the diagonal) is a perfect positive prediction with no false positive, perfect decoding. The AUC measure of the ROC is unbiased to imbalanced problems and independent of the statistical distribution of the classes. The AUC is thus considered a sensitive,nonparametric criterion-free measure of generalization. 
+
+### **Precision, recall and f1-score**
 
 
 ## Applications
