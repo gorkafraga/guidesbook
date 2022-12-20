@@ -1,6 +1,6 @@
 # EEG features
 ## Time-frequency analysis
-Here we study the changes in power at the different frequencies over time. This contrasts with a 'static' spectral analysis where we examine the spectral distribution of an entire time period (e.g., using a Fast Fourier Transform-FFT). To capture the temporal dynamics of frequencies we repeatedly perform the dot product of the EEG signal by a wavelet that is sliding/shifting overtime. This way we obtain the power distribution at each time point. 
+Here we study the changes in power at the different frequencies over time. This contrasts with a 'static' spectral analysis where we examine the spectral distribution of an entire time period (e.g., using a Fast Fourier Transform-FFT). To capture the temporal dynamics of frequencies we repeatedly perform the dot product of the EEG signal by a wavelet that is sliding/shifting overtime. This way we obtain the power distribution at each time point. Besudes complex wavelet convolution, other commonly used methods are the short-time fast Fourier transform and filter-Hilbert (not covered in this section). 
 
 This approach allows, among others, the analysis of Event Related Spectral Perturbations (**ERSP**) and Inter-trial Phase Coherence (**ITC**).
 
