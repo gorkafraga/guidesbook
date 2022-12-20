@@ -26,9 +26,16 @@ A key parameter of the Morlet that will have an impact in *temporal and spectral
 - *Width* of the wavelet or number of **cycles**: more cycles increase frequency precision (we can capture more frequency bins) and fewer cycles increases temporal precision (we can capture more data point). We can alslo use fewer cycles at lower frequenceis and gradually increase the number of cycles as frequency increases, thus having more temporal precision at lower frequencies and more frequency precision at higher frequencies. 
 - The time-frequency trade off can also be described in terms of *full-with at half-maximum*(**FWHM**) in the time and/or frequency domain. See [Cohen,2019](https://doi.org/10.1016/j.neuroimage.2019.05.048) for an article arguing about the relevance of this term. The FWHM is the distance in time between 50 % gain before the peak to 50% gain after the peak 
 
-<img src='https://user-images.githubusercontent.com/13642762/208679988-6fd496fc-55ba-4847-a65d-bfed329f2dc1.png' height='400px' width='600px'>
+    <img src='https://user-images.githubusercontent.com/13642762/208679988-6fd496fc-55ba-4847-a65d-bfed329f2dc1.png' height='200px' width='300px'>
 
 <sub>Cohen 2019</sub>
+
+
+
+Illustration of wavelet convolution:
+
+<img src='https://user-images.githubusercontent.com/13642762/208693831-a8c77e31-8413-4590-bcb1-f72e5965e04a.png'  height = '310px' width ='300px'>
+<sub> [Morales and Bowers, 2022](https://www.sciencedirect.com/science/article/pii/S1878929322000111)</sub>
 
 
 An example of TF results visualization (scalogram):
