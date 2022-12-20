@@ -34,7 +34,8 @@ A key parameter of the Morlet that will have an impact in *temporal and spectral
 
 An example of TF results visualization (scalogram):
 
-<img src = 'https://user-images.githubusercontent.com/13642762/208666546-db3f65a0-4427-4046-8451-fa7aee33abc5.png' height = '185px' width ='330px'>
+<img src = 'https://user-images.githubusercontent.com/13642762/208685487-0e1a771c-32a6-43e5-b702-4f52175e52a1.png' height = '200px' width ='300px'>
+
 
 <sub>Morales and Bowers, 2022</sub>
 
