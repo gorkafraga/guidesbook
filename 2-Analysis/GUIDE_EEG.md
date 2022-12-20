@@ -25,8 +25,14 @@ There are several basic considerations when running a time frequency analysis:
 
 A key parameter of the Morlet that will have an impact in *temporal and spectral precision* of our analysis:
 - *Width* of the wavelet or number of **cycles**: more cycles increase frequency precision (we can capture more frequency bins) and fewer cycles increases temporal precision (we can capture more data point). We can alslo use fewer cycles at lower frequenceis and gradually increase the number of cycles as frequency increases, thus having more temporal precision at lower frequencies and more frequency precision at higher frequencies. 
+- The time-frequency trade off can also be described in terms of *full-with at half-maximum*(**FWHM**) in the time and/or frequency domain. See [Cohen,2019](https://doi.org/10.1016/j.neuroimage.2019.05.048) for an article arguing about the relevance of this term. The FWHM is the distance in time between 50 % gain before the peak to 50% gain after the peak 
 
-An example of TF results visualization (scaleogram):
+<img src='https://user-images.githubusercontent.com/13642762/208679988-6fd496fc-55ba-4847-a65d-bfed329f2dc1.png' height='400px' width='600px'>
+
+      <sub>Cohen 2019</sub>
+
+
+An example of TF results visualization (scalogram):
 
 <img src = 'https://user-images.githubusercontent.com/13642762/208666546-db3f65a0-4427-4046-8451-fa7aee33abc5.png' height = '185px' width ='330px'>
 
