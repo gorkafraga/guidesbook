@@ -18,7 +18,6 @@ A complex-valued Morlet wavelet (the result of the convolution with the EEG sign
 
 <img src='https://user-images.githubusercontent.com/13642762/208641523-5de64f0b-8578-4c29-85c1-e94fd55169e9.gif' height='400px' width='600px'>
 
-
 There are several basic considerations when running a time frequency analysis:
 - Sampling rate. Typically downsampling to to 250 Hz is done to reduce file size and computation time
 - Frequencies to analyse. Depending on hypotheses. But it is recommended that the data have at least 3 full cycles of the lowest frequency to analyze, and higher frequency must be below Nyquist frequency (1/2 of sampling rate)
@@ -34,11 +33,9 @@ A key parameter of the Morlet that will have an impact in *temporal and spectral
 
 An example of TF results visualization (scalogram):
 
-<img src = 'https://user-images.githubusercontent.com/13642762/208685487-0e1a771c-32a6-43e5-b702-4f52175e52a1.png' height = '200px' width ='300px'>
+<img src='https://user-images.githubusercontent.com/13642762/208690235-41937eac-b838-4cd4-8668-8f8aee54e54b.png' height = '210px' width ='300px'>
 
-
-<sub>Morales and Bowers, 2022</sub>
-
+<sub> Morales and Bowers, 2022</sub>
 
 See a recent comprehensive review on [Morales and Bowers, 2022](https://www.sciencedirect.com/science/article/pii/S1878929322000111)
 
@@ -47,10 +44,7 @@ Wavelet coefficients are computed by convolving the wavelet kernel with the time
 
 The cone of influence [see COI-matlab documentation](https://ch.mathworks.com/help/wavelet/ug/boundary-effects-and-the-cone-of-influence.html), are areas in the scalogram potentially affected by edge-effect artifacts. These arise from areas where the stretched wavelets extend beyond the edges of the observation interval.  These are referred as edge effects in continuous wavelet transform (CWT). Some analyses, for example, compute the COI for the time windows of interest and only take the wavelet coefficients inside the respective COI.  
 
-
-<img src = 'https://user-images.githubusercontent.com/13642762/208685261-be2bfb21-4534-404e-aa15-4ee46b954b48.png height = '185px' width ='330px'>
-
-
+<img src='https://user-images.githubusercontent.com/13642762/208690651-3e6f1451-cab3-46c5-9f69-2f3daa1a2fd2.png' height = '210px' width ='300px'>
 
 <sub>An example of COI from [Dash et al., 2020](https://www.frontiersin.org/articles/10.3389/fnins.2020.00290/full) </sub>
 
