@@ -14,7 +14,7 @@ A real-valued Morlet (convolution with EEG signal will give us *amplitude* value
 
 <img src='https://user-images.githubusercontent.com/13642762/208658414-236ae8f6-cc09-4d18-998d-e22901ed2d37.gif' height = '150px' width = '250px'> <img src='https://user-images.githubusercontent.com/13642762/208658801-befbbc18-d9d2-4735-b438-19115ea5260f.png' height = '150px' width = '250px'> <img src = 'https://user-images.githubusercontent.com/13642762/208659831-43075e06-c3a4-471a-8c6d-30dd869e0730.png' height='140px' width='250px' >
 
-A complex-valued Morlet wavelet (the result of the convolution with the EEG signal will give us a complex value for each time point, allowing to extract *amplitude* ,  instantaneous *power* and *phase angle* information): 
+A complex-valued Morlet wavelet (the result of the convolution with the EEG signal will give us a complex value for each time point, allowing to extract instantaneous *power* as well as *phase angle* information): 
 
 <img src='https://user-images.githubusercontent.com/13642762/208641523-5de64f0b-8578-4c29-85c1-e94fd55169e9.gif' height='400px' width='600px'>
 
