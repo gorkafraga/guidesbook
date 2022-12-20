@@ -477,8 +477,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#parameter-tunning">
-       Parameter tunning
+      <a class="reference internal nav-link" href="#parameter-tuning">
+       Parameter tuning
       </a>
      </li>
     </ul>
@@ -695,8 +695,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#parameter-tunning">
-       Parameter tunning
+      <a class="reference internal nav-link" href="#parameter-tuning">
+       Parameter tuning
       </a>
      </li>
     </ul>
@@ -929,8 +929,8 @@ In SVM the loss used is a <em>hinge</em> loss: flat and zero for well-classified
 <p>The most common regularization is the L<sub>2</sub> (*Ridge regression). Strong SVM-L<sub>2</sub> combined with hing loss means that SVM build their decision functions by combining a small number of training images. Similarly, in logistic regression the loss has no flat region, thus every sample is used, but some very weakly.
 The L<sub>1</sub> ( <em>Lasso regression</em>) penality, on the other hand, imposes sparsity on the weights: that is a strong regularization means that the weight maps are mostly comprised of zero voxels (in fMRI)</p>
 </section>
-<section id="parameter-tunning">
-<h4>Parameter tunning<a class="headerlink" href="#parameter-tunning" title="Permalink to this headline">#</a></h4>
+<section id="parameter-tuning">
+<h4>Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this headline">#</a></h4>
 <p>Neuroimaging publication often do not discuss their choice of decoder hyper-parameters. Other state that they use the ‘default’ value (e.g., C = 1 for SVMs). Standard ML practice favors setting them by nested cross-validation. For <em>non-sparse</em> L<sub>2</sub> penalized models the amount of regularization often does not strongly influence the weight maps of the decoder</p>
 </section>
 </section>
