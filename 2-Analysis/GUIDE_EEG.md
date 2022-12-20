@@ -46,7 +46,10 @@ Wavelet coefficients are computed by convolving the wavelet kernel with the time
 
 The cone of influence [see COI-matlab documentation](https://ch.mathworks.com/help/wavelet/ug/boundary-effects-and-the-cone-of-influence.html), are areas in the scalogram potentially affected by edge-effect artifacts. These arise from areas where the stretched wavelets extend beyond the edges of the observation interval.  These are referred as edge effects in continuous wavelet transform (CWT). Some analyses, for example, compute the COI for the time windows of interest and only take the wavelet coefficients inside the respective COI.  
 
-<img src = 'https://user-images.githubusercontent.com/13642762/208666546-db3f65a0-4427-4046-8451-fa7aee33abc5.png' height = '185px' width ='330px'>
+
+<img src = 'https://user-images.githubusercontent.com/13642762/208685261-be2bfb21-4534-404e-aa15-4ee46b954b48.png height = '185px' width ='330px'>
+
+
 
 <sub>An example of COI from [Dash et al., 2020](https://www.frontiersin.org/articles/10.3389/fnins.2020.00290/full) </sub>
 
