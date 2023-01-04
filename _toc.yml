@@ -10,6 +10,7 @@ parts:
   - file: 1-General tools/GUIDE_Jupyter book
   - file: 1-General tools/Guide_prolific_gorilla
   - file: 1-General tools/GUIDE_python
+  - file: 1-General tools/GUIDE_psychopy
   - file: 1-General tools/GUIDE_Web_building_in_R_markdown
 - caption: Analysis
   chapters:

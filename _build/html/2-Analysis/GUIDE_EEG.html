@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../1-General%20tools/GUIDE_psychopy.html">
+   PsychoPy
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../1-General%20tools/GUIDE_Web_building_in_R_markdown.html">
    Website in R markdown
   </a>
@@ -425,25 +430,24 @@ title="Print to PDF"
 <p>A real-valued Morlet (convolution with EEG signal will give us <em>amplitude</em> values at each time point):</p>
 <p><img src='https://user-images.githubusercontent.com/13642762/208658414-236ae8f6-cc09-4d18-998d-e22901ed2d37.gif' height = '150px' width = '250px'> <img src='https://user-images.githubusercontent.com/13642762/208658801-befbbc18-d9d2-4735-b438-19115ea5260f.png' height = '150px' width = '250px'> <img src = 'https://user-images.githubusercontent.com/13642762/208659831-43075e06-c3a4-471a-8c6d-30dd869e0730.png' height='140px' width='250px' ></p>
 <p>A complex-valued Morlet wavelet (the result of the convolution with the EEG signal will give us a complex value for each time point, allowing to extract instantaneous <em>power</em> as well as <em>phase angle</em> information):</p>
-<img src='https://user-images.githubusercontent.com/13642762/208641523-5de64f0b-8578-4c29-85c1-e94fd55169e9.gif' height='400px' width='600px'>
+<img src='https://user-images.githubusercontent.com/13642762/208878213-6160bda5-0c51-48de-aa82-78f2976da054.gif' height='400px' width='600px'>
 <p>There are several basic considerations when running a time frequency analysis:</p>
 <ul class="simple">
 <li><p>Sampling rate. Typically downsampling to to 250 Hz is done to reduce file size and computation time</p></li>
 <li><p>Frequencies to analyse. Depending on hypotheses. But it is recommended that the data have at least 3 full cycles of the lowest frequency to analyze, and higher frequency must be below Nyquist frequency (1/2 of sampling rate)</p></li>
 </ul>
 <p>A key parameter of the Morlet that will have an impact in <em>temporal and spectral precision</em> of our analysis:</p>
-<ul>
+<ul class="simple">
 <li><p><em>Width</em> of the wavelet or number of <strong>cycles</strong>: more cycles increase frequency precision (we can capture more frequency bins) and fewer cycles increases temporal precision (we can capture more data point). We can alslo use fewer cycles at lower frequenceis and gradually increase the number of cycles as frequency increases, thus having more temporal precision at lower frequencies and more frequency precision at higher frequencies.</p></li>
-<li><p>The time-frequency trade off can also be described in terms of <em>full-with at half-maximum</em>(<strong>FWHM</strong>) in the time and/or frequency domain. See <a class="reference external" href="https://doi.org/10.1016/j.neuroimage.2019.05.048">Cohen,2019</a> for an article arguing about the relevance of this term. The FWHM is the distance in time between 50 % gain before the peak to 50% gain after the peak</p>
-  <img src='https://user-images.githubusercontent.com/13642762/208679988-6fd496fc-55ba-4847-a65d-bfed329f2dc1.png' height='200px' width='300px'>
-</li>
+<li><p>The time-frequency trade off can also be described in terms of <em>full-with at half-maximum</em>(<strong>FWHM</strong>) in the time and/or frequency domain. See <a class="reference external" href="https://doi.org/10.1016/j.neuroimage.2019.05.048">Cohen,2019</a> for an article arguing about the relevance of this term. The FWHM is the distance in time between 50 % gain before the peak to 50% gain after the peak</p></li>
 </ul>
+<img src='https://user-images.githubusercontent.com/13642762/208679988-6fd496fc-55ba-4847-a65d-bfed329f2dc1.png' height='200px' width='300px'>
 <p><sub>Cohen 2019</sub></p>
 <p>Illustration of wavelet convolution:</p>
 <img src='https://user-images.githubusercontent.com/13642762/208693831-a8c77e31-8413-4590-bcb1-f72e5965e04a.png'  height = '310px' width ='300px'>
 <sub> [Morales and Bowers, 2022](https://www.sciencedirect.com/science/article/pii/S1878929322000111)</sub>
 <p>An example of TF results visualization (scalogram):</p>
-<img src='https://user-images.githubusercontent.com/13642762/208690235-41937eac-b838-4cd4-8668-8f8aee54e54b.png' height = '210px' width ='300px'>
+ <img src='https://user-images.githubusercontent.com/13642762/208690235-41937eac-b838-4cd4-8668-8f8aee54e54b.png' height = '210px' width ='300px'>
 <p><sub> Morales and Bowers, 2022</sub></p>
 <p>See a recent comprehensive review on <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1878929322000111">Morales and Bowers, 2022</a></p>
 <section id="edge-effects-and-the-cone-of-influence">
