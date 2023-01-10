@@ -64,4 +64,7 @@ The cone of influence [see COI-matlab documentation](https://ch.mathworks.com/he
 
 There is a further discussion on this on the EEGlab Wiki: https://sccn.ucsd.edu/wiki/Makoto's_preprocessing_pipeline
 
+### Preprocessing
 
+Good summary of common artifacts: 
+https://pressrelease.brainproducts.com/eeg-artifacts-handling-in-analyzer/
