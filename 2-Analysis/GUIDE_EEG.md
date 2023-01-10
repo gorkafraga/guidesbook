@@ -52,8 +52,8 @@ An example of TF results visualization (scalogram):
 
 See a recent comprehensive review on [Morales and Bowers, 2022](https://www.sciencedirect.com/science/article/pii/S1878929322000111)
 
-#### Edge effects and the 'cone' of influence
-Wavelet coefficients are computed by convolving the wavelet kernel with the time series. Similarly to any convolution of signals, there is zero padding at the edges of the time series and therefore the wavelet coefficients are weaker at the beginning and end of the time series.
+#### The 'cone' of influence
+Wavelet coefficients are computed by convolving the wavelet kernel with the time series. Similarly to any convolution of signals, there is zero padding at the edges of the time series and therefore the wavelet coefficients are weaker at the beginning and end of the time series. In addition we can have an event we are not interested in, for instance, we may look at prestimulus interval in a larger epoch containing post stimulus activity and want to avoid the times immediately before 0 where stimulus. 
 
 The cone of influence [see COI-matlab documentation](https://ch.mathworks.com/help/wavelet/ug/boundary-effects-and-the-cone-of-influence.html), are areas in the scalogram potentially affected by edge-effect artifacts. These arise from areas where the stretched wavelets extend beyond the edges of the observation interval.  These are referred as edge effects in continuous wavelet transform (CWT). Some analyses, for example, compute the COI for the time windows of interest and only take the wavelet coefficients inside the respective COI.  
 
