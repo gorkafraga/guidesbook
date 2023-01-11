@@ -53,18 +53,36 @@ For example:
 
 ## Scikit-learn 
 ### Main elements
-Vist the glossary section of scikit-learn https://scikit-learn.org/stable/glossary
+See : https://scikit-learn.org/stable/developers/develop.html#:~:text=An%20estimator%20is%20an%20object,estimator.
+See also the glossary section of scikit-learn https://scikit-learn.org/stable/glossary
+
 #### Estimator
-An estimator is an object which manages the estimation and decoding of a model. The model is estimated as a deterministic function of:
+The predominant object in the the API. This is an object that fits a model based on some training data and can inferr some properties on new data. It can be e.g., a classifier or a regressor. All estimators implement the `fit` method: `estimator.fit(X,y)` 
+
+The model is estimated as a deterministic function of:
 - Parameters (can be provided with set_params)
 - Global numpy.random random state if the estimator's random_state parameters is set to None
 - data or sample properties passed to the most recent call to fit, fit_transform or fit_predict or ina a sequence of partial_fit call.
 
+They must provide a `fit` method  and provide set_params and get_params. 
+
+#### Fitting 
+The `fit()` method implements estimation of some parameters in the model. 
+**Parameters
+ - X: array-like of shape (n_samples,n_features)
+ - y: array-like of shape (n_samples)
+ 
+ X.shape[0] should be the same as y.shape[0]
+ 
+ *E.g., in EEG MVPA decoding using the entire epochs, X would be of shape (n_epochs, n_channels x n_data-points), 'y' would be of shape (n_epochs) with the label of each epoch* 
+ 
 #### Feature extractors 
-A transformer takes input and produce an array-like object of features for each sumple (a 2D array-like for a set of samples). It 
-- fit
+A transformer takes input and produce an array-like object of features for each sample (a 2D array-like for a set of samples). They must implement at least: 
+
+- fit. This method is provided on every estimator. Usually takes samples X and targets y
 - transform
 - get_feature_names_out 
+
 ### Methods 
 ##### fit 
 ##### transform
