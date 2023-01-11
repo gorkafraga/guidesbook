@@ -3,7 +3,7 @@ Multivariate pattern analysis and classification
 
 ## Intro  
 The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
- 
+
 *Additional documentation*
 
 Tutorial: 
@@ -82,13 +82,7 @@ A transformer takes input and produce an array-like object of features for each 
 - fit. This method is provided on every estimator. Usually takes samples X and targets y
 - transform
 - get_feature_names_out 
-
-### Methods 
-##### fit 
-##### transform
-##### fit_transform
-##### inverse_transform(optional)
-
+ 
 ### Pipelines
 [Sklearn pipelines](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) can be used to build a chain of transforms and estimators.
 The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
@@ -118,6 +112,10 @@ gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=Stratif
 
 ## Cross-validation 
 Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
+
+
+<img src='https://user-images.githubusercontent.com/13642762/211787368-060cf4b2-f7ad-47bd-bf13-b03afdc9a7e7.png' height='200px' width='300px'>
+<sub> https://scikit-learn.org/stable/modules/cross_validation.html</sub>
 
 The following article reviews caveats and contains guidelines on the choice of cross validation methods:
 
