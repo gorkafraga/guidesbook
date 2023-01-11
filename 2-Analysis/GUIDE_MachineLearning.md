@@ -115,12 +115,20 @@ Measuring prediction accuracy is central to decoding. To assess a decoder, selec
 
 
 <img src='https://user-images.githubusercontent.com/13642762/211787368-060cf4b2-f7ad-47bd-bf13-b03afdc9a7e7.png' height='200px' width='300px'>
+
 <sub> https://scikit-learn.org/stable/modules/cross_validation.html</sub>
+
 
 The following article reviews caveats and contains guidelines on the choice of cross validation methods:
 
 Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. *NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
 
+
+#### Illustration of k-fold cross-validation 
+
+<img src='https://user-images.githubusercontent.com/13642762/211788402-e18acc1b-017e-4e7b-9fac-c5e77969c410.png' height='200px' width='300px'>
+
+<sub> https://scikit-learn.org/stable/modules/cross_validation.html</sub>
 
 Important concepts for CV (from Varoquax et al., 2017): 
 #### Estimating predictive power
