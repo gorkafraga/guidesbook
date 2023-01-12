@@ -5,12 +5,14 @@ Documentation:[ PsychoPy Documentation ](https://psychopy.org/gettingStarted.htm
 Note: besides generalities, this doc focuses on an existing experiment from R.Becker (DiN project, T.Houweling analysis) that needs to be adapted. 
 
 ## Main components 
-- Use **PsychoPy Builder** to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized. 
-Note: It is advised to use the builder for online experiments as it will generate the JS version of the code.  
+#### **PsychoPy Builder**.
+Use builder to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized. 
+Note: It is advised to use the builder for online experiments as it will generate the JS version of the code, even for advanced programmers. 
 
 When you run an experiment PsychoPy Builder translates the Builder experiment into python code and then executes it. You can always see the generated code and run it into a Python program, ```but you cannot go from code back to a Builder representation```! 
 
-- **PsychoPy Coder** is a basic code editor. It has an output window and Demo menu with examples.  But remember is a one-way street from Builder to Code. 
+#### **PsychoPy Coder**. 
+Basic code editor. It has an output window and Demo menu with examples.  But remember is a one-way street from Builder to Code. 
 
 
 ## Experiments 
@@ -27,17 +29,18 @@ Use control + arrow keys to navigate through tabs in the 'routines' panel . Clic
 In our experiment there are blocks with stimuli presentation triggered by EEG signal, preprocessed in real time with Openvibe. This operation is captured in the  block 'signal check'.   
 
 ## Troubleshooting
-### Connecting with OpenVibe outside the lab 
+#### Connecting with OpenVibe outside the lab 
 
-- To run a real time EEG outside the lab you need some 'fake' eeg data in Openvibe. You will need to first *run the openvibe script* until you see it *streaming simulated data*.  
+- To run a real time EEG outside the lab you need some 'fake' eeg data in Openvibe. You will need to first *run the openvibe script* (some debugging script running simulated data) until you see it *streaming simulated data*.  
+
 - Then open Psychopy and run your experiment
 
-### Issues with version control 
-- The Psychopy version control can cause problems:  you can trying leaving the option blank in the psychopy settings, instead of specifying a version 
+#### Issues with version control 
+The Psychopy version control can cause problems:  you can trying leaving the option blank in the psychopy settings, instead of specifying a version 
 
-### Problems with python packages 
-- I had some problems with python packages that were needed for the experiment but were not installed in the LABS's PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the `libs` folder within your psychopy folder. When the psychopy scripts does `'import packagename'` it should then be able to load the package. 
+#### Problems with python packages 
+I had some problems with python packages that were needed for the experiment but were not installed in the LABS's PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the `libs` folder within your psychopy folder. When the psychopy scripts does `'import packagename'` it should then be able to load the package. 
  
-### JS warnings in runner log
+#### JS warnings in runner log
 In R.Becker's scripts there may be some warnings related to JavaScript. Their source is not yet identified but the experiment was running well (the warnings were also there during previous data collection)
 
