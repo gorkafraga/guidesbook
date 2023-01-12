@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../1-General%20tools/GUIDE_psychopy.html">
+   PsychoPy
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../1-General%20tools/GUIDE_Web_building_in_R_markdown.html">
    Website in R markdown
   </a>
@@ -346,8 +351,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#report">
-   Report
+  <a class="reference internal nav-link" href="#warning">
+   Warning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mne-report">
+   MNE Report
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -414,8 +424,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#report">
-   Report
+  <a class="reference internal nav-link" href="#warning">
+   Warning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mne-report">
+   MNE Report
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -475,8 +490,13 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="mne-toolbox">
 <h1>MNE toolbox<a class="headerlink" href="#mne-toolbox" title="Permalink to this headline">#</a></h1>
 <p>MNE is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more.</p>
-<section id="report">
-<h2>Report<a class="headerlink" href="#report" title="Permalink to this headline">#</a></h2>
+<section id="warning">
+<h2>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">#</a></h2>
+<p>Be careful with assignments in python…
+<img alt="image" src="https://user-images.githubusercontent.com/13642762/210753779-8db80c17-139f-42c6-b9d0-a9d21da77059.png" /></p>
+</section>
+<section id="mne-report">
+<h2>MNE Report<a class="headerlink" href="#mne-report" title="Permalink to this headline">#</a></h2>
 <p>The mne.Report functions are great to generate HTML with a summary of your data, plots and even code chunks. The document is interactive, you can choose to hide or expand some images, and some of the figures (e.g., topographies with slider) are interactive.<br />
 Documentation: <a class="reference external" href="https://mne.tools/dev/auto_tutorials/intro/70_report.html#sphx-glr-auto-tutorials-intro-70-report-py">https://mne.tools/dev/auto_tutorials/intro/70_report.html#sphx-glr-auto-tutorials-intro-70-report-py</a></p>
 <section id="example-of-a-single-subject-report">
@@ -515,6 +535,9 @@ We want to make a report html file for each subject containing:</p>
 </section>
 <section id="add-elements-to-the-report">
 <h4>Add elements to the report<a class="headerlink" href="#add-elements-to-the-report" title="Permalink to this headline">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  (...)
+</pre></div>
+</div>
 </section>
 <section id="write-to-html-file">
 <h4>Write to .html file<a class="headerlink" href="#write-to-html-file" title="Permalink to this headline">#</a></h4>

@@ -361,11 +361,16 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#edge-effects-and-the-cone-of-influence">
-       Edge effects and the ‘cone’ of influence
+      <a class="reference internal nav-link" href="#the-cone-of-influence">
+       The ‘cone’ of influence
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
    </li>
   </ul>
  </li>
@@ -399,11 +404,16 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#edge-effects-and-the-cone-of-influence">
-       Edge effects and the ‘cone’ of influence
+      <a class="reference internal nav-link" href="#the-cone-of-influence">
+       The ‘cone’ of influence
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
    </li>
   </ul>
  </li>
@@ -450,14 +460,19 @@ title="Print to PDF"
  <img src='https://user-images.githubusercontent.com/13642762/208690235-41937eac-b838-4cd4-8668-8f8aee54e54b.png' height = '210px' width ='300px'>
 <p><sub> Morales and Bowers, 2022</sub></p>
 <p>See a recent comprehensive review on <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1878929322000111">Morales and Bowers, 2022</a></p>
-<section id="edge-effects-and-the-cone-of-influence">
-<h4>Edge effects and the ‘cone’ of influence<a class="headerlink" href="#edge-effects-and-the-cone-of-influence" title="Permalink to this headline">#</a></h4>
-<p>Wavelet coefficients are computed by convolving the wavelet kernel with the time series. Similarly to any convolution of signals, there is zero padding at the edges of the time series and therefore the wavelet coefficients are weaker at the beginning and end of the time series.</p>
+<section id="the-cone-of-influence">
+<h4>The ‘cone’ of influence<a class="headerlink" href="#the-cone-of-influence" title="Permalink to this headline">#</a></h4>
+<p>Wavelet coefficients are computed by convolving the wavelet kernel with the time series. Similarly to any convolution of signals, there is zero padding at the edges of the time series and therefore the wavelet coefficients are weaker at the beginning and end of the time series. In addition we can have an event we are not interested in, for instance, we may look at prestimulus interval in a larger epoch containing post stimulus activity and want to avoid the times immediately before 0 where stimulus.</p>
 <p>The cone of influence <a class="reference external" href="https://ch.mathworks.com/help/wavelet/ug/boundary-effects-and-the-cone-of-influence.html">see COI-matlab documentation</a>, are areas in the scalogram potentially affected by edge-effect artifacts. These arise from areas where the stretched wavelets extend beyond the edges of the observation interval.  These are referred as edge effects in continuous wavelet transform (CWT). Some analyses, for example, compute the COI for the time windows of interest and only take the wavelet coefficients inside the respective COI.</p>
 <img src='https://user-images.githubusercontent.com/13642762/208690651-3e6f1451-cab3-46c5-9f69-2f3daa1a2fd2.png' height = '210px' width ='300px'>
 <p><sub>An example of COI from <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fnins.2020.00290/full">Dash et al., 2020</a> </sub></p>
 <p>There is a further discussion on this on the EEGlab Wiki: <a class="reference external" href="https://sccn.ucsd.edu/wiki/Makoto%27s_preprocessing_pipeline">https://sccn.ucsd.edu/wiki/Makoto’s_preprocessing_pipeline</a></p>
 </section>
+</section>
+<section id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">#</a></h3>
+<p>Good summary of common artifacts:
+<a class="reference external" href="https://pressrelease.brainproducts.com/eeg-artifacts-handling-in-analyzer/">https://pressrelease.brainproducts.com/eeg-artifacts-handling-in-analyzer/</a></p>
 </section>
 </section>
 </section>
