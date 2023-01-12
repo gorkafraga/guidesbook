@@ -2,7 +2,9 @@
 
 Documentation http://openvibe.inria.fr/tutorial-the-most-basic-openvibe-setup/ 
 Software for BCI and real time EEG processing. 
-Two main components: server and designer.  
+Two main components: 
+- server 
+- designer  
 
 ## Basic procedure  
 
