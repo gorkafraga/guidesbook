@@ -1,17 +1,17 @@
 # PsychoPy 
 Open software for stimuli presentation. Runs on Python, uses OpenGL. It can convert the code to JS (using PsychoJS) to launch the experiment in Pavlovia.
-Documentation: https://www.psychopy.org/PsychoPyManual.pdf 
+Documentation:[ PsychoPy Documentation ](https://psychopy.org/gettingStarted.html)
 
 Note: besides generalities, this doc focuses on an existing experiment from T.Houweling that needs to be adapted.
 
 ## Main components 
 
-Use **PsychoPy Builder** to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized. 
+- Use **PsychoPy Builder** to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized. 
 Note: It is advised to use the builder for online experiments as it will generate the JS version of the code.  
 
 When you run an experiment PsychoPy Builder translates the Builder experiment into python code and then executes it. You can always see the generated code and run it into a Python program, ```but you cannot go from code back to a Builder representation```! 
 
-**PsychoPy Coder** is a basic code editor. It has an output window and Demo menu with examples.  But remember is a one-way street from Builder to Code. 
+- **PsychoPy Coder** is a basic code editor. It has an output window and Demo menu with examples.  But remember is a one-way street from Builder to Code. 
 
 
 ## Experiments 
