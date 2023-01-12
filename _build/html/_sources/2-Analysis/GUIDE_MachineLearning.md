@@ -3,7 +3,7 @@ Multivariate pattern analysis and classification
 
 ## Intro  
 The MNE-toolbox for EEG/MEG is a great option to apply MVPA and machine learning classification (using Scikit-learn libs)
- 
+
 *Additional documentation*
 
 Tutorial: 
@@ -53,24 +53,36 @@ For example:
 
 ## Scikit-learn 
 ### Main elements
-Vist the glossary section of scikit-learn https://scikit-learn.org/stable/glossary
+See : https://scikit-learn.org/stable/developers/develop.html#:~:text=An%20estimator%20is%20an%20object,estimator.
+See also the glossary section of scikit-learn https://scikit-learn.org/stable/glossary
+
 #### Estimator
-An estimator is an object which manages the estimation and decoding of a model. The model is estimated as a deterministic function of:
+The predominant object in the the API. This is an object that fits a model based on some training data and can inferr some properties on new data. It can be e.g., a classifier or a regressor. All estimators implement the `fit` method: `estimator.fit(X,y)` 
+
+The model is estimated as a deterministic function of:
 - Parameters (can be provided with set_params)
 - Global numpy.random random state if the estimator's random_state parameters is set to None
 - data or sample properties passed to the most recent call to fit, fit_transform or fit_predict or ina a sequence of partial_fit call.
 
+They must provide a `fit` method  and provide set_params and get_params. 
+
+#### Fitting 
+The `fit()` method implements estimation of some parameters in the model. 
+**Parameters
+ - X: array-like of shape (n_samples,n_features)
+ - y: array-like of shape (n_samples)
+ 
+ X.shape[0] should be the same as y.shape[0]
+ 
+ *E.g., in EEG MVPA decoding using the entire epochs, X would be of shape (n_epochs, n_channels x n_data-points), 'y' would be of shape (n_epochs) with the label of each epoch* 
+ 
 #### Feature extractors 
-A transformer takes input and produce an array-like object of features for each sumple (a 2D array-like for a set of samples). It 
-- fit
+A transformer takes input and produce an array-like object of features for each sample (a 2D array-like for a set of samples). They must implement at least: 
+
+- fit. This method is provided on every estimator. Usually takes samples X and targets y
 - transform
 - get_feature_names_out 
-### Methods 
-##### fit 
-##### transform
-##### fit_transform
-##### inverse_transform(optional)
-
+ 
 ### Pipelines
 [Sklearn pipelines](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) can be used to build a chain of transforms and estimators.
 The steps in the function are defined in the order of execution. For instance, if we want to use an  SVM classifier but we need to vectorize and scale the data  before that , our function could be something like this : 
@@ -101,10 +113,22 @@ gs_cv_svm = GridSearchCV(clf_svm_pip, parameters, scoring='accuracy', cv=Stratif
 ## Cross-validation 
 Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding. 
 
+
+<img src='https://user-images.githubusercontent.com/13642762/211787368-060cf4b2-f7ad-47bd-bf13-b03afdc9a7e7.png' height='200px' width='300px'>
+
+<sub> https://scikit-learn.org/stable/modules/cross_validation.html</sub>
+
+
 The following article reviews caveats and contains guidelines on the choice of cross validation methods:
 
 Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. *NeuroImage*. https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038
 
+
+#### Illustration of k-fold cross-validation 
+
+<img src='https://user-images.githubusercontent.com/13642762/211788402-e18acc1b-017e-4e7b-9fac-c5e77969c410.png' height='200px' width='300px'>
+
+<sub> https://scikit-learn.org/stable/modules/cross_validation.html</sub>
 
 Important concepts for CV (from Varoquax et al., 2017): 
 #### Estimating predictive power

@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../1-General%20tools/GUIDE_psychopy.html">
+   PsychoPy
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../1-General%20tools/GUIDE_Web_building_in_R_markdown.html">
    Website in R markdown
   </a>
@@ -395,35 +400,13 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fitting">
+       Fitting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#feature-extractors">
        Feature extractors
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fit">
-       fit
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#transform">
-       transform
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fit-transform">
-       fit_transform
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inverse-transform-optional">
-       inverse_transform(optional)
       </a>
      </li>
     </ul>
@@ -440,6 +423,11 @@ title="Print to PDF"
    Cross-validation
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#illustration-of-k-fold-cross-validation">
+     Illustration of k-fold cross-validation
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estimating-predictive-power">
      Estimating predictive power
@@ -613,35 +601,13 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fitting">
+       Fitting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#feature-extractors">
        Feature extractors
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fit">
-       fit
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#transform">
-       transform
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fit-transform">
-       fit_transform
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inverse-transform-optional">
-       inverse_transform(optional)
       </a>
      </li>
     </ul>
@@ -658,6 +624,11 @@ title="Print to PDF"
    Cross-validation
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#illustration-of-k-fold-cross-validation">
+     Illustration of k-fold cross-validation
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estimating-predictive-power">
      Estimating predictive power
@@ -825,39 +796,38 @@ and Scikit-learn: <a class="reference external" href="https://scikit-learn.org/s
 <h2>Scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">#</a></h2>
 <section id="main-elements">
 <h3>Main elements<a class="headerlink" href="#main-elements" title="Permalink to this headline">#</a></h3>
-<p>Vist the glossary section of scikit-learn <a class="reference external" href="https://scikit-learn.org/stable/glossary">https://scikit-learn.org/stable/glossary</a></p>
+<p>See : <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html#:~:text=An%20estimator%20is%20an%20object,estimator">https://scikit-learn.org/stable/developers/develop.html#:~:text=An estimator is an object,estimator</a>.
+See also the glossary section of scikit-learn <a class="reference external" href="https://scikit-learn.org/stable/glossary">https://scikit-learn.org/stable/glossary</a></p>
 <section id="estimator">
 <h4>Estimator<a class="headerlink" href="#estimator" title="Permalink to this headline">#</a></h4>
-<p>An estimator is an object which manages the estimation and decoding of a model. The model is estimated as a deterministic function of:</p>
+<p>The predominant object in the the API. This is an object that fits a model based on some training data and can inferr some properties on new data. It can be e.g., a classifier or a regressor. All estimators implement the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method: <code class="docutils literal notranslate"><span class="pre">estimator.fit(X,y)</span></code></p>
+<p>The model is estimated as a deterministic function of:</p>
 <ul class="simple">
 <li><p>Parameters (can be provided with set_params)</p></li>
 <li><p>Global numpy.random random state if the estimator’s random_state parameters is set to None</p></li>
 <li><p>data or sample properties passed to the most recent call to fit, fit_transform or fit_predict or ina a sequence of partial_fit call.</p></li>
 </ul>
+<p>They must provide a <code class="docutils literal notranslate"><span class="pre">fit</span></code> method  and provide set_params and get_params.</p>
+</section>
+<section id="fitting">
+<h4>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">fit()</span></code> method implements estimation of some parameters in the model.
+**Parameters</p>
+<ul class="simple">
+<li><p>X: array-like of shape (n_samples,n_features)</p></li>
+<li><p>y: array-like of shape (n_samples)</p></li>
+</ul>
+<p>X.shape[0] should be the same as y.shape[0]</p>
+<p><em>E.g., in EEG MVPA decoding using the entire epochs, X would be of shape (n_epochs, n_channels x n_data-points), ‘y’ would be of shape (n_epochs) with the label of each epoch</em></p>
 </section>
 <section id="feature-extractors">
 <h4>Feature extractors<a class="headerlink" href="#feature-extractors" title="Permalink to this headline">#</a></h4>
-<p>A transformer takes input and produce an array-like object of features for each sumple (a 2D array-like for a set of samples). It</p>
+<p>A transformer takes input and produce an array-like object of features for each sample (a 2D array-like for a set of samples). They must implement at least:</p>
 <ul class="simple">
-<li><p>fit</p></li>
+<li><p>fit. This method is provided on every estimator. Usually takes samples X and targets y</p></li>
 <li><p>transform</p></li>
 <li><p>get_feature_names_out</p></li>
 </ul>
-</section>
-</section>
-<section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">#</a></h3>
-<section id="fit">
-<h4>fit<a class="headerlink" href="#fit" title="Permalink to this headline">#</a></h4>
-</section>
-<section id="transform">
-<h4>transform<a class="headerlink" href="#transform" title="Permalink to this headline">#</a></h4>
-</section>
-<section id="fit-transform">
-<h4>fit_transform<a class="headerlink" href="#fit-transform" title="Permalink to this headline">#</a></h4>
-</section>
-<section id="inverse-transform-optional">
-<h4>inverse_transform(optional)<a class="headerlink" href="#inverse-transform-optional" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 <section id="pipelines">
@@ -885,9 +855,16 @@ The steps in the function are defined in the order of execution. For instance, i
 <section id="cross-validation">
 <h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
 <p>Measuring prediction accuracy is central to decoding. To assess a decoder, select one in various alternatives or tune its parameters. Cross-validation is the standard tool to measure predictive power and tune parameters in decoding.</p>
+<img src='https://user-images.githubusercontent.com/13642762/211787368-060cf4b2-f7ad-47bd-bf13-b03afdc9a7e7.png' height='200px' width='300px'>
+<p><sub> <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">https://scikit-learn.org/stable/modules/cross_validation.html</a></sub></p>
 <p>The following article reviews caveats and contains guidelines on the choice of cross validation methods:</p>
 <p>Varoquaux, G. et al.,2017 Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. <em>NeuroImage</em>. <a class="reference external" href="https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038">https://doi.org/10.1016/J.NEUROIMAGE.2016.10.038</a></p>
+<section id="illustration-of-k-fold-cross-validation">
+<h3>Illustration of k-fold cross-validation<a class="headerlink" href="#illustration-of-k-fold-cross-validation" title="Permalink to this headline">#</a></h3>
+<img src='https://user-images.githubusercontent.com/13642762/211788402-e18acc1b-017e-4e7b-9fac-c5e77969c410.png' height='200px' width='300px'>
+<p><sub> <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">https://scikit-learn.org/stable/modules/cross_validation.html</a></sub></p>
 <p>Important concepts for CV (from Varoquax et al., 2017):</p>
+</section>
 <section id="estimating-predictive-power">
 <h3>Estimating predictive power<a class="headerlink" href="#estimating-predictive-power" title="Permalink to this headline">#</a></h3>
 <p>We need to measure the ability of our decoder (mapping brain images to e.g., epoch labels) to <em>generalize</em> to new data. We measure the error between the predicted label and the actual label. In CV the data is split in <em>training</em> and <em>test</em> (unseen by the model, used to compute a prediction error).</p>

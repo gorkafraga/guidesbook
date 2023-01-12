@@ -1,7 +1,12 @@
 # MNE toolbox 
 MNE is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more.
 
-## Report 
+## Warning 
+Be careful with assignments in python... 
+![image](https://user-images.githubusercontent.com/13642762/210753779-8db80c17-139f-42c6-b9d0-a9d21da77059.png)
+
+
+## MNE Report 
 The mne.Report functions are great to generate HTML with a summary of your data, plots and even code chunks. The document is interactive, you can choose to hide or expand some images, and some of the figures (e.g., topographies with slider) are interactive.  
 Documentation: https://mne.tools/dev/auto_tutorials/intro/70_report.html#sphx-glr-auto-tutorials-intro-70-report-py
 
@@ -26,8 +31,7 @@ We want to make a report html file for each subject containing:
       #To get the ERPs per condition we need to compute the averages 
 
 #### Add elements to the report 
-
-
+      (...)
 
 #### Write to .html file
 
