@@ -41,6 +41,9 @@ The Psychopy version control can cause problems:  you can trying leaving the opt
 #### Problems with python packages 
 I had some problems with python packages that were needed for the experiment but were not installed in the LABS's PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the `libs` folder within your psychopy folder. When the psychopy scripts does `'import packagename'` it should then be able to load the package. 
  
+#### Permissions
+Make sure the experiment folder, where output files will be written, has the appropriate read/write permissions
+
 #### JS warnings in runner log
 In R.Becker's scripts there may be some warnings related to JavaScript. Their source is not yet identified but the experiment was running well (the warnings were also there during previous data collection)
 
