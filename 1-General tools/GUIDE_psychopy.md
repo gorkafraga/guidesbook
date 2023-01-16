@@ -39,7 +39,7 @@ In our experiment there are blocks with stimuli presentation triggered by EEG si
 The Psychopy version control can cause problems:  you can trying leaving the option blank in the psychopy settings, instead of specifying a version 
 
 #### Problems with python packages 
-I had some problems with python packages that were needed for the experiment but were not installed in the LABS's PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the `libs` folder within your psychopy folder. When the psychopy scripts does `'import packagename'` it should then be able to load the package. 
+I had some problems with python packages that were needed for the experiment but were not installed in the LABS's PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the `libs` folder within your psychopy folder (usually in Windows in the 'Program files' directory). When the psychopy scripts does `'import packagename'` it should then be able to load the package. 
  
 #### Permissions
 Make sure the experiment folder, where output files will be written, has the appropriate read/write permissions
