@@ -21,19 +21,21 @@ An example with instructions was retrieved from: https://crumplab.com/LabJournal
  
 We can also have an external file, for example a table, with content that we will edit or update more often. Then in Rmarkdown we can just have some code to read and include the content in the site when we ``knit`` the R markdown or `build` the website.
  
+ In this example we a have an excel table with two columns: titles and content. 
   ```
   ```{r, echo=FALSE, results='asis'}
   child <- openxlsx::read.xlsx("mytable.xlsx")
-  #put together info from both cols
+  
+  # combine info from both columns
   df <- as.data.frame(paste(child$title,'\n ',child$content))
   colnames(df)[1] <-'text'
+  
   # Generate child
   res <- lapply(df$text, function(x) {
      knitr::knit_child(text = c(
        '## `r x`'
      ), envir = environment(), quiet = TRUE)
    })
-
    cat(unlist(res), sep = '\n')
   ```. 
 ```
