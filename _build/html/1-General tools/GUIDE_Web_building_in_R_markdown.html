@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="EEG features" href="../2-Analysis/GUIDE_EEG.html" />
-    <link rel="prev" title="Python" href="GUIDE_python.html" />
+    <link rel="prev" title="PsychoPy" href="GUIDE_psychopy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,6 +136,11 @@ const thebe_selector_output = ".output, .cell_output"
    Python
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_psychopy.html">
+   PsychoPy
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Website in R markdown
@@ -166,6 +171,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../2-Analysis/GUIDE_openvibe.html">
    Openvibe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reproducibility
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-Reproducibility/GUIDE_BIDS.html">
+   Brain Imaging Data Structure - BIDS
   </a>
  </li>
 </ul>
@@ -363,6 +380,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-content-from-files">
+     Reading content from files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setting-up-the-github-page">
      Setting up the github page
     </a>
@@ -421,6 +443,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-content-from-files">
+     Reading content from files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setting-up-the-github-page">
      Setting up the github page
     </a>
@@ -473,6 +500,28 @@ title="Print to PDF"
 It will require some Rmarkdown files and a yml file with header specifications. The option ‘publish ‘ site in R studio will generate html files from your rmarkdown files.
 An example with instructions was retrieved from: <a class="reference external" href="https://crumplab.com/LabJournalWebsite/index.html">https://crumplab.com/LabJournalWebsite/index.html</a></p>
 <p>Install R and Rstudio with the package “Rmarkdown” installed ( make sure it is installed with dependencies:  install.packages(“Rmarkdown”,dependencies = TRUE)</p>
+<section id="reading-content-from-files">
+<h3>Reading content from files<a class="headerlink" href="#reading-content-from-files" title="Permalink to this headline">#</a></h3>
+<p>We can also have an external file, for example a table, with content that we will edit or update more often. Then in Rmarkdown we can just have some code to read and include the content in the site when we <code class="docutils literal notranslate"><span class="pre">knit</span></code> the R markdown or <code class="docutils literal notranslate"><span class="pre">build</span></code> the website.</p>
+<p>In this example we a have an excel table with two columns: titles and content.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{r, echo=FALSE, results=&#39;asis&#39;}
+child &lt;- openxlsx::read.xlsx(&quot;mytable.xlsx&quot;)
+
+# combine info from both columns
+df &lt;- as.data.frame(paste(child$title,&#39;\n &#39;,child$content))
+colnames(df)[1] &lt;-&#39;text&#39;
+
+# Generate child
+res &lt;- lapply(df$text, function(x) {
+   knitr::knit_child(text = c(
+     &#39;## `r x`&#39;
+   ), envir = environment(), quiet = TRUE)
+ })
+ cat(unlist(res), sep = &#39;\n&#39;)
+```. 
+</pre></div>
+</div>
+</section>
 <section id="setting-up-the-github-page">
 <h3>Setting up the github page<a class="headerlink" href="#setting-up-the-github-page" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
@@ -542,11 +591,11 @@ That’s it, now if you type in your browser gorka.science it will show the cont
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="GUIDE_python.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="GUIDE_psychopy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Python</p>
+            <p class="prev-next-title">PsychoPy</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../2-Analysis/GUIDE_EEG.html" title="next page">
