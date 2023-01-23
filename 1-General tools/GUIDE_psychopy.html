@@ -174,6 +174,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reproducibility
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-Reproducibility/GUIDE_BIDS.html">
+   Brain Imaging Data Structure - BIDS
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -354,6 +366,24 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#main-components">
    Main components
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychopy-builder">
+     <strong>
+      PsychoPy Builder
+     </strong>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychopy-coder">
+     <strong>
+      PsychoPy Coder
+     </strong>
+     .
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experiments">
@@ -364,6 +394,38 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#interaction-with-openvibe">
    Interaction with Openvibe
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubleshooting">
+   Troubleshooting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connecting-with-openvibe-outside-the-lab">
+     Connecting with OpenVibe outside the lab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issues-with-version-control">
+     Issues with version control
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems-with-python-packages">
+     Problems with python packages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#permissions">
+     Permissions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#js-warnings-in-runner-log">
+     JS warnings in runner log
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -388,6 +450,24 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#main-components">
    Main components
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychopy-builder">
+     <strong>
+      PsychoPy Builder
+     </strong>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychopy-coder">
+     <strong>
+      PsychoPy Coder
+     </strong>
+     .
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experiments">
@@ -398,6 +478,38 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#interaction-with-openvibe">
    Interaction with Openvibe
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubleshooting">
+   Troubleshooting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connecting-with-openvibe-outside-the-lab">
+     Connecting with OpenVibe outside the lab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issues-with-version-control">
+     Issues with version control
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems-with-python-packages">
+     Problems with python packages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#permissions">
+     Permissions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#js-warnings-in-runner-log">
+     JS warnings in runner log
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -412,24 +524,60 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="psychopy">
 <h1>PsychoPy<a class="headerlink" href="#psychopy" title="Permalink to this headline">#</a></h1>
 <p>Open software for stimuli presentation. Runs on Python, uses OpenGL. It can convert the code to JS (using PsychoJS) to launch the experiment in Pavlovia.
-Documentation: <a class="reference external" href="https://www.psychopy.org/PsychoPyManual.pdf">https://www.psychopy.org/PsychoPyManual.pdf</a></p>
+Documentation:<a class="reference external" href="https://psychopy.org/gettingStarted.html"> PsychoPy Documentation </a></p>
+<p>Note: besides generalities, this doc focuses on an existing experiment from R.Becker (DiN project, T.Houweling analysis) that needs to be adapted.</p>
 <section id="main-components">
 <h2>Main components<a class="headerlink" href="#main-components" title="Permalink to this headline">#</a></h2>
-<p>Use PsychoPy Builder to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized.
-Note: It is advised to use the builder for online experiments as it will generate the JS version of the code !</p>
-<p>When you run an experiment PsychoPy Builder translates the Builder experiment into python code and then executes it. You can always see the generated code and run it into a Python program, but you cannot go from code back to a Builder representation !
-PsychoPy Coder is a basic code editor. It has an output window and Demo menu with examples.</p>
+<section id="psychopy-builder">
+<h3><strong>PsychoPy Builder</strong>.<a class="headerlink" href="#psychopy-builder" title="Permalink to this headline">#</a></h3>
+<p>Use builder to modify the scripts. It is a GUI that also allows to insert code chunks (e.g., for custom randomization or loops). The script cannot be modified outside the GUI. For the GUI, xls files with list of stimuli and design parameters are used. Log files can be customized.
+Note: It is advised to use the builder for online experiments as it will generate the JS version of the code, even for advanced programmers.</p>
+<p>When you run an experiment PsychoPy Builder translates the Builder experiment into python code and then executes it. You can always see the generated code and run it into a Python program, <code class="docutils literal notranslate"><span class="pre">but</span> <span class="pre">you</span> <span class="pre">cannot</span> <span class="pre">go</span> <span class="pre">from</span> <span class="pre">code</span> <span class="pre">back</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">Builder</span> <span class="pre">representation</span></code>!</p>
+</section>
+<section id="psychopy-coder">
+<h3><strong>PsychoPy Coder</strong>.<a class="headerlink" href="#psychopy-coder" title="Permalink to this headline">#</a></h3>
+<p>Basic code editor. It has an output window and Demo menu with examples.  But remember is a one-way street from Builder to Code.</p>
+</section>
 </section>
 <section id="experiments">
 <h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">#</a></h2>
-<p>Experiments are .psyexp files that you can open in Builder.<br />
-They have a ‘Routines’ panel with tabs for the different components and a ‘Flow’ panel with an overview of the loops and routines.</p>
+<p>Experiments are <strong>.psyexp</strong> files that you can open in Builder.</p>
+<ul class="simple">
+<li><p><em>Routines</em> panel has tabs for the different components</p></li>
+<li><p><em>Flow</em> panel shows an overview of the loops and routines.</p></li>
+</ul>
 <p>Each component will typically has code, text (e.g., displayed instructions or feedback) and responses assigned.
 Use control + arrow keys to navigate through tabs in the ‘routines’ panel . Clicking on the blocks in the ‘Flow’ panel view will take you to the corresponding tab in ‘routines’ panel.</p>
 </section>
 <section id="interaction-with-openvibe">
 <h2>Interaction with Openvibe<a class="headerlink" href="#interaction-with-openvibe" title="Permalink to this headline">#</a></h2>
 <p>In our experiment there are blocks with stimuli presentation triggered by EEG signal, preprocessed in real time with Openvibe. This operation is captured in the  block ‘signal check’.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
+<section id="connecting-with-openvibe-outside-the-lab">
+<h3>Connecting with OpenVibe outside the lab<a class="headerlink" href="#connecting-with-openvibe-outside-the-lab" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>To run a real time EEG outside the lab you need some ‘fake’ eeg data in Openvibe. You will need to first <em>run the openvibe script</em> (some debugging script running simulated data) until you see it <em>streaming simulated data</em>.</p></li>
+<li><p>Then open Psychopy and run your experiment</p></li>
+</ul>
+</section>
+<section id="issues-with-version-control">
+<h3>Issues with version control<a class="headerlink" href="#issues-with-version-control" title="Permalink to this headline">#</a></h3>
+<p>The Psychopy version control can cause problems:  you can trying leaving the option blank in the psychopy settings, instead of specifying a version</p>
+</section>
+<section id="problems-with-python-packages">
+<h3>Problems with python packages<a class="headerlink" href="#problems-with-python-packages" title="Permalink to this headline">#</a></h3>
+<p>I had some problems with python packages that were needed for the experiment but were not installed in the LABS’s PC. e.g., I needed xlsxwrite (error will be prompted in the log when running the experiment). You can download the package and copying the content into the <code class="docutils literal notranslate"><span class="pre">libs</span></code> folder within your psychopy folder (usually in Windows in the ‘Program files’ directory). When the psychopy scripts does <code class="docutils literal notranslate"><span class="pre">'import</span> <span class="pre">packagename'</span></code> it should then be able to load the package.</p>
+</section>
+<section id="permissions">
+<h3>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">#</a></h3>
+<p>Make sure the experiment folder, where output files will be written, has the appropriate read/write permissions</p>
+</section>
+<section id="js-warnings-in-runner-log">
+<h3>JS warnings in runner log<a class="headerlink" href="#js-warnings-in-runner-log" title="Permalink to this headline">#</a></h3>
+<p>In R.Becker’s scripts there may be some warnings related to JavaScript. Their source is not yet identified but the experiment was running well (the warnings were also there during previous data collection)</p>
+</section>
 </section>
 </section>
 
