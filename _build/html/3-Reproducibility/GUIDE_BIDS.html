@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Openvibe &#8212; Neuroling guides</title>
+    <title>Brain Imaging Data Structure - BIDS &#8212; Neuroling guides</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Brain Imaging Data Structure - BIDS" href="../3-Reproducibility/GUIDE_BIDS.html" />
-    <link rel="prev" title="MNE toolbox" href="GUIDE_MNE.html" />
+    <link rel="prev" title="Openvibe" href="../2-Analysis/GUIDE_openvibe.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,24 +151,24 @@ const thebe_selector_output = ".output, .cell_output"
   Analysis
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_EEG.html">
+  <a class="reference internal" href="../2-Analysis/GUIDE_EEG.html">
    EEG features
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_MachineLearning.html">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MachineLearning.html">
    Machine learning decoding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_MNE.html">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MNE.html">
    MNE toolbox
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_openvibe.html">
    Openvibe
   </a>
  </li>
@@ -179,9 +178,9 @@ const thebe_selector_output = ".output, .cell_output"
   Reproducibility
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../3-Reproducibility/GUIDE_BIDS.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Brain Imaging Data Structure - BIDS
   </a>
  </li>
@@ -275,7 +274,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F2-Analysis/GUIDE_openvibe.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F3-Reproducibility/GUIDE_BIDS.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -303,7 +302,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/2-Analysis/GUIDE_openvibe.md"
+        <a href="../_sources/3-Reproducibility/GUIDE_BIDS.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -362,36 +361,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-procedure">
-   Basic procedure
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Brain Imaging Data Structure - BIDS
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-experiment">
-   Our experiment
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automated-pipelines">
+   Automated pipelines
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-before-experiment">
-     Preparation before experiment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openvibe-designer-64bit">
-   OpenViBE designer 64bit
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#input-settings">
-     Input settings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fixed-settings">
-     Fixed settings
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discover-eeg-an-open-fully-automated-eeg-pipeline-for-biomarker-discovery-in-clinical-neuroscience">
+     DISCOVER-EEG: : an open, fully automated EEG pipeline for biomarker discovery in clinical neuroscience
     </a>
    </li>
   </ul>
@@ -405,7 +387,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Openvibe</h1>
+                <h1>Brain Imaging Data Structure - BIDS</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -415,36 +397,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-procedure">
-   Basic procedure
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Brain Imaging Data Structure - BIDS
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-experiment">
-   Our experiment
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automated-pipelines">
+   Automated pipelines
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-before-experiment">
-     Preparation before experiment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openvibe-designer-64bit">
-   OpenViBE designer 64bit
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#input-settings">
-     Input settings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fixed-settings">
-     Fixed settings
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discover-eeg-an-open-fully-automated-eeg-pipeline-for-biomarker-discovery-in-clinical-neuroscience">
+     DISCOVER-EEG: : an open, fully automated EEG pipeline for biomarker discovery in clinical neuroscience
     </a>
    </li>
   </ul>
@@ -459,45 +424,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="openvibe">
-<h1>Openvibe<a class="headerlink" href="#openvibe" title="Permalink to this headline">#</a></h1>
-<p>Documentation <a class="reference external" href="http://openvibe.inria.fr/tutorial-the-most-basic-openvibe-setup/">http://openvibe.inria.fr/tutorial-the-most-basic-openvibe-setup/</a>
-Software for BCI and real time EEG processing.
-Two main components:</p>
-<ul class="simple">
-<li><p>server</p></li>
-<li><p>designer</p></li>
-</ul>
-<section id="basic-procedure">
-<h2>Basic procedure<a class="headerlink" href="#basic-procedure" title="Permalink to this headline">#</a></h2>
-<p>Openvibe gets data from the acquisition device (e.g., Biosemi) through the Acquisition Server and sends it to one or more clients (e.g., OpenViBE designer). Clients can be in a different machine on the same network.</p>
+  <section id="brain-imaging-data-structure-bids">
+<h1>Brain Imaging Data Structure - BIDS<a class="headerlink" href="#brain-imaging-data-structure-bids" title="Permalink to this headline">#</a></h1>
+<p>The BIDS is an attempt to define some simple ways of organizing our data from different neuroimaging modalities so that it can be shared.</p>
+<p>Visit the extensive docummentation at:
+<a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html">https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html</a></p>
 </section>
-<section id="our-experiment">
-<h2>Our experiment<a class="headerlink" href="#our-experiment" title="Permalink to this headline">#</a></h2>
-<p>Based on the documentation from R. Becker:</p>
-<section id="preparation-before-experiment">
-<h3>Preparation before experiment<a class="headerlink" href="#preparation-before-experiment" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Create a folder for current measurement (e.g., Measurement_666) with two subfolders:</p></li>
-<li><p>Acquisition material”. Contains copies of:<br />
-- All audio stimuli and .xlsx file referring to them (for PsychoPy)
--  Inpout32.h, inpoutx64.lib and inpoutx64.dll. These are necessary for the EEG markers
--  Openvibe experiment file ‘alpha_triggered.xml’ file  (output will write individual mean &amp; sd alpha ratios)  “Output data” .</p></li>
-</ul>
-</section>
-</section>
-<section id="openvibe-designer-64bit">
-<h2>OpenViBE designer 64bit<a class="headerlink" href="#openvibe-designer-64bit" title="Permalink to this headline">#</a></h2>
-<section id="input-settings">
-<h3>Input settings<a class="headerlink" href="#input-settings" title="Permalink to this headline">#</a></h3>
-<p>Open the openViBE experiment .xml file (‘alpha_triggered.xml’) and set the path and file name of the output files in the boxes showed in the figure:</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/196431435-4445f86b-70c8-4cfc-bb38-0d3f230b5cdd.png" /></p>
-</section>
-<section id="fixed-settings">
-<h3>Fixed settings<a class="headerlink" href="#fixed-settings" title="Permalink to this headline">#</a></h3>
-<p>The following settings should be already set in the experiment file and we should not change:</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/13642762/196431745-e895ece6-8664-4884-80c4-f26180d7bd65.png" /></p>
-</section>
+<section id="automated-pipelines">
+<h1>Automated pipelines<a class="headerlink" href="#automated-pipelines" title="Permalink to this headline">#</a></h1>
+<section id="discover-eeg-an-open-fully-automated-eeg-pipeline-for-biomarker-discovery-in-clinical-neuroscience">
+<h2>DISCOVER-EEG: : an open, fully automated EEG pipeline for biomarker discovery in clinical neuroscience<a class="headerlink" href="#discover-eeg-an-open-fully-automated-eeg-pipeline-for-biomarker-discovery-in-clinical-neuroscience" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.01.20.524897v1">https://www.biorxiv.org/content/10.1101/2023.01.20.524897v1</a></p>
 </section>
 </section>
 
@@ -514,7 +451,7 @@ Two main components:</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./2-Analysis"
+            path: "./3-Reproducibility"
         },
         predefinedOutput: true
     }
@@ -528,19 +465,12 @@ Two main components:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="GUIDE_MNE.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../2-Analysis/GUIDE_openvibe.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">MNE toolbox</p>
+            <p class="prev-next-title">Openvibe</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../3-Reproducibility/GUIDE_BIDS.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Brain Imaging Data Structure - BIDS</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
