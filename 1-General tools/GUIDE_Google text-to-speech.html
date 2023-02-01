@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Google text-to-speech &#8212; Neuroling guides</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EEG features" href="../2-Analysis/GUIDE_EEG.html" />
+    <link rel="prev" title="Website in R markdown" href="GUIDE_Web_building_in_R_markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuroling guides</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc tools
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_Github.html">
+   Github
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_Jupyter%20book.html">
+   Jupyter book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_psychopy.html">
+   PsychoPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_Web_building_in_R_markdown.html">
+   Website in R markdown
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Google text-to-speech
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_EEG.html">
+   EEG features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MachineLearning.html">
+   Machine learning decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_MNE.html">
+   MNE toolbox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-Analysis/GUIDE_openvibe.html">
+   Openvibe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reproducibility
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-Reproducibility/GUIDE_BIDS.html">
+   Brain Imaging Data Structure - BIDS
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gorkafraga/guidesbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F1-General tools/GUIDE_Google text-to-speech.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1-General tools/GUIDE_Google text-to-speech.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-started-with-google-cloud">
+   Get started with Google Cloud
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-google-text-to-speech-api">
+   Set up Google Text-to-speech API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-code-to-generate-sentences">
+   Run code to generate sentences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-snippet">
+     Code snippet
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Google text-to-speech</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-started-with-google-cloud">
+   Get started with Google Cloud
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-google-text-to-speech-api">
+   Set up Google Text-to-speech API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-code-to-generate-sentences">
+   Run code to generate sentences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-snippet">
+     Code snippet
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="google-text-to-speech">
+<h1>Google text-to-speech<a class="headerlink" href="#google-text-to-speech" title="Permalink to this headline">#</a></h1>
+<p>Generates audio files from text.</p>
+<p>The API Google Text-to-Speech (<a class="reference external" href="https://cloud.google.com/text-to-speech">https://cloud.google.com/text-to-speech</a>) in Google Cloud services offers advanced naturalistic voices (like Wavenet, Neural2). It also has advanced features, like the possibility of customizing and tunning voices. If you just need some basic synthetic-sounding text to speech using the standard engine, you can use’gTTS’ library in Python <a class="reference external" href="https://pypi.org/project/gTTS/">https://pypi.org/project/gTTS/</a>.</p>
+<p>In this <strong>example</strong> we will set up the API and run some Python code in the cloud to generate variations of a sentence for an experiment</p>
+<section id="get-started-with-google-cloud">
+<h2>Get started with Google Cloud<a class="headerlink" href="#get-started-with-google-cloud" title="Permalink to this headline">#</a></h2>
+<p>You better follow the official quick start guides on this: <a class="reference external" href="https://cloud.google.com/docs/get-started">https://cloud.google.com/docs/get-started</a>
+It is easy and quick to get your gmail user started.
+<strong>Warning</strong> note that most of the services have a cost after the free trial period. Also, of course, note that you will have your files in the Google cloud…</p>
+<ul class="simple">
+<li><p>Once there you can Activate ‘Cloud Shell’ (terminal icon on top right corner next to your user). This will open a tab at the bottom of the page where you can run commands.</p></li>
+<li><p>In the Cloud Shell you can also run python code if you type <code class="docutils literal notranslate"><span class="pre">iPython</span></code></p></li>
+<li><p>In the Cloud Shell terminal tab you can click <em>Open Editor</em> which you will need to run code for your API (see below)</p></li>
+</ul>
+</section>
+<section id="set-up-google-text-to-speech-api">
+<h2>Set up Google Text-to-speech API<a class="headerlink" href="#set-up-google-text-to-speech-api" title="Permalink to this headline">#</a></h2>
+<p>Once you are a GC user there are many services and APIs you can use.  Text to speech is just one of them <a class="reference external" href="https://cloud.google.com/text-to-speech">https://cloud.google.com/text-to-speech</a></p>
+<ul class="simple">
+<li><p>After becoming a Google cloud user you will probably have a default starter project “My First Project” or something like that. You will operate within that project.</p></li>
+<li><p>Go to your cloud console <a class="reference external" href="https://console.cloud.google.com/">https://console.cloud.google.com/</a></p></li>
+<li><p>In the Navigation menu on the left side go to <em>APIs and services/Library</em></p></li>
+<li><p>Once in the API library type: <em>Text-to-speech</em> in the search bar to find the API site</p></li>
+<li><p>Once there follow the get started guides and click on Try This API to access the documentation: <a class="reference external" href="https://cloud.google.com/text-to-speech/docs/reference/rest/?apix=true">https://cloud.google.com/text-to-speech/docs/reference/rest/?apix=true</a></p></li>
+</ul>
+</section>
+<section id="run-code-to-generate-sentences">
+<h2>Run code to generate sentences<a class="headerlink" href="#run-code-to-generate-sentences" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Open the <strong>editor</strong> (From Cloud shell terminal, click ‘open editor’ )</p></li>
+<li><p>There you should see on the left side a panel wtih your project and API folder and files</p></li>
+<li><p>You can start a new file (file/ open) with some code and then run it from there</p></li>
+</ul>
+<section id="code-snippet">
+<h3>Code snippet<a class="headerlink" href="#code-snippet" title="Permalink to this headline">#</a></h3>
+<p>The following code will:</p>
+<ul class="simple">
+<li><p>Create variations of a fixed sentence structure in which 3 words can vary</p></li>
+<li><p>Generate speech from each variation with different naturalistic voices</p></li>
+<li><p>Save each file as mp3 with the filename accounting for the variation number and voice used.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">google.cloud.texttospeech</span> <span class="k">as</span> <span class="nn">tts</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Sentence variations </span>
+<span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;Vorsicht xnamex, gang sofort zum xcolorx Fäld vo de Spalte xnumberx&#39;</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Adler&#39;</span><span class="p">,</span><span class="s1">&#39;Drossel&#39;</span><span class="p">,</span><span class="s1">&#39;Tiger&#39;</span><span class="p">,</span><span class="s1">&#39;Unke&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Gelb&#39;</span><span class="p">,</span><span class="s1">&#39;Gruen&#39;</span><span class="p">,</span><span class="s1">&#39;Rot&#39;</span><span class="p">,</span><span class="s1">&#39;Weiss&#39;</span><span class="p">]</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Eins&#39;</span><span class="p">,</span><span class="s1">&#39;Zwei&#39;</span><span class="p">,</span><span class="s1">&#39;Drei&#39;</span><span class="p">,</span><span class="s1">&#39;Vier&#39;</span><span class="p">]</span>
+
+
+<span class="n">sentence_version</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;xnamex&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;xcolorx&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;xnumberx&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>         
+           <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+
+<span class="n">lang_voice_speaker</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;de-DE-Neural2-D&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Neural2-F&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-A&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-A&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-B&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-C&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-D&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-E&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;de-DE-Wavenet-F&#39;</span><span class="p">]</span>
+<span class="c1">#lang_voice_speaker = [&#39;de-DE-Wavenet-F&#39;]</span>
+
+<span class="k">def</span> <span class="nf">text_to_wav</span><span class="p">(</span><span class="n">voice_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">outputname</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">language_code</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">voice_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>    
+        <span class="n">text_input</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">SynthesisInput</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">voice_params</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">VoiceSelectionParams</span><span class="p">(</span><span class="n">language_code</span><span class="o">=</span><span class="n">language_code</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">voice_name</span><span class="p">)</span>
+        <span class="n">audio_config</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">AudioConfig</span><span class="p">(</span><span class="n">audio_encoding</span><span class="o">=</span><span class="n">tts</span><span class="o">.</span><span class="n">AudioEncoding</span><span class="o">.</span><span class="n">LINEAR16</span><span class="p">)</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">TextToSpeechClient</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">synthesize_speech</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">text_input</span><span class="p">,</span> <span class="n">voice</span><span class="o">=</span><span class="n">voice_params</span><span class="p">,</span> <span class="n">audio_config</span><span class="o">=</span><span class="n">audio_config</span><span class="p">)</span>    
+        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outputname</span><span class="si">}</span><span class="s2">.wav&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">audio_content</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated speech saved to &quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+		
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentence_version</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">voice_name</span> <span class="ow">in</span> <span class="n">lang_voice_speaker</span><span class="p">:</span>
+        <span class="n">outputname</span> <span class="o">=</span> <span class="s2">&quot;s</span><span class="si">{:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">voice_name</span>
+        <span class="c1">#print(outputname)</span>
+        <span class="n">text_to_wav</span><span class="p">(</span><span class="n">voice_name</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">outputname</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1-General tools"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="GUIDE_Web_building_in_R_markdown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Website in R markdown</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2-Analysis/GUIDE_EEG.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EEG features</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By G Fraga Gonzalez<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
