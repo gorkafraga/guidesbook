@@ -1,5 +1,5 @@
 # Jupyter book
-Create a publication-quality book and documentation 
+Create a publication-quality book and documentation made from a bunch of markdown files
 Documentation: https://jupyterbook.org/en/stable/intro.html 
 
 ## Basic workflow
