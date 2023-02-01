@@ -37,7 +37,7 @@ The following code will:
 - Save each file as mp3 with the filename accounting for the variation number and voice used. 
 
 
-````
+````python
 import google.cloud.texttospeech as tts
 import os
 
@@ -81,7 +81,3 @@ for i,text in enumerate(sentence_version):
         text_to_wav(voice_name,text,outputname)
 
 ````
-````
-
-
-
