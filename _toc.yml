@@ -13,6 +13,7 @@ parts:
   - file: 1-General tools/GUIDE_psychopy
   - file: 1-General tools/GUIDE_Web_building_in_R_markdown
   - file: 1-General tools/GUIDE_Google text-to-speech
+
 - caption: Analysis
   chapters:
   - file: 2-Analysis/GUIDE_EEG
