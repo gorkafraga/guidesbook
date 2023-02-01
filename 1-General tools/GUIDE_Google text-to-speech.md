@@ -1,20 +1,14 @@
 # Google text-to-speech 
 Generates audio files from text. 
 
-The API Google Text-to-Speech (https://cloud.google.com/text-to-speech) in Google Cloud services offers advanced naturalistic voices (like Wavenet, Neural2).
-
-It also has advaned features, like the possibility of customizing and tunning voices. If you just need some basic synthetic-sounding text to speech using the standard engine, you can use'gTTS' library in Python https://pypi.org/project/gTTS/. 
-
+The API Google Text-to-Speech (https://cloud.google.com/text-to-speech) in Google Cloud services offers advanced naturalistic voices (like Wavenet, Neural2). It also has advanced features, like the possibility of customizing and tunning voices. If you just need some basic synthetic-sounding text to speech using the standard engine, you can use'gTTS' library in Python https://pypi.org/project/gTTS/. 
 
 In this **example** we will set up the API and run some Python code in the cloud to generate variations of a sentence for an experiment
-
 ### Get started with Google Cloud
 
 You better follow the official quick start guides on this: https://cloud.google.com/docs/get-started
 It is easy and quick to get your gmail user started. 
-
-**BEWARE** most of the services have a cost but you have free trials. Also, of course, note that you will have your files in the Google cloud...
-
+**Warning** note that most of the services have a cost after the free trial period. Also, of course, note that you will have your files in the Google cloud...
 
 ### Set up Google Text-to-speech API
 Once you are a GC user there are many services and APIs you can use.  Text to speech is just one of them https://cloud.google.com/text-to-speech
