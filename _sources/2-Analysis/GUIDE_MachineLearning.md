@@ -233,7 +233,7 @@ Following temporal generalization. Here the goal is to see how different process
 
 ### Analysis workflows
 
-``` {mermaid} 
+```` {mermaid} 
 
  flowchart TB
     subgraph Data preparation  
@@ -261,11 +261,11 @@ Following temporal generalization. Here the goal is to see how different process
     CV --> stats
     end
 
-```
+````
 
 ### Folder structure
 
-```{mermaid}
+````{mermaid}
 graph LR
 %%{init: {'theme': 'neutral' } }%%
     root[DiN] --> 1[README.md]
@@ -285,7 +285,7 @@ graph LR
     subgraph 1g[ ]
       1
     end
-```
+````
 
 ## ML Glossary
 
