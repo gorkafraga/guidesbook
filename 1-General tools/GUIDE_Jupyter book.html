@@ -467,8 +467,18 @@ It seems there are some compatibility problems with latest Python versions. Then
 <ul class="simple">
 <li><p>Clone our github repository (must be publi and we need to select the gh-pages branch in the repository settings/branch)</p></li>
 <li><p>Install ghp-import in our conda environment: <code class="docutils literal notranslate"> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ghp-import</span></code></p></li>
-<li><p>Then in our local cloned repository we make changes in the book files, build the book (<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">book</span> <span class="pre">build</span> <span class="pre">mybookname</span></code>)</p></li>
-<li><p>In conda prompt we go to the folder containing the book and type:<code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code></p></li>
+<li><p>Then in our local cloned repository we make changes in the book files, build the book:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">book</span> <span class="n">build</span> <span class="n">mybookname</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In conda prompt we go to the folder containing the book and type:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Then we push the changes to the origin and it should become accessible in our github pages: <em><a class="reference external" href="http://mygithubpagename.github.io/myBookRepo">mygithubpagename.github.io/myBookRepo</a></em></p></li>
 </ul>
 </section>
