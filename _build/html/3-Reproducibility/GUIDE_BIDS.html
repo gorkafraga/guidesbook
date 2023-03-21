@@ -367,6 +367,33 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#meta-data">
+   Meta data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json">
+     JSON
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tab-delimited">
+     Tab-delimited
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-names-and-folder-organization">
+   File names and folder organization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#automated-pipelines">
    Automated pipelines
   </a>
@@ -398,6 +425,33 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#meta-data">
+   Meta data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json">
+     JSON
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tab-delimited">
+     Tab-delimited
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-names-and-folder-organization">
+   File names and folder organization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#automated-pipelines">
    Automated pipelines
   </a>
@@ -424,6 +478,64 @@ title="Print to PDF"
 <p>BIDS is an attempt to define some simple ways of organizing our data from different neuroimaging modalities so that it can be shared.</p>
 <p>Visit the extensive documentation at:
 <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html">https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html</a></p>
+<section id="meta-data">
+<h2>Meta data<a class="headerlink" href="#meta-data" title="Permalink to this headline">#</a></h2>
+<p>Language-agnostic files with relevant information.<a class="reference external" href="https://bids-standard.github.io/bids-starter-kit/folders_and_files/metadata.html">https://bids-standard.github.io/bids-starter-kit/folders_and_files/metadata.html</a>.
+Two types of files are proposed</p>
+<section id="json">
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">#</a></h3>
+<p>.json Java Script Object Notation. Human-readable text to store metadata. JSON online editor: <a class="reference external" href="https://jsoneditoronline.org/">https://jsoneditoronline.org/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;key3&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;subkey1&quot;</span><span class="p">:</span> <span class="s2">&quot;subvalue1&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Read in Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ff</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Write in Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;field1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;field2&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;field3&#39;</span><span class="p">:</span> <span class="s1">&#39;field3&#39;</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my_output_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ff</span><span class="p">:</span>
+   <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ff</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="tab-delimited">
+<h3>Tab-delimited<a class="headerlink" href="#tab-delimited" title="Permalink to this headline">#</a></h3>
+<p>.tsv Tab-delimited files
+For example , they can contain events, channel locations, etc.</p>
+<p>Read in Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./ds001/participants.tsv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Write in Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;my_new_file.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="file-names-and-folder-organization">
+<h2>File names and folder organization<a class="headerlink" href="#file-names-and-folder-organization" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The MNE toolbox has some functions to help following a BIDS-compatible file names:
+<a class="reference external" href="https://mne.tools/mne-bids/stable/auto_examples/create_bids_folder.html">https://mne.tools/mne-bids/stable/auto_examples/create_bids_folder.html</a></p></li>
+<li><p>Details about EEG specific files in:<br />
+<a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html">https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html</a></p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<p>Get oriented with more examples from BIDS site: <a class="reference external" href="https://github.com/bids-standard/bids-examples/tree/master/">https://github.com/bids-standard/bids-examples/tree/master/</a></p>
+</section>
 <section id="automated-pipelines">
 <h2>Automated pipelines<a class="headerlink" href="#automated-pipelines" title="Permalink to this headline">#</a></h2>
 <section id="discover-eeg">
