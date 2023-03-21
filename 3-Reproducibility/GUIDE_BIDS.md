@@ -51,13 +51,13 @@ df.to_csv('my_new_file.tsv', sep='\t')
 ```
 
 ## File names and folder organization
-
-- The MNE toolbox has some functions to help following a BIDS-compatible file names: https://mne.tools/mne-bids/stable/auto_examples/create_bids_folder.html
-- Details about EEG specific files in:  https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html
+- The MNE toolbox has some functions to help following a BIDS-compatible file names:
+  https://mne.tools/mne-bids/stable/auto_examples/create_bids_folder.html
+- Details about EEG specific files in:  
+  https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html
 
 ## Examples
-Get oriented with some examples from BIDS site: https://github.com/bids-standard/bids-examples/tree/master/
-
+Get oriented with more examples from BIDS site: https://github.com/bids-standard/bids-examples/tree/master/
 
 
 
