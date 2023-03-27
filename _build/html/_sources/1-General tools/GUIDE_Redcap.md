@@ -4,7 +4,7 @@ Ideal for keeping your participants info like screening or questionnaires, which
 
 Here are some quick notes: 
 ## 1. BASIC PROJECT SETUP
-### User profile :
+### User profile
 - Here you can set up your decimal and thousand separator and date formats (will affect data export from all your projects)
 -	Each user can have several projects organized in folders. The folder organization of the projects only affects that user 
 
@@ -22,17 +22,17 @@ Each project can have many different instruments. For example you could have : �
 -	Each instrument can be set as survey that can be sent to participants as a link (see next section)
 -	Each instrument can have events: for example, several time points of the same test/survey
 -	In each instrument you can add FIELDS (= variables)
-o	Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster. 
-o	You can also upload Fields to and from multiple projects
-o	Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.
-o	WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
-o	Define the format (date,number , text ,  decimal separator).
-o	Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)
-o	A field can have calculations using a formula to compute variables from existing variables
-o	You can add Begin section  to mark a series of fields from , e.g., the same test
-o	Set to “required’ if you want to make filling that variable compulsory
-o	‘Identifier’ options can be restricted for a given variable to mask exporting (?)
-o	Use field Notes for lengthier explanations or notes on this variable .How is this exported?
+-	Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster. 
+-	You can also upload Fields to and from multiple projects
+-	Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.
+-	WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
+-	Define the format (date,number , text ,  decimal separator).
+-	Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)
+-	A field can have calculations using a formula to compute variables from existing variables
+-	You can add Begin section  to mark a series of fields from , e.g., the same test
+-	Set to “required’ if you want to make filling that variable compulsory
+-	‘Identifier’ options can be restricted for a given variable to mask exporting (?)
+-	Use field Notes for lengthier explanations or notes on this variable .How is this exported?
 
 ### 2.2	SURVEY DATA
 Surveys are instruments that can be sent via link . 
