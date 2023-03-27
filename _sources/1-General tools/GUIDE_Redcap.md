@@ -19,13 +19,18 @@ Some important options in project setup are:
 ## 2.PROJECT DESIGN
 ### 2.1 INSTRUMENTS, FIELD LABELS AND VARIABLES
 Each project can have many different instruments. For example you could have : “cognitive_tests”  and “questionnaires” . 
--	Each instrument can be set as survey that can be sent to participants as a link (see next section)
+-	Each **instrument** can be set as survey that can be sent to participants as a link (see next section)
 -	Each instrument can have events: for example, several time points of the same test/survey
--	In each instrument you can add FIELDS (= variables)
+
+-	In each instrument you can add **FIELDS** (~= variables)
 -	Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster. 
 -	You can also upload Fields to and from multiple projects
 -	Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.
--	WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
+
+
+- ````WARNING:```` once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
+
+
 -	Define the format (date,number , text ,  decimal separator).
 -	Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)
 -	A field can have calculations using a formula to compute variables from existing variables
