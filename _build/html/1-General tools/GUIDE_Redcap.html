@@ -396,7 +396,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instruments-field-labels-and-variables">
-     INSTRUMENTS, FIELD LABELS AND VARIABLES
+     2.1 INSTRUMENTS, FIELD LABELS AND VARIABLES
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -471,7 +471,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instruments-field-labels-and-variables">
-     INSTRUMENTS, FIELD LABELS AND VARIABLES
+     2.1 INSTRUMENTS, FIELD LABELS AND VARIABLES
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -542,16 +542,16 @@ Ideal for keeping your participants info like screening or questionnaires, which
 <section id="project-design">
 <h2>2.PROJECT DESIGN<a class="headerlink" href="#project-design" title="Permalink to this headline">#</a></h2>
 <section id="instruments-field-labels-and-variables">
-<h3>INSTRUMENTS, FIELD LABELS AND VARIABLES<a class="headerlink" href="#instruments-field-labels-and-variables" title="Permalink to this headline">#</a></h3>
+<h3>2.1 INSTRUMENTS, FIELD LABELS AND VARIABLES<a class="headerlink" href="#instruments-field-labels-and-variables" title="Permalink to this headline">#</a></h3>
 <p>Each project can have many different instruments. For example you could have : “cognitive_tests”  and “questionnaires” .</p>
 <ul class="simple">
-<li><p>Each instrument can be set as survey that can be sent to participants as a link (see next section)</p></li>
+<li><p>Each <strong>instrument</strong> can be set as survey that can be sent to participants as a link (see next section)</p></li>
 <li><p>Each instrument can have events: for example, several time points of the same test/survey</p></li>
-<li><p>In each instrument you can add FIELDS (= variables)</p></li>
+<li><p>In each instrument you can add <strong>FIELDS</strong> (~= variables)</p></li>
 <li><p>Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster.</p></li>
 <li><p>You can also upload Fields to and from multiple projects</p></li>
 <li><p>Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.</p></li>
-<li><p>WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARNING:</span></code> once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field</p></li>
 <li><p>Define the format (date,number , text ,  decimal separator).</p></li>
 <li><p>Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)</p></li>
 <li><p>A field can have calculations using a formula to compute variables from existing variables</p></li>
