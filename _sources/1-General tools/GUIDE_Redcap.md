@@ -17,7 +17,7 @@ Some important options in project setup are:
 -	Backing up project: what is best approach?   (...) See e.g.,  https://guides.temple.edu/c.php?g=936400&p=6879976
 
 ## 2.PROJECT DESIGN
-### INSTRUMENTS, FIELD LABELS AND VARIABLES
+### 2.1 INSTRUMENTS, FIELD LABELS AND VARIABLES
 Each project can have many different instruments. For example you could have : “cognitive_tests”  and “questionnaires” . 
 -	Each instrument can be set as survey that can be sent to participants as a link (see next section)
 -	Each instrument can have events: for example, several time points of the same test/survey
