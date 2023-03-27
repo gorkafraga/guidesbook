@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Website in R markdown" href="GUIDE_Web_building_in_R_markdown.html" />
-    <link rel="prev" title="PsychoPy" href="GUIDE_psychopy.html" />
+    <link rel="prev" title="Python - setup" href="GUIDE_python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -137,13 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_python.html">
-   Python - setup
+  <a class="reference internal" href="GUIDE_psychopy.html">
+   PsychoPy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_psychopy.html">
-   PsychoPy
+  <a class="reference internal" href="GUIDE_python.html">
+   Python - setup
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -379,7 +379,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#user-profile">
-     User profile :
+     User profile
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -454,7 +454,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#user-profile">
-     User profile :
+     User profile
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -521,7 +521,7 @@ Ideal for keeping your participants info like screening or questionnaires, which
 <section id="basic-project-setup">
 <h2>1. BASIC PROJECT SETUP<a class="headerlink" href="#basic-project-setup" title="Permalink to this headline">#</a></h2>
 <section id="user-profile">
-<h3>User profile :<a class="headerlink" href="#user-profile" title="Permalink to this headline">#</a></h3>
+<h3>User profile<a class="headerlink" href="#user-profile" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Here you can set up your decimal and thousand separator and date formats (will affect data export from all your projects)</p></li>
 <li><p>Each user can have several projects organized in folders. The folder organization of the projects only affects that user</p></li>
@@ -547,18 +547,18 @@ Ideal for keeping your participants info like screening or questionnaires, which
 <ul class="simple">
 <li><p>Each instrument can be set as survey that can be sent to participants as a link (see next section)</p></li>
 <li><p>Each instrument can have events: for example, several time points of the same test/survey</p></li>
-<li><p>In each instrument you can add FIELDS (= variables)
-o	Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster.
-o	You can also upload Fields to and from multiple projects
-o	Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.
-o	WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
-o	Define the format (date,number , text ,  decimal separator).
-o	Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)
-o	A field can have calculations using a formula to compute variables from existing variables
-o	You can add Begin section  to mark a series of fields from , e.g., the same test
-o	Set to “required’ if you want to make filling that variable compulsory
-o	‘Identifier’ options can be restricted for a given variable to mask exporting (?)
-o	Use field Notes for lengthier explanations or notes on this variable .How is this exported?</p></li>
+<li><p>In each instrument you can add FIELDS (= variables)</p></li>
+<li><p>Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster.</p></li>
+<li><p>You can also upload Fields to and from multiple projects</p></li>
+<li><p>Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.</p></li>
+<li><p>WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field</p></li>
+<li><p>Define the format (date,number , text ,  decimal separator).</p></li>
+<li><p>Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)</p></li>
+<li><p>A field can have calculations using a formula to compute variables from existing variables</p></li>
+<li><p>You can add Begin section  to mark a series of fields from , e.g., the same test</p></li>
+<li><p>Set to “required’ if you want to make filling that variable compulsory</p></li>
+<li><p>‘Identifier’ options can be restricted for a given variable to mask exporting (?)</p></li>
+<li><p>Use field Notes for lengthier explanations or notes on this variable .How is this exported?</p></li>
 </ul>
 </section>
 <section id="survey-data">
@@ -629,11 +629,11 @@ Score type = rw/pr/T …etc</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="GUIDE_psychopy.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="GUIDE_python.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">PsychoPy</p>
+            <p class="prev-next-title">Python - setup</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="GUIDE_Web_building_in_R_markdown.html" title="next page">
