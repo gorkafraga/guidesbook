@@ -1,5 +1,5 @@
-# Python 
-This is a quick guide for setting up the python environment. 
+# Python - setup  
+This is a  very quick guide for setting up a python environment. 
 We are likely to have multiple instances of python in our PC. We need to ensure we know which one we are using.
 
 There are many ways. This is just one I found simple enough. It requires:

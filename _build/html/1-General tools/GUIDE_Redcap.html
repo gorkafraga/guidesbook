@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Python - setup &#8212; Neuroling guides</title>
+    <title>Redcap - setup &#8212; Neuroling guides</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PsychoPy" href="GUIDE_psychopy.html" />
-    <link rel="prev" title="Jupyter book" href="GUIDE_Jupyter%20book.html" />
+    <link rel="next" title="Website in R markdown" href="GUIDE_Web_building_in_R_markdown.html" />
+    <link rel="prev" title="PsychoPy" href="GUIDE_psychopy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,8 +136,8 @@ const thebe_selector_output = ".output, .cell_output"
    Jupyter book
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="GUIDE_python.html">
    Python - setup
   </a>
  </li>
@@ -146,8 +146,8 @@ const thebe_selector_output = ".output, .cell_output"
    PsychoPy
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GUIDE_Redcap.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Redcap - setup
   </a>
  </li>
@@ -285,7 +285,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F1-General tools/GUIDE_python.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gorkafraga/guidesbook/issues/new?title=Issue%20on%20page%20%2F1-General tools/GUIDE_Redcap.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -313,7 +313,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/1-General tools/GUIDE_python.md"
+        <a href="../_sources/1-General tools/GUIDE_Redcap.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -373,34 +373,60 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-setup">
-   Basic setup
+  <a class="reference internal nav-link" href="#basic-project-setup">
+   1. BASIC PROJECT SETUP
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#user-profile">
+     User profile :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-a-new-project">
+     Start a new project
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-usage">
-   Regular usage
+  <a class="reference internal nav-link" href="#project-design">
+   2.PROJECT DESIGN
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exporting-environment-across-platforms">
-   Exporting environment across platforms
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixed-tips">
-   Mixed tips
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keywords">
-   keywords:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instruments-field-labels-and-variables">
+     INSTRUMENTS, FIELD LABELS AND VARIABLES
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survey-data">
+     2.2	SURVEY DATA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#codebook">
+     2.3	CODEBOOK
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-nomenclature">
+       Variable nomenclature
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tips">
+       Tips
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logging-corrections">
+     2.4	LOGGING CORRECTIONS
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -411,7 +437,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Python - setup</h1>
+                <h1>Redcap - setup</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -422,34 +448,60 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-setup">
-   Basic setup
+  <a class="reference internal nav-link" href="#basic-project-setup">
+   1. BASIC PROJECT SETUP
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#user-profile">
+     User profile :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-a-new-project">
+     Start a new project
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-usage">
-   Regular usage
+  <a class="reference internal nav-link" href="#project-design">
+   2.PROJECT DESIGN
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exporting-environment-across-platforms">
-   Exporting environment across platforms
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixed-tips">
-   Mixed tips
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keywords">
-   keywords:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#troubleshooting">
-   Troubleshooting
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instruments-field-labels-and-variables">
+     INSTRUMENTS, FIELD LABELS AND VARIABLES
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survey-data">
+     2.2	SURVEY DATA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#codebook">
+     2.3	CODEBOOK
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-nomenclature">
+       Variable nomenclature
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tips">
+       Tips
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logging-corrections">
+     2.4	LOGGING CORRECTIONS
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -461,84 +513,92 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="python-setup">
-<h1>Python - setup<a class="headerlink" href="#python-setup" title="Permalink to this headline">#</a></h1>
-<p>This is a  very quick guide for setting up a python environment.
-We are likely to have multiple instances of python in our PC. We need to ensure we know which one we are using.</p>
-<p>There are many ways. This is just one I found simple enough. It requires:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="redcap-setup">
+<h1>Redcap - setup<a class="headerlink" href="#redcap-setup" title="Permalink to this headline">#</a></h1>
+<p>REDCap is a secure web application for building and managing online surveys and databases. <a class="reference external" href="https://www.project-redcap.org/">https://www.project-redcap.org/</a>
+Ideal for keeping your participants info like screening or questionnaires, which may contain identifying information</p>
+<p>Here are some quick notes:</p>
+<section id="basic-project-setup">
+<h2>1. BASIC PROJECT SETUP<a class="headerlink" href="#basic-project-setup" title="Permalink to this headline">#</a></h2>
+<section id="user-profile">
+<h3>User profile :<a class="headerlink" href="#user-profile" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Anaconda3 (python environment control)</p></li>
-<li><p>Spyder (IDE)</p></li>
-</ul>
-<p>We can download Anaconda 3, from there create environments with a python version and different modules (packages). Then we launch a light IDE like Spyder (similar to Rstudio) from a given environment.
-See extensive documentation: <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">https://google.github.io/styleguide/pyguide.html</a></p>
-<section id="basic-setup">
-<h2>Basic setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">#</a></h2>
-<p>Main documentation: <a class="reference external" href="https://docs.spyder-ide.org/current/installation.html">https://docs.spyder-ide.org/current/installation.html</a></p>
-<ul class="simple">
-<li><p><strong>Download and install Anaconda3</strong>
-(If using WINDOWS: Set environment variables. Add to PATH: Anaconda3, Anaconda3/Scripts and Anaconda3/Library/bin folder )</p></li>
-<li><p><strong>Check installation</strong> : Open the command prompt and type something like: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">--envs</span></code></p></li>
-<li><p><strong>Create an environment</strong> with some modules, a version of python etc. In Anaconda prompt type:<br />
-<code class="docutils literal notranslate"> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">–n</span> <span class="pre">spyder-env</span> <span class="pre">–y</span></code>   or
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">spyder-env</span> <span class="pre">spyder</span> <span class="pre">spyder-kernels</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">pandas</span> <span class="pre">matplotlib</span> <span class="pre">sympy</span> <span class="pre">cython</span></code> (example with some basic packages)
-The environment will be saved in the folder ‘Anaconda3/envs’
-We can have multiple environments</p></li>
-<li><p><strong>Activate</strong> environment in the prompt<br />
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">spyder-env</span> </code>
-Now the console prompt should have changed indicating you are within the created environment spyder-env.
-Whatever we do know will affect only that environment.<br />
-WARNING: Anaconda3 comes with some <em>base</em> environment. Do NOT install stuff in there. Create your own environments, activate them and only within those environment mess around with conda or PIP installation of modules.</p></li>
-<li><p><strong>Launch spyder</strong>
-Type ‘Spyder’ to launch spyder from wihin this environment.</p></li>
-<li><p><strong>Installing modules</strong>
-You can also install modules like scikit-learn by typing this either in the console or in Spyder (but must be within the enviornment):
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">spyder-kernels</span> <span class="pre">scikit-learn</span> <span class="pre">seaborn</span></code></p></li>
+<li><p>Here you can set up your decimal and thousand separator and date formats (will affect data export from all your projects)</p></li>
+<li><p>Each user can have several projects organized in folders. The folder organization of the projects only affects that user</p></li>
 </ul>
 </section>
-<section id="regular-usage">
-<h2>Regular usage<a class="headerlink" href="#regular-usage" title="Permalink to this headline">#</a></h2>
-<p>Once we have our environment setup the usual workflow will involve:</p>
+<section id="start-a-new-project">
+<h3>Start a new project<a class="headerlink" href="#start-a-new-project" title="Permalink to this headline">#</a></h3>
+<p>Some important options in project setup are:</p>
 <ul class="simple">
-<li><p>Open command prompt</p></li>
-<li><p>Activate the environment you want to work on</p></li>
-<li><p>Type ‘spyder’ and keep on working on Spyder IDE</p></li>
+<li><p>Project status. setting up de the project in <strong>“Production”</strong> status means it is considered as completed. It will still be modifiable but to do this would require additional validation steps</p></li>
+<li><p>User <strong>rights</strong>: give permissions and create roles with different levels of permissions. Permit or block data export or designer functions..</p></li>
+<li><p>You can copy, rename project titles, etc</p></li>
+<li><p>Adding the participant’s <strong>email</strong>. This will be very helpful to save time contacting participants, sending reminders, etc. Note that some information like email addresses can be <strong>masked</strong> when exporting to prevent identifying subjects.</p></li>
+<li><p>Backing up project: what is best approach?   (…) See e.g.,  <a class="reference external" href="https://guides.temple.edu/c.php?g=936400&amp;p=6879976">https://guides.temple.edu/c.php?g=936400&amp;p=6879976</a></p></li>
 </ul>
 </section>
-<section id="exporting-environment-across-platforms">
-<h2>Exporting environment across platforms<a class="headerlink" href="#exporting-environment-across-platforms" title="Permalink to this headline">#</a></h2>
-<p>For example iff you created an environment in one computer and want to run those analysis in a remote desktop with a different operating system. You can export the environment and import it in the other computer. But if the OS are different the dependencies might change (but you still want to have the same version of python and packages if possible).
-<a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment</a></p>
+</section>
+<section id="project-design">
+<h2>2.PROJECT DESIGN<a class="headerlink" href="#project-design" title="Permalink to this headline">#</a></h2>
+<section id="instruments-field-labels-and-variables">
+<h3>INSTRUMENTS, FIELD LABELS AND VARIABLES<a class="headerlink" href="#instruments-field-labels-and-variables" title="Permalink to this headline">#</a></h3>
+<p>Each project can have many different instruments. For example you could have : “cognitive_tests”  and “questionnaires” .</p>
 <ul class="simple">
-<li><p>Create an environment: specify python version</p></li>
-<li><p>Export your environment:  e.g., conda env export &gt; spyder-env.yml –from-history</p></li>
-<li><p>Import (…)</p></li>
+<li><p>Each instrument can be set as survey that can be sent to participants as a link (see next section)</p></li>
+<li><p>Each instrument can have events: for example, several time points of the same test/survey</p></li>
+<li><p>In each instrument you can add FIELDS (= variables)
+o	Fields can be added manually  one by one or IMPORTED from an excel sheet. Check redcap ‘data dictionary ‘ to see how attributes and formats will be imported. Importing at least the names and basic formatting might be faster.
+o	You can also upload Fields to and from multiple projects
+o	Field label is the field description. It automatically creates a Variable name replacing spaces by “_”. But it is best to revise the variable names and check if that is what you want in your data set (see variable nomenclatures). Decide this names in advance and a consistent way of describing your fields.
+o	WARNING: once set you CAN NOT rename your variables or change field labels. It will DELETE all records (participant data) from that variable/field
+o	Define the format (date,number , text ,  decimal separator).
+o	Add validation to prevent data entry errors  (e.g., percentile scores can only include max 100, date format must comply to the field format, etc)
+o	A field can have calculations using a formula to compute variables from existing variables
+o	You can add Begin section  to mark a series of fields from , e.g., the same test
+o	Set to “required’ if you want to make filling that variable compulsory
+o	‘Identifier’ options can be restricted for a given variable to mask exporting (?)
+o	Use field Notes for lengthier explanations or notes on this variable .How is this exported?</p></li>
 </ul>
 </section>
-<section id="mixed-tips">
-<h2>Mixed tips<a class="headerlink" href="#mixed-tips" title="Permalink to this headline">#</a></h2>
+<section id="survey-data">
+<h3>2.2	SURVEY DATA<a class="headerlink" href="#survey-data" title="Permalink to this headline">#</a></h3>
+<p>Surveys are instruments that can be sent via link .</p>
+<ul class="simple">
+<li><p>A participant can receive a link with several surveys or you can use individual links</p></li>
+<li><p>The survey filling can be interrupted. If clicked in ‘save and continue later’ the participant will get a code for reentry. If this is lost  the owner can resend this link to the participant</p></li>
+<li><p>Survey distribution tools. If you decide to include the email addresses of your participants (records) this will facilitate sending survey links and reminders to participants.</p></li>
+</ul>
 </section>
-<section id="keywords">
-<h2>keywords:<a class="headerlink" href="#keywords" title="Permalink to this headline">#</a></h2>
-<p>pip = package manager works from any environment<br />
-Conda = package and environment<br />
-Spyder = IDE for python (like Rstudio)
-Anaconda =  Python distributor with multiple programs
-<a class="reference external" href="https://medium.datadriveninvestor.com/what-is-pip-conda-anaconda-spyder-jupyter-notebook-pycharm-pandas-tensorflow-and-django-36d54778d85c">https://medium.datadriveninvestor.com/what-is-pip-conda-anaconda-spyder-jupyter-notebook-pycharm-pandas-tensorflow-and-django-36d54778d85c</a></p>
+<section id="codebook">
+<h3>2.3	CODEBOOK<a class="headerlink" href="#codebook" title="Permalink to this headline">#</a></h3>
+<section id="variable-nomenclature">
+<h4>Variable nomenclature<a class="headerlink" href="#variable-nomenclature" title="Permalink to this headline">#</a></h4>
+<p>Keep it consistent and document it !! (use English!)<br />
+E.g.,  Suggested nomenclature for behavioral tests in a longitudinal study:
+[Timepoint_Test_subtest_valueType_scoreType]
+T1_SLRT_words_corr_raw
+T1_SLRT_words_RT_raw</p>
+<p>valueType  = if a test has multiple scoring possibilities or errors/hits, RT, accu<br />
+Score type = rw/pr/T …etc</p>
 </section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
-<blockquote>
-<div><p>Issues during installation included problems with spyder recognizing the right python version or not recognizing the ‘conda’ command (e.g., because Anaconda folders were not added in the OS path). PIP is another package manager. Recommended to stick to conda for installing packages whenever possible.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Spyder is not showing plotly plots? Set up the default renderer:<br />
-import <a class="reference external" href="http://plotly.io">plotly.io</a> as io
-io.renderers.default=’browser’</p>
-</div></blockquote>
-<blockquote>
-<div><p>Instead of Conda, there is also Mamba which seems to be more efficient solver than Conda..</p>
-</div></blockquote>
+<section id="tips">
+<h4>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>CONSISTENCY across variables: e.g. raw score always indicated the same abbreviation</p></li>
+<li><p>Consistency also with cap/small letters usage!</p></li>
+<li><p>Keep name parts brief but still descriptive.</p></li>
+<li><p>Write a <strong>Codebook</strong> Variable names should be identifiable on their own, but a codebook is required for completion and clarification clarifications (e.g, ARHQ_father_mean_rw  In codebook ARHQ= Adult reading history questionnaire, etc).</p></li>
+<li><p>Use underscore “_” as separator</p></li>
+<li><p>Avoid spaces and potentially conflicting characters: -,%,&amp;,$,’ etc</p></li>
+</ul>
+</section>
+</section>
+<section id="logging-corrections">
+<h3>2.4	LOGGING CORRECTIONS<a class="headerlink" href="#logging-corrections" title="Permalink to this headline">#</a></h3>
+<p>Did you find a nonsensical value in one variable and want know who to blame? The tool <strong>Applications/Project Loggin</strong>  will allow this. You can filter by user, time period, etc.</p>
+<p>The logging tool may have a lot of info and may not be constantly revised. A suggestion could be to ask people responsible from data entry to log in an easily accessible README text file when and a what corrections have been made to keep track of these (e.g., “10.10.2020 (GFG)– SLRT raw scores from x to y”).   Then this can be confirmed in the detail application logging.</p>
+</section>
 </section>
 </section>
 
@@ -569,17 +629,17 @@ io.renderers.default=’browser’</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="GUIDE_Jupyter%20book.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="GUIDE_psychopy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jupyter book</p>
+            <p class="prev-next-title">PsychoPy</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="GUIDE_psychopy.html" title="next page">
+    <a class='right-next' id="next-link" href="GUIDE_Web_building_in_R_markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PsychoPy</p>
+        <p class="prev-next-title">Website in R markdown</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

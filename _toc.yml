@@ -7,12 +7,14 @@ parts:
 - caption: Misc tools
   chapters:
   - file: 1-General tools/GUIDE_Github
+  - file: 1-General tools/GUIDE_Google text-to-speech
   - file: 1-General tools/GUIDE_Jupyter book
   - file: 1-General tools/Guide_prolific_gorilla
   - file: 1-General tools/GUIDE_python
   - file: 1-General tools/GUIDE_psychopy
+  - file: 1-General tools/GUIDE_Redcap
   - file: 1-General tools/GUIDE_Web_building_in_R_markdown
-  - file: 1-General tools/GUIDE_Google text-to-speech
+
 
 - caption: Analysis
   chapters:
